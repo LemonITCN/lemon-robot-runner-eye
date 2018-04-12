@@ -18,8 +18,8 @@
         background-color="#333"
         text-color="#777"
         active-text-color="#fff">
-        <el-tooltip v-for="(task , index) in taskList" v-bind:key="task.taskKey" class="item" effect="dark" v-bind:content="task.taskKey" placement="right">
-          <el-menu-item v-bind:index="index">
+        <el-tooltip v-for="task in this.global.repo.taskList.local" v-bind:key="task.taskKey" class="item" effect="dark" v-bind:content="task.taskKey" placement="right">
+          <el-menu-item v-bind:index="task.taskKey">
             <i class="el-icon-arrow-right"></i>
             <span slot="title">{{task.taskName}}</span>
           </el-menu-item>
@@ -33,80 +33,6 @@ export default {
   name: 'TaskListModule',
   data () {
     return {
-      taskList: [
-        {
-          taskKey: 'task001',
-          taskName: '我的任务h1'
-        },
-        {
-          taskKey: 'task002',
-          taskName: '我的任务b2'
-        },
-        {
-          taskKey: 'task003',
-          taskName: '我的任务c3'
-        },
-        {
-          taskKey: 'task004',
-          taskName: '我的任务d6'
-        },
-        {
-          taskKey: 'task004',
-          taskName: '我的任务d6'
-        },
-        {
-          taskKey: 'task004',
-          taskName: '我的任务d6'
-        },
-        {
-          taskKey: 'task004',
-          taskName: '我的任务d6'
-        },
-        {
-          taskKey: 'task004',
-          taskName: '我的任务d6'
-        },
-        {
-          taskKey: 'task004',
-          taskName: '我的任务d6'
-        },
-        {
-          taskKey: 'task004',
-          taskName: '我的任务d6'
-        },
-        {
-          taskKey: 'task004',
-          taskName: '我的任务d6'
-        },
-        {
-          taskKey: 'task004',
-          taskName: '我的任务d6'
-        },
-        {
-          taskKey: 'task004',
-          taskName: '我的任务d6'
-        },
-        {
-          taskKey: 'task004',
-          taskName: '我的任务d6'
-        },
-        {
-          taskKey: 'task004',
-          taskName: '我的任务d6'
-        },
-        {
-          taskKey: 'task004',
-          taskName: '我的任务d6'
-        },
-        {
-          taskKey: 'task004',
-          taskName: '我的任务d6'
-        },
-        {
-          taskKey: 'task005',
-          taskName: '我的任务h9'
-        }
-      ]
     }
   }
 }

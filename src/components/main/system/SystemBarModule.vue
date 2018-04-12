@@ -21,9 +21,6 @@ export default {
   display: flex;
   flex-direction: column;
 }
-.user-module{
-  height: 100px;
-}
 .task-list-module{
   flex-grow: 1;
 }

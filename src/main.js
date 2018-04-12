@@ -5,8 +5,12 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import App from './App'
 import router from './router'
+import Global from './Global'
+// 编译LemonRobot桌面版本时候引用
+import '../static/operation-impl/lemon-robot-runner-desktop.js'
 
 Vue.config.productionTip = false
+Vue.prototype.global = Global
 
 // 使用ElementUI
 Vue.use(ElementUI)

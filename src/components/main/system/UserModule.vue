@@ -18,7 +18,7 @@ export default {
   .user-module {
     display: flex;
     flex-direction: row;
-    padding: 10px;
+    padding: 26px 10px 10px 16px;
     min-height: 70px;
   }
 

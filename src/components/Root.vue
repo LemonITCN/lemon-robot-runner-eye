@@ -2,6 +2,7 @@
   <div class="root">
     <system-bar-module class="system-module"/>
     <div class="right-panel">
+      <control-buttons-module class="control-buttons-module"/>
       <content-container-module class="content-container-module"/>
       <div class="copyright-area">
         LemonRobot 柠檬信息技术有限公司 LemonIT.CN
@@ -13,9 +14,10 @@
 <script>
 import SystemBarModule from './main/system/SystemBarModule'
 import ContentContainerModule from './main/content/ContentContainerModule'
+import ControlButtonsModule from './main/content/ControlButtonsModule'
 export default {
   name: 'Root',
-  components: {ContentContainerModule, SystemBarModule},
+  components: {ControlButtonsModule, ContentContainerModule, SystemBarModule},
   data () {
     return {
     }
@@ -38,7 +40,7 @@ export default {
 }
 .system-module{
   background: #333;
-  width: 280px;
+  min-width: 280px;
   box-shadow: 0 0 5px #999;
 }
 .right-panel{
@@ -47,13 +49,16 @@ export default {
   flex-direction: column;
   margin: 10px 20px;
 }
-  .content-container-module{
-    flex-grow: 1;
-  }
-  .copyright-area{
-    padding: 15px 0 6px 0;
-    text-align: center;
-    font-size: 12px;
-    color: #aaa;
-  }
+.control-buttons-module{
+  min-height: 50px;
+}
+.content-container-module{
+  flex-grow: 1;
+}
+.copyright-area{
+  padding: 15px 0 6px 0;
+  text-align: center;
+  font-size: 12px;
+  color: #aaa;
+}
 </style>

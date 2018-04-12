@@ -1,23 +1,37 @@
 <template>
     <div class="system-state-module">
-      <div v-bind:class="cloud_lemon_state ? 'state-success' : 'state-failed'">
-        <i v-bind:class="cloud_lemon_state ? 'el-icon-success' : 'el-icon-error'"></i>
-        <span>{{cloud_lemon_state ? '成功' : '暂未'}}连接至柠檬云</span>
+      <div v-bind:class="this.global.repo.cloud_connect_state.lemon ? 'state-success' : 'state-failed'"
+      @click="hello">
+        <i v-bind:class="this.global.repo.cloud_connect_state.lemon ? 'el-icon-success' : 'el-icon-error'"></i>
+        <span>柠檬云</span>
       </div>
-      <div v-bind:class="cloud_private_state ? 'state-success' : 'state-failed'">
-        <i v-bind:class="cloud_private_state ? 'el-icon-success' : 'el-icon-error'"></i>
-        <span>{{cloud_private_state ? '成功' : '暂未'}}连接至私有云</span>
+      <div v-bind:class="this.global.repo.cloud_connect_state.private ? 'state-success' : 'state-failed'">
+        <i v-bind:class="this.global.repo.cloud_connect_state.private ? 'el-icon-success' : 'el-icon-error'"></i>
+        <span>私有云</span>
       </div>
     </div>
 </template>
 
 <script>
+
 export default {
   name: 'SystemStateModule',
+  methods: {
+    hello () {
+      this.global.repo.pluginList.push({
+        author: 'LemonIT.CN',
+        version: '0.0.1',
+        name: 'LemonRobot加密算法模块',
+        introduce: 'LemonRobot的加密算法工具插件，本插件让LemonRobot拥有常用加密解密算法的计算能力，如RSA/AES/DES等等。',
+        homepage: 'http://www.lemonit.cn',
+        key: 'LrEncrypt'
+      })
+      /* eslint-disable no-undef */
+      LrOperation.hello('123123123')
+    }
+  },
   data () {
     return {
-      cloud_lemon_state: true,
-      cloud_private_state: false
     }
   }
 }
@@ -32,6 +46,8 @@ export default {
 .system-state-module div{
   margin-bottom: 10px;
   cursor: pointer;
+  display: inline-block;
+  margin-right: 30px;
 }
 .state-success{
   color: #67C23A;
