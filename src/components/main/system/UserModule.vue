@@ -1,16 +1,21 @@
 <template>
   <div class="user-module">
-    <img src="https://avatars1.githubusercontent.com/u/11977874?s=460&v=4" class="avatar">
+    <img src="static/resource/image/logo.png" class="avatar">
     <div class="content">
-      <span class="username">登录到LemonCloud</span>
-      <el-button size="mini" type="text" class="operate">注册柠檬云账户</el-button>
+      <span class="username">{{$t(lang + '.login_to') + ' ' + $t('system.cloud_name')}}</span>
+      <el-button size="mini" type="text" class="operate">{{$t(lang + '.register') + ' ' + $t('system.cloud_name') + ' ' + $t(lang + '.account')}}</el-button>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'UserModule'
+  name: 'UserModule',
+  data () {
+    return {
+      lang: 'main.system.user'
+    }
+  }
 }
 </script>
 

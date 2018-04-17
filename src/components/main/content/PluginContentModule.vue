@@ -1,10 +1,10 @@
 <template>
     <div class="plugin-content-module">
         <div v-for="(plugin, index) in this.global.repo.pluginList" v-bind:key="index" class="plugin-item">
-          <div class="plugin-name">插件名称：{{plugin.name}}</div>
-          <div class="plugin-author">插件作者：{{plugin.author}}</div>
-          <div class="plugin-version">版本号：{{plugin.version}}</div>
-          <div class="plugin-key">插件唯一标识：{{plugin.key}}</div>
+          <div class="plugin-name">{{$t(lang + '.plugin_name')}}: {{plugin.name}}</div>
+          <div class="plugin-author">{{$t(lang + '.plugin_author')}}: {{plugin.author}}</div>
+          <div class="plugin-version">{{$t(lang + '.plugin_version')}}: {{plugin.version}}</div>
+          <div class="plugin-key" >{{$t(lang + '.plugin_key')}}: {{plugin.key}}</div>
           <div>
             <el-switch
               class="plugin-state"
@@ -21,6 +21,7 @@ export default {
   name: 'PluginContentModule',
   data () {
     return {
+      lang: 'main.content.plugin_content',
       state: []
     }
   }
@@ -42,6 +43,7 @@ export default {
   font-size: 13px;
   position: relative;
   border-radius: 6px;
+  border-left: 3px solid #409eff;
 }
 .plugin-item div{
   margin: 5px 0;

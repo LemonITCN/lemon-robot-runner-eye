@@ -6,14 +6,18 @@
 
 <script>
 export default {
+  mounted () {
+    // eslint-disable-next-line no-undef
+    _lr.global = this.global
+  },
   name: 'App'
 }
 </script>
 
 <style>
-  * {
-    user-select:none;
-  }
+  /** {*/
+    /*user-select:none;*/
+  /*}*/
 
   #app {
     font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;

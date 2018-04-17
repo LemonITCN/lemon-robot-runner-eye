@@ -15,24 +15,28 @@ const globalData = {
   // 任务列表
   taskList: {
     // 本地任务
-    local: [
-      {
-        taskKey: 'task001',
-        taskName: '我的任务h1'
-      }
-    ],
+    local: [],
+    // 柠檬云任务
     lemon: [
       {
         taskKey: 'task001',
         taskName: '我的任务h1'
       }
     ],
+    // 私有云任务
     private: [
       {
         taskKey: 'task001',
         taskName: '我的任务h1'
       }
-    ]
+    ],
+    // 使用中的状态
+    current: {
+      // 正在使用中的任务列表，根据选项不同，把本地任务、柠檬云任务、私有云任务列表置入此list中
+      list: [],
+      // 当前正在编辑的任务
+      task: {}
+    }
   },
   // 已装插件列表
   pluginList: [

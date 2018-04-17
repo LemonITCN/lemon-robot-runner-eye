@@ -1,13 +1,13 @@
 <template>
   <div class="content-container-module">
     <el-tabs v-model="selectedTab" type="border-card" class="container-tab">
-      <el-tab-pane label="插件管理" name="plugin">
+      <el-tab-pane :label="$t(lang + '.plugin_manage')" name="plugin">
         <plugin-content-module class="content-module"/>
       </el-tab-pane>
-      <el-tab-pane label="指令集管理" name="instructionSet">
+      <el-tab-pane :label="$t(lang + '.instruction_set_manage')" name="instructionSet">
         <instruction-set-content-module class="content-module"/>
       </el-tab-pane>
-      <el-tab-pane label="数据集管理" name="dataPool">角色管理</el-tab-pane>
+      <el-tab-pane :label="$t(lang + '.data_set_manage')"  name="dataPool"></el-tab-pane>
     </el-tabs>
   </div>
 </template>
@@ -19,6 +19,7 @@ export default {
   components: {InstructionSetContentModule, PluginContentModule},
   data () {
     return {
+      lang: 'main.content.content_container',
       selectedTab: 'plugin'
     }
   },

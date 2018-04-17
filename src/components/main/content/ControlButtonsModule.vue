@@ -1,17 +1,22 @@
 <template>
   <div class="">
-    <el-button type="success" size="medium" icon="el-icon-caret-right">运行</el-button>
-    <el-button type="success" size="medium" icon="el-icon-upload" plain>上传至柠檬云</el-button>
-    <el-button type="primary" size="medium" icon="el-icon-star-on" plain>上传至私有云</el-button>
-    <el-button size="medium" icon="el-icon-menu" plain>应用中心</el-button>
-    <el-button size="medium" icon="el-icon-news" plain>添加指令集</el-button>
-    <el-button size="medium" icon="el-icon-document" plain>添加数据集</el-button>
+    <el-button type="success" size="small" icon="el-icon-caret-right">{{$t(lang + '.run')}}</el-button>
+    <el-button type="success" size="small" icon="el-icon-upload" plain>{{$t(lang + '.upload_to') + ' ' + $t('system.cloud_name')}}</el-button>
+    <el-button type="primary" size="small" icon="el-icon-star-on" plain>{{$t(lang + '.upload_to') + ' ' + $t('common.private_cloud')}}</el-button>
+    <el-button size="small" icon="el-icon-menu" plain>{{$t(lang + '.store')}}</el-button>
+    <el-button size="small" icon="el-icon-news" plain>{{$t(lang + '.add_instruction_set')}}</el-button>
+    <el-button size="small" icon="el-icon-document" plain>{{$t(lang + '.add_data_set')}}</el-button>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'ControlButtonsModule'
+  name: 'ControlButtonsModule',
+  data () {
+    return {
+      lang: 'main.content.control_buttons'
+    }
+  }
 }
 </script>
 

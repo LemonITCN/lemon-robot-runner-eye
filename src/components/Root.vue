@@ -5,7 +5,7 @@
       <control-buttons-module class="control-buttons-module"/>
       <content-container-module class="content-container-module"/>
       <div class="copyright-area">
-        LemonRobot 柠檬信息技术有限公司 LemonIT.CN
+        {{$t('system.app_name') + ' - ' + $t('system.company_name') + ' ' + $t('system.company_domain')}}
       </div>
     </div>
   </div>
@@ -50,7 +50,7 @@ export default {
   margin: 10px 20px;
 }
 .control-buttons-module{
-  min-height: 50px;
+  min-height: 42px;
 }
 .content-container-module{
   flex-grow: 1;

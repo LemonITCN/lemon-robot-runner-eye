@@ -3,11 +3,11 @@
       <div v-bind:class="this.global.repo.cloud_connect_state.lemon ? 'state-success' : 'state-failed'"
       @click="hello">
         <i v-bind:class="this.global.repo.cloud_connect_state.lemon ? 'el-icon-success' : 'el-icon-error'"></i>
-        <span>柠檬云</span>
+        <span>{{$t('system.cloud_name')}}</span>
       </div>
       <div v-bind:class="this.global.repo.cloud_connect_state.private ? 'state-success' : 'state-failed'">
         <i v-bind:class="this.global.repo.cloud_connect_state.private ? 'el-icon-success' : 'el-icon-error'"></i>
-        <span>私有云</span>
+        <span>{{$t('common.private_cloud')}}</span>
       </div>
     </div>
 </template>
@@ -26,12 +26,11 @@ export default {
         homepage: 'http://www.lemonit.cn',
         key: 'LrEncrypt'
       })
-      /* eslint-disable no-undef */
-      LrOperation.hello('123123123')
     }
   },
   data () {
     return {
+      lang: 'main.system.system_state'
     }
   }
 }
@@ -41,13 +40,13 @@ export default {
 .system-state-module{
   color: #67C23A;
   font-size: 14px;
-  padding: 10px 0 0 50px;
+  padding: 10px 0 0 40px;
 }
 .system-state-module div{
   margin-bottom: 10px;
   cursor: pointer;
   display: inline-block;
-  margin-right: 30px;
+  margin-right: 20px;
 }
 .state-success{
   color: #67C23A;

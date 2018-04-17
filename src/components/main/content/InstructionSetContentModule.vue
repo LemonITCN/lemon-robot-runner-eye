@@ -3,16 +3,15 @@
     <el-menu
       default-active="2"
       class="instruction-set-list">
-      <el-menu-item v-for="(insSet , insSetIndex) in 12" :index="insSetIndex+''" v-bind:key="insSetIndex">
-        <span slot="title">指令集000{{insSet}}</span>
+      <el-menu-item v-for="instructionSet in this.global.repo.taskList.current.task.instructionSetList" :index="instructionSet.instructionSetKey+''" v-bind:key="instructionSet.instructionSetKey">
+        <span slot="title">{{instructionSet.instructionSetKey}}</span>
       </el-menu-item>
     </el-menu>
     <div class="instruction-set-editor-wrapper">
       <div class="instruction-set-operation">
-        正在编辑指令集：[ main ] 。您可以选择删除它：
-        <el-button type="danger" icon="el-icon-delete" circle style="margin-right: 20px"></el-button>
-        或者修改它的基本信息：
-        <el-button  type="primary" icon="el-icon-edit" circle></el-button>
+        {{$t(lang + '.operation_editing')}}: [ main ] .
+        {{$t(lang + '.operation_delete')}}<el-button type="danger" icon="el-icon-delete" circle style="margin: 0 8px"></el-button>
+        {{$t(lang + '.operation_edit')}}<el-button  type="primary" icon="el-icon-edit" circle style="margin: 0 8px"></el-button>
       </div>
       <iframe src="./static/editor/editor.html" frameborder="0" class="editor"></iframe>
     </div>
@@ -21,7 +20,12 @@
 
 <script>
 export default {
-  name: 'InstructionSetContentModule'
+  name: 'InstructionSetContentModule',
+  data () {
+    return {
+      lang: 'main.content.instruction_set_content'
+    }
+  }
 }
 </script>
 
