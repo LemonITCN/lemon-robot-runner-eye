@@ -50,7 +50,7 @@ export default {
       this.create_task_waiting = false
       Notification({
         title: createTaskResult ? this.$t('common.successful') : this.$t('common.failed'),
-        message: this.$t('main.system.system_bar.task_creation') + ' ' + (createTaskResult ? this.$t('common.successful') : this.$t('common.failed')),
+        message: this.$t(this.lang + '.task_creation') + ' ' + (createTaskResult ? this.$t('common.successful') : this.$t('common.failed')),
         type: createTaskResult ? 'success' : 'error'
       })
     },
