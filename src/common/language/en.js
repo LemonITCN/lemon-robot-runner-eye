@@ -32,7 +32,8 @@ module.exports = {
       instruction_set_content: {
         operation_editing: 'In the editing',
         operation_delete: 'You can choose to delete it',
-        operation_edit: 'Or modify its basic information'
+        operation_edit: 'Or modify its basic information',
+        operation_main_disabled: 'The main function can not be edited or deleted'
       },
       plugin_content: {
         plugin_name: 'Plugin name',
@@ -47,11 +48,12 @@ module.exports = {
         create_local_task_button_tip: 'Click the button to',
         create_dialog_task_key_placeholder: 'Please enter the Task key, English / number composition',
         create_dialog_task_name_placeholder: 'Please enter a short and clear name. Allow any language',
-        task_creation: 'Task creation'
+        task_creation: 'Task creation',
+        local_task_create_error_msg_empty: 'Task key and task name can not be empty. Please check.'
       },
       system_state: {},
       task_list: {
-        local: 'Local'
+        local: 'Local task list'
       },
       user: {
         login_to: 'Login to',

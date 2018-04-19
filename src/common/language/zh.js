@@ -32,7 +32,8 @@ module.exports = {
       instruction_set_content: {
         operation_editing: '正在编辑中',
         operation_delete: '您可以选择删除它',
-        operation_edit: '或修改它的基本信息'
+        operation_edit: '或修改它的基本信息',
+        operation_main_disabled: '主函数[main]不可以进行修改或删除操作'
       },
       plugin_content: {
         plugin_name: '插件名称',
@@ -47,11 +48,12 @@ module.exports = {
         create_local_task_button_tip: '点击按钮-',
         create_dialog_task_key_placeholder: '请输入任务标识，英文/数字组成',
         create_dialog_task_name_placeholder: '请输入一个简短而清晰的名称。允许任何语言',
-        task_creation: '任务创建'
+        task_creation: '任务创建',
+        local_task_create_error_msg_empty: '任务标识与任务名称均不能为空，请检查'
       },
       system_state: {},
       task_list: {
-        local: '本地'
+        local: '本地任务列表'
       },
       user: {
         login_to: '登录到',

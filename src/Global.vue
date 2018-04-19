@@ -3,8 +3,10 @@
 </template>
 
 <script>
+/* eslint-disable no-undef */
+
 import Vue from 'vue'
-const globalData = {
+var globalData = {
   // 用户信息，
   userInfo: {},
   // 云服务连接状态
@@ -14,28 +16,20 @@ const globalData = {
   },
   // 任务列表
   taskList: {
-    // 本地任务
+    // 本地任务列表，编辑器只能编辑本地的任务
     local: [],
     // 柠檬云任务
     lemon: [
-      {
-        taskKey: 'task001',
-        taskName: '我的任务h1'
-      }
     ],
     // 私有云任务
     private: [
-      {
-        taskKey: 'task001',
-        taskName: '我的任务h1'
-      }
     ],
     // 使用中的状态
     current: {
-      // 正在使用中的任务列表，根据选项不同，把本地任务、柠檬云任务、私有云任务列表置入此list中
-      list: [],
       // 当前正在编辑的任务
-      task: {}
+      task: {},
+      // 当前正在编辑的指令集标识
+      instruction_set_key: ''
     }
   },
   // 已装插件列表
@@ -48,12 +42,37 @@ const globalData = {
       homepage: 'http://www.lemonit.cn',
       key: 'LrEncrypt'
     }
-  ]
+  ],
+  // 全屏弹出框设置
+  full_screen_loading: {
+    state: false,
+    text: '正在处理中..'
+  }
 }
 export default {
   repo: new Vue({
     data: globalData
   }),
+  util: {
+    /**
+     *从指定任务列表中获取指定任务标识的任务对象
+     */
+    getTaskWithTaskKeyFromTaskList: function (taskKey, taskList) {
+      for (var i = 0; i < taskList.length; i++) {
+        if (taskList[i].taskKey === taskKey) {
+          return taskList[i]
+        }
+      }
+      return undefined
+    },
+    showLoading: function (text) {
+      _lr.global.repo.full_screen_loading.text = text
+      _lr.global.repo.full_screen_loading.state = true
+    },
+    hideLoading: function () {
+      _lr.global.repo.full_screen_loading.state = false
+    }
+  },
   operation: {
     getTaskList: () => {
       return ''

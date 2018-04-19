@@ -5,12 +5,9 @@
         class="task-list-menu"
         mode="horizontal"
         background-color="#333"
-        @select="taskListTypeSelect"
         text-color="#888"
         active-text-color="#ffd04b">
         <el-menu-item index="local" class="task-list-menu">{{$t(lang + '.local')}}</el-menu-item>
-        <el-menu-item index="lemon" class="task-list-menu">{{$t('system.cloud_name')}}</el-menu-item>
-        <el-menu-item index="private" class="task-list-menu">{{$t('common.private_cloud')}}</el-menu-item>
       </el-menu>
       <!--任务列表-->
       <el-menu
@@ -20,7 +17,7 @@
         background-color="#333"
         text-color="#777"
         active-text-color="#fff">
-        <el-tooltip v-for="task in this.global.repo.taskList.current.list" v-bind:key="task.taskKey" class="item" effect="dark" v-bind:content="task.taskKey" placement="right">
+        <el-tooltip v-for="task in this.global.repo.taskList.local" v-bind:key="task.taskKey" class="item" effect="dark" v-bind:content="task.taskKey" placement="right">
           <el-menu-item v-bind:index="task.taskKey">
             <i class="el-icon-star-on"></i>
             <span slot="title">{{task.taskName}}</span>
@@ -39,20 +36,12 @@ export default {
     }
   },
   methods: {
-    taskListTypeSelect (key, keyPath) {
-      console.log('change task list type to ：' + key)
-      // 切换任务列表
-      this.global.repo.taskList.current.list = this.global.repo.taskList[key]
-    },
     taskListSelect (key, keyPath) {
       // 选中任务列表中的任务，切换编辑中的任务
       console.log('select task:' + key + keyPath)
-      for (var i = 0; i < this.global.repo.taskList.current.list.length; i++) {
-        // 循环取出任务标识对应的任务，放置到当前正在编辑的任务变量中
-        if (this.global.repo.taskList.current.list[i].taskKey === key) {
-          this.global.repo.taskList.current.task = this.global.repo.taskList.current.list[i]
-        }
-      }
+      this.global.repo.taskList.current.task = this.global.util.getTaskWithTaskKeyFromTaskList(key, this.global.repo.taskList.local)
+      // 默认选择编辑main指令集
+      this.global.repo.taskList.current.instruction_set_key = [this.global.repo.taskList.current.task.taskKey, 'main']
     }
   }
 }
