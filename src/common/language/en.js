@@ -11,6 +11,11 @@ module.exports = {
     failed: 'Failed',
     task_key: 'Task key',
     task_name: 'Task name',
+    instruction_set_key: 'Instruction set key',
+    instruction_set_name: 'Instruction set name',
+    data_set_key: 'Data set key',
+    data_set_name: 'Data set name',
+    please_input: 'Please input',
     cancel: 'Cancel',
     create: 'Create'
   },

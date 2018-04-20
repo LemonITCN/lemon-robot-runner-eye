@@ -46,11 +46,11 @@ export default {
       if (oldVal && oldVal.length === 2) {
         // 保存当前的任务
         console.log('Save task instruction set:' + oldVal[0] + ' # ' + oldVal[1])
-        _lr.task.localSaveInstructionSetScript(oldVal[0], oldVal[1], editor.getEditorContent())
+        _lr.task.localSaveInstructionSetScriptToHD(oldVal[0], oldVal[1], editor.getEditorContent())
       }
       console.log('Monitor the change of the instruction set in the editing: ' + this.global.repo.taskList.current.instruction_set_key + ' - old:' + oldVal)
       // 设置editor中新指令集的数据
-      editor.setEditorContent(_lr.task.localReadTaskInstructionSetScript(
+      editor.setEditorContent(_lr.task.localReadTaskInstructionSetScriptFromHD(
         this.global.repo.taskList.current.task.taskKey,
         val[1]
       ))

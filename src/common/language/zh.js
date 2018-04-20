@@ -11,6 +11,11 @@ module.exports = {
     failed: '失败',
     task_key: '任务标识',
     task_name: '任务名称',
+    instruction_set_key: '指令集标识',
+    instruction_set_name: '指令集名称',
+    data_set_key: '数据集标识',
+    data_set_name: '数据集名称',
+    please_input: '请输入',
     cancel: '取消',
     create: '创建'
   },

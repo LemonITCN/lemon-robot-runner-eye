@@ -7,7 +7,7 @@ function LrOperation () {
   this.task = {}
   this.task.init = function () {
     // 主动拉取一次本地任务列表
-    _lr.global.repo.taskList.local = _lr.task.localGetTask()
+    _lr.global.repo.taskList.local = _lr.task.localReadTaskListFromHD()
     if (_lr.global.repo.taskList.local.length > 0) {
       // 如果当前选中的任务列表不为空，那么默认开始编辑第一个
       _lr.global.repo.taskList.current.task = _lr.global.repo.taskList.local[0]
@@ -27,8 +27,8 @@ function LrOperation () {
   /**
    * 获取任务列表
    */
-  this.task.localGetTask = function () {
-    return JSON.parse(_lr_task.localGetTask())
+  this.task.localReadTaskListFromHD = function () {
+    return JSON.parse(_lr_task.localReadTaskListFromHD())
   }
   /**
    * 从本地读取任务的指令集脚本
@@ -36,7 +36,7 @@ function LrOperation () {
    * @param instructionSetKey 指令集标识
    * @returns {*} 指令集脚本
    */
-  this.task.localReadTaskInstructionSetScript = function (taskKey, instructionSetKey) {
+  this.task.localReadTaskInstructionSetScriptFromHD = function (taskKey, instructionSetKey) {
     return _lr_task.localReadTaskInstructionSetScriptFromHD(taskKey, instructionSetKey)
   }
   /**
@@ -53,8 +53,8 @@ function LrOperation () {
    * @param instructionSetScript 指令集脚本语句
    * @return 是否保存成功的布尔值
    */
-  this.task.localSaveInstructionSetScript = function (taskKey, instructionSetKey, instructionSetScript) {
-    return _lr_task.localSaveInstructionSetScript(taskKey, instructionSetKey, instructionSetScript)
+  this.task.localSaveInstructionSetScriptToHD = function (taskKey, instructionSetKey, instructionSetScript) {
+    return _lr_task.localSaveInstructionSetScriptToHD(taskKey, instructionSetKey, instructionSetScript)
   }
   /**
    * 保存任务的基本信息到硬盘
@@ -62,8 +62,8 @@ function LrOperation () {
    * @param task 要保存基本信息的任务对象
    * @return 保存是否成功的布尔值
    */
-  this.task.localSaveTaskBaseInfo = function (task) {
-    return _lr_task.localSaveTaskBaseInfo(JSON.stringify(task))
+  this.task.localSaveBaseInfoToHd = function (task) {
+    return _lr_task.localSaveBaseInfoToHd(JSON.stringify(task))
   }
 }
 
