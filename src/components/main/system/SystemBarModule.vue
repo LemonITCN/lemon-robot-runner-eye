@@ -57,10 +57,10 @@ export default {
       var createTaskResult = _lr.task.localCreateTask(this.create_task_text_key, this.create_task_text_name)
       if (createTaskResult) {
         this.dialog_visible_create_local_task = false
+        this.create_task_text_key = ''
+        this.create_task_text_name = ''
       }
-      setTimeout(function () {
-        this.global.util.hideLoading()
-      }, 1000)
+      this.global.util.hideLoading()
       Notification({
         title: createTaskResult ? this.$t('common.successful') : this.$t('common.failed'),
         message: this.$t(this.lang + '.task_creation') + ' ' + (createTaskResult ? this.$t('common.successful') : this.$t('common.failed')),

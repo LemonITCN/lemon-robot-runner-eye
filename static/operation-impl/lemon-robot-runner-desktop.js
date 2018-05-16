@@ -22,7 +22,16 @@ function LrOperation () {
    * @returns {*}
    */
   this.task.localCreateTask = function (taskKey, taskName) {
-    return _lr_task.localCreateTask(taskKey, taskName)
+    let createResult = _lr_task.localCreateTask(taskKey, taskName)
+    _lr.global.repo.taskList.local = _lr.task.localReadTaskListFromHD()
+    if (createResult && _lr.global.repo.taskList.local.length === 1) {
+      // 创建成功后任务列表共有一条，说明，原来没有任务，这是第一条创建的任务
+      // 如果当前选中的任务列表不为空，那么默认开始编辑第一个
+      _lr.global.repo.taskList.current.task = _lr.global.repo.taskList.local[0]
+      // 设置默认编辑中的指令集标识
+      _lr.global.repo.taskList.current.instruction_set_key = [_lr.global.repo.taskList.current.task.taskKey, 'main']
+    }
+    return createResult
   }
   /**
    * 获取任务列表
