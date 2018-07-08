@@ -16,10 +16,10 @@
 /* PADDING */
 
 .CodeMirror-lines {
-  padding: 4px 0; /* Vertical padding around content */
+  padding: 4px 0; /* Vertical padding around instruction */
 }
 .CodeMirror pre {
-  padding: 0 4px; /* Horizontal padding of content */
+  padding: 0 4px; /* Horizontal padding of instruction */
 }
 
 .CodeMirror-scrollbar-filler, .CodeMirror-gutter-filler {
@@ -286,7 +286,7 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #a22;}
   outline: none;
 }
 
-/* Force content-box sizing for the elements where we expect it */
+/* Force instruction-box sizing for the elements where we expect it */
 .CodeMirror-scroll,
 .CodeMirror-sizer,
 .CodeMirror-gutter,

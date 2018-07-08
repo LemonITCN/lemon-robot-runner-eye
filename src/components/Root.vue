@@ -12,9 +12,9 @@
 </template>
 
 <script>
-import SystemBarModule from './main/system/SystemBarModule'
-import ContentContainerModule from './main/content/ContentContainerModule'
-import ControlButtonsModule from './main/content/ControlButtonsModule'
+import SystemBarModule from './struct/framework/SystemBarModule'
+import ContentContainerModule from './struct/framework/ContentContainerModule'
+import ControlButtonsModule from './struct/bar/ControlButtonsModule'
 export default {
   name: 'Root',
   components: {ControlButtonsModule, ContentContainerModule, SystemBarModule},

@@ -294,7 +294,7 @@ function findFirst(pred, from, to) {
 }
 
 // The display handles the DOM integration, both for input reading
-// and content drawing. It holds references to DOM nodes and
+// and instruction drawing. It holds references to DOM nodes and
 // display-related state.
 
 function Display(place, doc, input) {
@@ -303,11 +303,11 @@ function Display(place, doc, input) {
 
   // Covers bottom-right square when both scrollbars are present.
   d.scrollbarFiller = elt("div", null, "CodeMirror-scrollbar-filler")
-  d.scrollbarFiller.setAttribute("cm-not-content", "true")
+  d.scrollbarFiller.setAttribute("cm-not-instruction", "true")
   // Covers bottom of gutter when coverGutterNextToScrollbar is on
   // and h scrollbar is present.
   d.gutterFiller = elt("div", null, "CodeMirror-gutter-filler")
-  d.gutterFiller.setAttribute("cm-not-content", "true")
+  d.gutterFiller.setAttribute("cm-not-instruction", "true")
   // Will contain the actual code, positioned to cover the viewport.
   d.lineDiv = eltP("div", null, "CodeMirror-code")
   // Elements are added to these to represent selection and cursors.
@@ -317,7 +317,7 @@ function Display(place, doc, input) {
   d.measure = elt("div", null, "CodeMirror-measure")
   // When lines outside of the viewport are measured, they are drawn in this.
   d.lineMeasure = elt("div", null, "CodeMirror-measure")
-  // Wraps everything that needs to exist inside the vertically-padded coordinate system
+  // Wraps everything that needs to exist inside the vertically-padded coordinate bar
   d.lineSpace = eltP("div", [d.measure, d.lineMeasure, d.selectionDiv, d.cursorDiv, d.lineDiv],
                     null, "position: relative; outline: none")
   var lines = eltP("div", [d.lineSpace], "CodeMirror-lines")
@@ -1765,7 +1765,7 @@ var Line = function(text, markedSpans, estimateHeight) {
 Line.prototype.lineNo = function () { return lineNo(this) };
 eventMixin(Line)
 
-// Change the content (text, markers) of a line. Automatically
+// Change the instruction (text, markers) of a line. Automatically
 // invalidates cached information and tries to re-estimate the
 // line's height.
 function updateLine(line, text, markedSpans, estimateHeight) {
@@ -2648,7 +2648,7 @@ function widgetTopHeight(lineObj) {
 }
 
 // Converts a {top, bottom, left, right} box from line-local
-// coordinates into another coordinate system. Context may be one of
+// coordinates into another coordinate bar. Context may be one of
 // "line", "div" (display.lineDiv), "local"./null (editor), "window",
 // or "page".
 function intoCoordSystem(cm, lineObj, rect, context, includeWidgets) {
@@ -2671,12 +2671,12 @@ function intoCoordSystem(cm, lineObj, rect, context, includeWidgets) {
   return rect
 }
 
-// Coverts a box from "div" coords to another coordinate system.
+// Coverts a box from "div" coords to another coordinate bar.
 // Context may be "window", "page", "div", or "local"./null.
 function fromCoordSystem(cm, coords, context) {
   if (context == "div") { return coords }
   var left = coords.left, top = coords.top
-  // First move into "page" coordinate system
+  // First move into "page" coordinate bar
   if (context == "page") {
     left -= pageScrollX()
     top -= pageScrollY()
@@ -2765,7 +2765,7 @@ function PosWithInfo(line, ch, sticky, outside, xRel) {
 }
 
 // Compute the character position closest to the given coordinates.
-// Input must be lineSpace-local ("div" coordinate system).
+// Input must be lineSpace-local ("div" coordinate bar).
 function coordsChar(cm, x, y) {
   var doc = cm.doc
   y += cm.display.viewOffset
@@ -3022,7 +3022,7 @@ function estimateLineHeights(cm) {
 // coordinates beyond the right of the text.
 function posFromMouse(cm, e, liberal, forRect) {
   var display = cm.display
-  if (!liberal && e_target(e).getAttribute("cm-not-content") == "true") { return null }
+  if (!liberal && e_target(e).getAttribute("cm-not-instruction") == "true") { return null }
 
   var x, y, space = display.lineSpace.getBoundingClientRect()
   // Fails unpredictably on IE[67] when mouse is dragged around quickly.
@@ -3656,7 +3656,7 @@ function updateScrollbars(cm, measure) {
 }
 
 // Re-synchronize the fake scrollbars with the actual size of the
-// content.
+// instruction.
 function updateScrollbarsInner(cm, measure) {
   var d = cm.display
   var sizes = d.scrollbars.update(measure)
@@ -3692,7 +3692,7 @@ function initScrollbars(cm) {
     on(node, "mousedown", function () {
       if (cm.state.focused) { setTimeout(function () { return cm.display.input.focus(); }, 0) }
     })
-    node.setAttribute("cm-not-content", "true")
+    node.setAttribute("cm-not-instruction", "true")
   }, function (pos, axis) {
     if (axis == "horizontal") { setScrollLeft(cm, pos) }
     else { updateScrollTop(cm, pos) }
@@ -6782,10 +6782,10 @@ function endOfLine(visually, cm, lineObj, lineNo, dir) {
       var ch
       // With a wrapped rtl chunk (possibly spanning multiple bidi parts),
       // it could be that the last bidi part is not on the last visual line,
-      // since visual lines contain content order-consecutive chunks.
-      // Thus, in rtl, we are looking for the first (content-order) character
+      // since visual lines contain instruction order-consecutive chunks.
+      // Thus, in rtl, we are looking for the first (instruction-order) character
       // in the rtl chunk that is on the last line (that is, the same line
-      // as the last (content-order) character).
+      // as the last (instruction-order) character).
       if (part.level > 0 || cm.doc.direction == "rtl") {
         var prep = prepareMeasureForLine(cm, lineObj)
         ch = dir < 0 ? lineObj.text.length - 1 : 0
@@ -7794,7 +7794,7 @@ function CodeMirror(place, options) {
 
   if (options.autofocus && !mobile) { display.input.focus() }
 
-  // Override magic textarea content restore that IE sometimes does
+  // Override magic textarea instruction restore that IE sometimes does
   // on our hidden textarea on reload
   if (ie && ie_version < 11) { setTimeout(function () { return this$1.display.input.reset(true); }, 20) }
 
@@ -8677,7 +8677,7 @@ ContentEditableInput.prototype.init = function (display) {
 
   on(div, "paste", function (e) {
     if (signalDOMEvent(cm, e) || handlePaste(e, cm)) { return }
-    // IE doesn't fire input events, so we schedule a read for the pasted content in this way
+    // IE doesn't fire input events, so we schedule a read for the pasted instruction in this way
     if (ie_version <= 11) { setTimeout(operation(cm, function () { return this$1.updateFromDOM(); }), 20) }
   })
 
@@ -8720,7 +8720,7 @@ ContentEditableInput.prototype.init = function (display) {
     if (e.clipboardData) {
       e.clipboardData.clearData()
       var content = lastCopied.text.join("\n")
-      // iOS exposes the clipboard API, but seems to discard content inserted into it
+      // iOS exposes the clipboard API, but seems to discard instruction inserted into it
       e.clipboardData.setData("Text", content)
       if (e.clipboardData.getData("Text") == content) {
         e.preventDefault()

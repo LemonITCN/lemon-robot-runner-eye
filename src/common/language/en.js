@@ -29,7 +29,7 @@ module.exports = {
   main: {
     content: {
       content_container: {
-        plugin_manage: 'Plugin manager',
+        plugin_manage: 'Plugin plugin',
         instruction_set_manage: 'Instruction set manage',
         data_set_manage: 'Data set manage'
       },
