@@ -5,6 +5,11 @@ module.exports = {
     company_name: '柠檬信息技术有限公司',
     company_domain: 'LemonIT.CN'
   },
+  connector: {
+    server_address: '服務器地址',
+    connector_tip_pre: '您还没有连接至',
+    connector_tip_end: '服务，请您输入连接信息'
+  },
   common: {
     private_cloud: '私有云',
     successful: '成功',
@@ -17,7 +22,8 @@ module.exports = {
     data_set_name: '数据集名称',
     please_input: '请输入',
     cancel: '取消',
-    create: '创建'
+    create: '创建',
+    connect: '连接'
   },
   main: {
     content: {

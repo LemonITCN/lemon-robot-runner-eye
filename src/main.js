@@ -7,8 +7,11 @@ import App from './App'
 import router from './router'
 import Global from './Global'
 import VueI18n from 'vue-i18n'
+import axios from 'axios'
 // 编译LemonRobot桌面版本时候引用
 import '../static/operation-impl/lemon-robot-runner-desktop.js'
+import store from './store'
+import namespace from './namespace/index'
 
 Vue.config.productionTip = false
 Vue.prototype.global = Global
@@ -16,9 +19,11 @@ Vue.prototype.global = Global
 // 使用ElementUI
 Vue.use(ElementUI)
 Vue.use(VueI18n)
+Vue.prototype.$ajax = axios
+Vue.prototype.$NS = namespace
 
 const i18n = new VueI18n({
-  locale: 'zh',
+  locale: 'en',
   messages: {
     'zh': require('./common/language/zh'),
     'en': require('./common/language/en')
@@ -30,6 +35,7 @@ new Vue({
   el: '#app',
   router,
   i18n,
+  store,
   components: { App },
   template: '<App/>'
 })

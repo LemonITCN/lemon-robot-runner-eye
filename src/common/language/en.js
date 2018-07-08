@@ -5,6 +5,11 @@ module.exports = {
     company_name: 'Lemon Information Technology Co., Ltd.',
     company_domain: 'LemonIT.CN'
   },
+  connector: {
+    server_address: 'Server address',
+    connector_tip_pre: 'You are not connected to ',
+    connector_tip_end: ' server. Please input the connection information.'
+  },
   common: {
     private_cloud: 'PrivateCloud',
     successful: 'Successful',
@@ -17,7 +22,8 @@ module.exports = {
     data_set_name: 'Data set name',
     please_input: 'Please input',
     cancel: 'Cancel',
-    create: 'Create'
+    create: 'Create',
+    connect: 'Connect'
   },
   main: {
     content: {
