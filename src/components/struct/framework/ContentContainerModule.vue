@@ -12,8 +12,8 @@
   </div>
 </template>
 <script>
-import PluginContentModule from '../../main/plugin/PluginContentModule'
-import InstructionSetContentModule from '../../main/instruction/InstructionSetContentModule'
+import PluginContentModule from '../../content/plugin/PluginContentModule'
+import InstructionSetContentModule from '../../content/instruction/InstructionSetContentModule'
 export default {
   name: 'ContentContainerModule',
   components: {InstructionSetContentModule, PluginContentModule},

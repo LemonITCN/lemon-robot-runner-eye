@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import ConnectorRequestPanel from '@/components/connector/request/ConnectorRequestPanelModule'
+import ConnectorRequestPanel from '@/components/struct/framework/ConnectorRequestPanelModule'
 export default {
   components: {ConnectorRequestPanel},
   mounted () {
