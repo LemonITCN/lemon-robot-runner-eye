@@ -1,5 +1,7 @@
 import globalLoading from './global-loading'
+import log from './log'
 
 export default {
-  globalLoading: globalLoading
+  globalLoading: globalLoading,
+  log: log
 }

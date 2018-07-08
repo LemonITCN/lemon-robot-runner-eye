@@ -30,7 +30,6 @@ export default {
     this.connector.address = localStorage.getconnector_address
     this.connector.lrct = localStorage.getconnector_lrct
     this.connector.lrck = localStorage.getconnector_lrck
-    console.log(this.$NS.CONNECTOR.GET_IS_SHOW_PANEL)
   },
   methods: {
     connect () {

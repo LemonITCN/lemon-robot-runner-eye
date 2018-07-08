@@ -38,7 +38,7 @@ export default {
   methods: {
     taskListSelect (key, keyPath) {
       // 选中任务列表中的任务，切换编辑中的任务
-      console.log('select task:' + key + keyPath)
+      this.$util.log.debug('Select task:' + key + keyPath)
       this.global.repo.taskList.current.task = this.global.util.getTaskWithTaskKeyFromTaskList(key, this.global.repo.taskList.local)
       // 默认选择编辑main指令集
       this.global.repo.taskList.current.instruction_set_key = [this.global.repo.taskList.current.task.taskKey, 'main']

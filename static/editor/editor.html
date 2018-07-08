@@ -66,7 +66,7 @@
     try {
       editor.setValue(script);
     } catch (e) {
-      console.log('编辑器赋值时候报错了！！！！！！' + script)
+      this.$util.log.error('Instruction editor happen a error with script : ' + script)
     }
   }
 </script>

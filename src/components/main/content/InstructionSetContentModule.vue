@@ -45,10 +45,10 @@ export default {
       const editor = document.getElementById('editor-iframe').contentWindow
       if (oldVal && oldVal.length === 2) {
         // 保存当前的任务
-        console.log('Save task instruction set:' + oldVal[0] + ' # ' + oldVal[1])
+        this.$util.log.debug('Save task instruction set:' + oldVal[0] + ' # ' + oldVal[1])
         _lr.task.localSaveInstructionSetScriptToHD(oldVal[0], oldVal[1], editor.getEditorContent())
       }
-      console.log('Monitor the change of the instruction set in the editing: ' + this.global.repo.taskList.current.instruction_set_key + ' - old:' + oldVal)
+      this.$util.log.debug('Monitor the change of the instruction set in the editing: ' + this.global.repo.taskList.current.instruction_set_key + ' - old:' + oldVal)
       // 设置editor中新指令集的数据
       editor.setEditorContent(_lr.task.localReadTaskInstructionSetScriptFromHD(
         this.global.repo.taskList.current.task.taskKey,
@@ -62,7 +62,7 @@ export default {
      * 指令集被选择
      */
     onInstructionSetSelect (index, indexPath) {
-      console.log('select instruction set : ' + index)
+      this.$util.log.debug('select instruction set : ' + index)
       this.global.repo.taskList.current.instruction_set_key = [this.global.repo.taskList.current.task.taskKey, index]
     }
   },
