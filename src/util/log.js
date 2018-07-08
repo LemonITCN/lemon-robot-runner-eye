@@ -1,14 +1,18 @@
 export default {
   debug (msg) {
-    console.log(arguments)
+    let arr = Array.prototype.slice.call(arguments)
+    console.log.apply(console, arr)
   },
   info (msg) {
-    console.info(arguments)
+    let arr = Array.prototype.slice.call(arguments)
+    console.info.apply(console, arr)
   },
   error (msg) {
-    console.error(arguments)
+    let arr = Array.prototype.slice.call(arguments)
+    console.error.apply(console, arr)
   },
   warn (msg) {
-    console.warn(arguments)
+    let arr = Array.prototype.slice.call(arguments)
+    console.warn.apply(console, arr)
   }
 }
