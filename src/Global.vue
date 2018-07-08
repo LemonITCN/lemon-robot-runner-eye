@@ -42,12 +42,7 @@ var globalData = {
       homepage: 'http://www.lemonit.cn',
       key: 'LrEncrypt'
     }
-  ],
-  // 全屏弹出框设置
-  full_screen_loading: {
-    state: false,
-    text: '正在处理中..'
-  }
+  ]
 }
 export default {
   repo: new Vue({
@@ -64,13 +59,6 @@ export default {
         }
       }
       return undefined
-    },
-    showLoading: function (text) {
-      _lr.global.repo.full_screen_loading.text = text
-      _lr.global.repo.full_screen_loading.state = true
-    },
-    hideLoading: function () {
-      _lr.global.repo.full_screen_loading.state = false
     }
   },
   operation: {

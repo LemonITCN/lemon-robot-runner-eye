@@ -11,6 +11,18 @@ export default {
   getters: {
     [NS.CONNECTOR.GET_IS_SHOW_PANEL] (state) {
       return !state.state
+    },
+    [NS.CONNECTOR.GET_LRCT] (state) {
+      return state.lrct
+    },
+    [NS.CONNECTOR.GET_LRCK] (state) {
+      return state.lrck
+    },
+    [NS.CONNECTOR.GET_LRCS] (state) {
+      return state.lrcs
+    },
+    [NS.CONNECTOR.GET_ADDRESS] (state) {
+      return state.address
     }
   },
   mutations: {

@@ -34,6 +34,22 @@ const ACT_RESTORE_CONN_INFO = 'ACT_RESTORE_CONN_INFO'
  * 是否展示Connector面板
  */
 const GET_IS_SHOW_PANEL = 'GET_IS_SHOW_PANEL'
+/**
+ * 获取LRCT
+ */
+const GET_LRCT = ''
+/**
+ * 获取LRCK
+ */
+const GET_LRCK = ''
+/**
+ * 获取LRCS
+ */
+const GET_LRCS = ''
+/**
+ * 获取服务器连接地址
+ */
+const GET_ADDRESS = ''
 
 export default {
   MUT_SET_STATE,
@@ -44,5 +60,9 @@ export default {
   ACT_CONN_SUCCESS,
   ACT_CONN_FAILED,
   ACT_RESTORE_CONN_INFO,
-  GET_IS_SHOW_PANEL
+  GET_IS_SHOW_PANEL,
+  GET_LRCT,
+  GET_LRCK,
+  GET_LRCS,
+  GET_ADDRESS
 }

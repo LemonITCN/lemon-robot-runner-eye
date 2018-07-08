@@ -40,7 +40,7 @@ export default {
 .system-state-module{
   color: #67C23A;
   font-size: 14px;
-  padding: 10px 0 0 40px;
+  padding: 10px 0 0 20px;
 }
 .system-state-module div{
   margin-bottom: 10px;

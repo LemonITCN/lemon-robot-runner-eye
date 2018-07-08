@@ -11,7 +11,8 @@ import axios from 'axios'
 // 编译LemonRobot桌面版本时候引用
 import '../static/operation-impl/lemon-robot-runner-desktop.js'
 import store from './store'
-import namespace from './namespace/index'
+import namespace from './namespace'
+import util from './util'
 
 Vue.config.productionTip = false
 Vue.prototype.global = Global
@@ -21,6 +22,7 @@ Vue.use(ElementUI)
 Vue.use(VueI18n)
 Vue.prototype.$ajax = axios
 Vue.prototype.$NS = namespace
+Vue.prototype.$util = util
 
 const i18n = new VueI18n({
   locale: 'en',

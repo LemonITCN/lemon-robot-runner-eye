@@ -1,5 +1,7 @@
 import conn from './connector.js'
+import globalLoading from './global-loading'
 
 export default {
-  CONNECTOR: conn
+  CONNECTOR: conn,
+  GLOBAL_LOADING: globalLoading
 }

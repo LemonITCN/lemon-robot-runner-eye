@@ -1,6 +1,6 @@
 <template>
-  <div id="app" v-loading.lock="this.global.repo.full_screen_loading.state"
-       :element-loading-text="this.global.repo.full_screen_loading.text">
+  <div id="app" v-loading.lock="$store.getters[this.$NS.GLOBAL_LOADING.GET_IS_SHOW]"
+       :element-loading-text="$store.getters[this.$NS.GLOBAL_LOADING.GET_TITLE]">
     <router-view/>
     <el-dialog
       :title="$t('system.app_name')"

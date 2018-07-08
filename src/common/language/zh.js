@@ -23,7 +23,8 @@ module.exports = {
     please_input: '请输入',
     cancel: '取消',
     create: '创建',
-    connect: '连接'
+    connect: '连接',
+    saving: '正在保存中'
   },
   main: {
     content: {
@@ -55,16 +56,19 @@ module.exports = {
     },
     system: {
       system_bar: {
+      },
+      system_state: {},
+      task_list: {
+        local: '本地任务列表'
+      },
+      task_create: {
+        create_task_loading_title: '任务正在创建中...',
         create_local_task: '创建本地任务',
         create_local_task_button_tip: '点击按钮-',
         create_dialog_task_key_placeholder: '请输入任务标识，英文/数字组成',
         create_dialog_task_name_placeholder: '请输入一个简短而清晰的名称。允许任何语言',
         task_creation: '任务创建',
         local_task_create_error_msg_empty: '任务标识与任务名称均不能为空，请检查'
-      },
-      system_state: {},
-      task_list: {
-        local: '本地任务列表'
       },
       user: {
         login_to: '登录到',

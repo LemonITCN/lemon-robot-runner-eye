@@ -23,7 +23,8 @@ module.exports = {
     please_input: 'Please input',
     cancel: 'Cancel',
     create: 'Create',
-    connect: 'Connect'
+    connect: 'Connect',
+    saving: 'Saving'
   },
   main: {
     content: {
@@ -55,16 +56,19 @@ module.exports = {
     },
     system: {
       system_bar: {
+      },
+      system_state: {},
+      task_list: {
+        local: 'Local task list'
+      },
+      task_create: {
+        create_task_loading_title: 'The task is being created...',
         create_local_task: 'create a local task',
         create_local_task_button_tip: 'Click the button to',
         create_dialog_task_key_placeholder: 'Please enter the Task key, English / number composition',
         create_dialog_task_name_placeholder: 'Please enter a short and clear name. Allow any language',
         task_creation: 'Task creation',
         local_task_create_error_msg_empty: 'Task key and task name can not be empty. Please check.'
-      },
-      system_state: {},
-      task_list: {
-        local: 'Local task list'
       },
       user: {
         login_to: 'Login to',

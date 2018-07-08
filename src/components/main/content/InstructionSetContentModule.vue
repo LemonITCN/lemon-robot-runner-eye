@@ -41,7 +41,7 @@ export default {
     // 先取消上一次的观察，再添加新的观察
     instructionSetKeyWatch = this.global.repo.$watch('taskList.current.instruction_set_key', function (val, oldVal) {
       // 编辑器iframe的window对象，通过此对象可以直接调用iframe嵌套的html的函数
-      this.global.util.showLoading('正在保存...')
+      this.$util.globalLoading.show(this.$t('common.saving'))
       const editor = document.getElementById('editor-iframe').contentWindow
       if (oldVal && oldVal.length === 2) {
         // 保存当前的任务
@@ -54,7 +54,7 @@ export default {
         this.global.repo.taskList.current.task.taskKey,
         val[1]
       ))
-      this.global.util.hideLoading()
+      this.$util.globalLoading.hide()
     })
   },
   methods: {
