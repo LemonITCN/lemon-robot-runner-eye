@@ -8,7 +8,10 @@ module.exports = {
   connector: {
     server_address: 'Server address',
     connector_tip_pre: 'You are not connected to ',
-    connector_tip_end: ' server. Please input the connection information.'
+    connector_tip_end: ' server. Please input the connection information.',
+    connect_failed_tip: 'LRC attempted connection failure because it could not connect to the server.',
+    connect_disconnected_tip: 'LRC service has been disconnected, please reconnect',
+    connect_connected_tip: 'LRC service connection success'
   },
   common: {
     private_cloud: 'PrivateCloud',

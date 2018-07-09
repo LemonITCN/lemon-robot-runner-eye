@@ -40,14 +40,25 @@ export default {
       } catch (e) {
         this.$util.log.debug('LRC has an error during the connection：%O', e)
         this.$store.dispatch(this.$NS.CONNECTOR.ACT_CONN_RESET)
+        this.$util.tip.notification_error(this.$t('common.failed'), this.$t('connector.connect_failed_tip'))
       }
     },
     dialogClose () {
       this.$util.log.debug('Refusing to close')
     }
   },
-  data () {
-    return {
+  computed: {
+    connectorState () {
+      return this.$store.state.connector.state
+    }
+  },
+  watch: {
+    connectorState (state) {
+      if (state === this.$NS.CONNECTOR.MUT_SET_STATE_DISCONNECTED) {
+        this.$util.tip.notification_error('LRC', this.$t('connector.connect_disconnected_tip'))
+      } else if (state === this.$NS.CONNECTOR.MUT_SET_STATE_CONNECTED) {
+        this.$util.tip.notification_success('LRC', this.$t('connector.connect_connected_tip'))
+      }
     }
   }
 }
