@@ -2,14 +2,14 @@
   <div id="app" v-loading.lock="$store.getters[this.$NS.GLOBAL_LOADING.GET_IS_SHOW]"
        :element-loading-text="$store.getters[this.$NS.GLOBAL_LOADING.GET_TITLE]">
     <router-view/>
-    <connector-request-panel/>
+    <connector-active-module/>
   </div>
 </template>
 
 <script>
-import ConnectorRequestPanel from '@/components/struct/framework/ConnectorRequestPanelModule'
+import ConnectorActiveModule from '@/components/struct/framework/ConnectorActiveModule'
 export default {
-  components: {ConnectorRequestPanel},
+  components: {ConnectorActiveModule},
   mounted () {
     // eslint-disable-next-line no-undef
     _lr.global = this.global
