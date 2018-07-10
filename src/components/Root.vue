@@ -2,9 +2,8 @@
   <div class="root">
     <system-bar-module class="system-module"/>
     <div class="right-panel">
-      <control-buttons-module class="control-buttons-module"/>
+      <main-menu-bar class="main-menu-bar"/>
       <router-view class="main-container"/>
-      <!--<content-container-module class="content-container-module"/>-->
       <div class="copyright-area">
         {{$t('system.app_name') + ' - ' + $t('system.company_name') + ' ' + $t('system.company_domain')}}
       </div>
@@ -13,12 +12,11 @@
 </template>
 
 <script>
-import SystemBarModule from './struct/framework/SystemBarModule'
-import ContentContainerModule from './struct/framework/TaskDetailContainer'
-import ControlButtonsModule from './struct/bar/MainMenuBar'
+import SystemBarModule from './struct/framework/LeftContainer'
+import MainMenuBar from './struct/bar/MainMenuBar'
 export default {
   name: 'Root',
-  components: {ControlButtonsModule, ContentContainerModule, SystemBarModule},
+  components: {MainMenuBar, SystemBarModule},
   data () {
     return {
     }
@@ -42,16 +40,16 @@ export default {
 .system-module{
   background: #333;
   min-width: 280px;
-  box-shadow: 0 0 5px #999;
+  /*box-shadow: 0 0 5px #999;*/
 }
 .right-panel{
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  margin: 10px 20px;
+  /*margin: 10px 20px;*/
 }
-.control-buttons-module{
-  min-height: 42px;
+.main-menu-bar{
+  /*margin-bottom: 10px;*/
 }
 .main-container{
   flex-grow: 1;

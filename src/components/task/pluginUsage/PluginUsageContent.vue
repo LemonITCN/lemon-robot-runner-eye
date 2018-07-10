@@ -39,7 +39,7 @@ export default {
   width: 320px;
   padding: 20px;
   margin: 0 18px 10px 0;
-  box-shadow: 0 0 8px #eee;
+  /*box-shadow: 0 0 8px #eee;*/
   font-size: 13px;
   position: relative;
   border-radius: 6px;

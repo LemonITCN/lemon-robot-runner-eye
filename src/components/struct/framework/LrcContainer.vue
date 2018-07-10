@@ -1,5 +1,5 @@
 <template>
-  <div class="connector-active-module">
+  <div class="lrc-container">
     <el-dialog
       :title="$t('system.app_name')"
       :visible.sync="$store.getters[$NS.CONNECTOR.GET_IS_SHOW_PANEL]"
@@ -26,7 +26,7 @@
 <script>
 
 export default {
-  name: 'ConnectorRequestPanelModule',
+  name: 'LrcContainer',
   mounted () {
     this.$store.dispatch(this.$NS.CONNECTOR.ACT_RESTORE_CONN_INFO)
   },
@@ -65,7 +65,7 @@ export default {
 </script>
 
 <style scoped>
-  .connector-request-module {
+  .connector-request {
   }
 
 </style>

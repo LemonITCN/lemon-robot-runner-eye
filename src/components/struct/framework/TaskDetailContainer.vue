@@ -1,6 +1,16 @@
 <template>
-  <div class="task-detail-container-module">
-    <el-tabs v-model="selectedTab" type="border-card" class="container-tab">
+  <div class="task-detail-container">
+    <div>
+      <div>
+        <i class="el-icon-caret-right"></i>
+        <div>运行</div>
+      </div>
+      <div>
+        <i class="el-icon-caret-right"></i>
+        <div>运行</div>
+      </div>
+    </div>
+    <el-tabs v-model="selectedTab" class="container-tab">
       <el-tab-pane :label="$t(lang + '.plugin_manage')" name="plugin">
         <plugin-content-module class="content-module"/>
       </el-tab-pane>
@@ -12,8 +22,8 @@
   </div>
 </template>
 <script>
-import PluginContentModule from '../../content/plugin/PluginContentModule'
-import InstructionSetContentModule from '../../content/instruction/InstructionSetContentModule'
+import PluginContentModule from '../../task/pluginUsage/PluginUsageContent'
+import InstructionSetContentModule from '../../task/instruction/InstructionSetContent'
 export default {
   name: 'TaskDetailContainerModule',
   components: {InstructionSetContentModule, PluginContentModule},
@@ -28,7 +38,7 @@ export default {
 
 </script>
 <style scoped>
-  .content-container-module{
+  .content-container{
     flex-grow: 1;
     display: flex;
     flex-direction: column;

@@ -1,10 +1,10 @@
 <template>
-  <div class="plugin-manager-container">
+  <div class="system-settings-container">
     <el-tabs type="border-card" class="container-tab">
-      <el-tab-pane label="本地插件" name="plugin">
+      <el-tab-pane label="调试" name="debug">
         <div>hello local</div>
       </el-tab-pane>
-      <el-tab-pane label="插件商店" name="plugingogo">
+      <el-tab-pane label="生产运行" name="production">
         <div>plugin store</div>
       </el-tab-pane>
     </el-tabs>
@@ -12,7 +12,7 @@
 </template>
 <script>
 export default {
-  name: 'PluginManagerContainer',
+  name: 'SystemSettingsContainer',
   components: {},
   mounted () {
     console.log('liuri modunted')
@@ -26,7 +26,7 @@ export default {
 
 </script>
 <style scoped>
-  .content-container{
+  .system-settings-container{
     display: flex;
     flex-direction: column;
   }

@@ -1,5 +1,5 @@
 <template>
-  <div class="system-bar-module">
+  <div class="left-container">
     <user-module class="user-module"/>
     <system-state-module/>
     <task-list-module class="task-list-module"/>
@@ -13,7 +13,7 @@ import TaskListModule from '../bar/TaskListBar'
 import SystemStateModule from '../bar/SystemStateBar'
 import TaskCreateModule from '../bar/TaskCreateBar'
 export default {
-  name: 'SystemBarModule',
+  name: 'LeftContainer',
   components: {SystemStateModule, TaskListModule, UserModule, TaskCreateModule},
   methods: {
   },
@@ -26,7 +26,7 @@ export default {
 </script>
 
 <style scoped>
-  .system-bar-module {
+  .left-container {
     display: flex;
     flex-direction: column;
   }
