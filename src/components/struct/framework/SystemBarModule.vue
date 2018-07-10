@@ -8,10 +8,10 @@
 </template>
 
 <script>
-import UserModule from '../bar/UserModule'
-import TaskListModule from '../bar/TaskListModule'
-import SystemStateModule from '../bar/SystemStateModule'
-import TaskCreateModule from '../bar/TaskCreateModule'
+import UserModule from '../bar/UserInfoBar'
+import TaskListModule from '../bar/TaskListBar'
+import SystemStateModule from '../bar/SystemStateBar'
+import TaskCreateModule from '../bar/TaskCreateBar'
 export default {
   name: 'SystemBarModule',
   components: {SystemStateModule, TaskListModule, UserModule, TaskCreateModule},

@@ -1,5 +1,5 @@
 <template>
-  <div class="content-container-module">
+  <div class="task-detail-container-module">
     <el-tabs v-model="selectedTab" type="border-card" class="container-tab">
       <el-tab-pane :label="$t(lang + '.plugin_manage')" name="plugin">
         <plugin-content-module class="content-module"/>
@@ -15,7 +15,7 @@
 import PluginContentModule from '../../content/plugin/PluginContentModule'
 import InstructionSetContentModule from '../../content/instruction/InstructionSetContentModule'
 export default {
-  name: 'ContentContainerModule',
+  name: 'TaskDetailContainerModule',
   components: {InstructionSetContentModule, PluginContentModule},
   data () {
     return {
@@ -29,6 +29,7 @@ export default {
 </script>
 <style scoped>
   .content-container-module{
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
   }

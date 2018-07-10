@@ -3,7 +3,8 @@
     <system-bar-module class="system-module"/>
     <div class="right-panel">
       <control-buttons-module class="control-buttons-module"/>
-      <content-container-module class="content-container-module"/>
+      <router-view class="main-container"/>
+      <!--<content-container-module class="content-container-module"/>-->
       <div class="copyright-area">
         {{$t('system.app_name') + ' - ' + $t('system.company_name') + ' ' + $t('system.company_domain')}}
       </div>
@@ -13,8 +14,8 @@
 
 <script>
 import SystemBarModule from './struct/framework/SystemBarModule'
-import ContentContainerModule from './struct/framework/ContentContainerModule'
-import ControlButtonsModule from './struct/bar/ControlButtonsModule'
+import ContentContainerModule from './struct/framework/TaskDetailContainer'
+import ControlButtonsModule from './struct/bar/MainMenuBar'
 export default {
   name: 'Root',
   components: {ControlButtonsModule, ContentContainerModule, SystemBarModule},
@@ -52,7 +53,7 @@ export default {
 .control-buttons-module{
   min-height: 42px;
 }
-.content-container-module{
+.main-container{
   flex-grow: 1;
 }
 .copyright-area{

@@ -1,15 +1,16 @@
 <template>
   <div id="app" v-loading.lock="$store.getters[this.$NS.GLOBAL_LOADING.GET_IS_SHOW]"
        :element-loading-text="$store.getters[this.$NS.GLOBAL_LOADING.GET_TITLE]">
-    <router-view/>
-    <connector-active-module/>
+    <root-view/>
+    <lrc-container/>
   </div>
 </template>
 
 <script>
-import ConnectorActiveModule from '@/components/struct/framework/ConnectorActiveModule'
+import LrcContainer from '@/components/struct/framework/LRCContainer'
+import RootView from './components/Root'
 export default {
-  components: {ConnectorActiveModule},
+  components: {RootView, LrcContainer},
   mounted () {
     // eslint-disable-next-line no-undef
     _lr.global = this.global

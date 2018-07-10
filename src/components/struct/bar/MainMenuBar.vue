@@ -1,11 +1,11 @@
 <template>
   <div class="control-buttons">
-    <el-button type="success" size="small" icon="el-icon-caret-right">{{$t(lang + '.run')}}</el-button>
-    <el-button type="success" size="small" icon="el-icon-upload" plain>{{$t(lang + '.upload_to') + ' ' + $t('system.cloud_name')}}</el-button>
-    <el-button type="primary" size="small" icon="el-icon-star-on" plain>{{$t(lang + '.upload_to') + ' ' + $t('common.private_cloud')}}</el-button>
-    <el-button size="small" icon="el-icon-menu" plain>{{$t(lang + '.store')}}</el-button>
-    <el-button size="small" icon="el-icon-news" @click="onAddInstructionSetClick" plain>{{$t(lang + '.add_instruction_set')}}</el-button>
-    <el-button size="small" icon="el-icon-document" plain>{{$t(lang + '.add_data_set')}}</el-button>
+    <!--<el-button type="success" size="small" icon="el-icon-caret-right">{{$t(lang + '.run')}}</el-button>-->
+    <!--<el-button type="success" size="small" icon="el-icon-upload" plain>{{$t(lang + '.upload_to') + ' ' + $t('system.cloud_name')}}</el-button>-->
+    <!--<el-button type="primary" size="small" icon="el-icon-star-on" plain>{{$t(lang + '.upload_to') + ' ' + $t('common.private_cloud')}}</el-button>-->
+    <!--<el-button size="small" icon="el-icon-menu" plain>{{$t(lang + '.store')}}</el-button>-->
+    <!--<el-button size="small" icon="el-icon-news" @click="onAddInstructionSetClick" plain>{{$t(lang + '.add_instruction_set')}}</el-button>-->
+    <!--<el-button size="small" icon="el-icon-document" plain>{{$t(lang + '.add_data_set')}}</el-button>-->
     <!--添加数据的对话框 - 数据集、指令集通用 - 开始-->
     <el-dialog
       :title="$t(lang + '.' + data_add_dialog_label.title)"
