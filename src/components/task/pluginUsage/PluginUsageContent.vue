@@ -21,7 +21,7 @@ export default {
   name: 'PluginContentModule',
   data () {
     return {
-      lang: 'main.content.plugin_content',
+      lang: 'task.pluginUsage.pluginUsageContent',
       state: []
     }
   }

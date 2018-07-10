@@ -32,7 +32,7 @@ export default {
   name: 'TaskListModule',
   data () {
     return {
-      lang: 'main.system.task_list'
+      lang: 'struct.bar.taskListBar'
     }
   },
   methods: {

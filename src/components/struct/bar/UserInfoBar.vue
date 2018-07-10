@@ -13,7 +13,7 @@ export default {
   name: 'UserModule',
   data () {
     return {
-      lang: 'main.system.user'
+      lang: 'struct.bar.userInfoBar'
     }
   }
 }

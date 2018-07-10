@@ -26,7 +26,7 @@
 <script>
 
 export default {
-  name: 'LrcContainer',
+  name: 'LrcContainer，。 ',
   mounted () {
     this.$store.dispatch(this.$NS.CONNECTOR.ACT_RESTORE_CONN_INFO)
   },

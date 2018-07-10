@@ -1,35 +1,27 @@
 <template>
   <div class="task-detail-container">
-    <div>
-      <div>
-        <i class="el-icon-caret-right"></i>
-        <div>运行</div>
-      </div>
-      <div>
-        <i class="el-icon-caret-right"></i>
-        <div>运行</div>
-      </div>
-    </div>
+    <task-menu-bar/>
     <el-tabs v-model="selectedTab" class="container-tab">
-      <el-tab-pane :label="$t(lang + '.plugin_manage')" name="plugin">
+      <el-tab-pane :label="$t(lang + '.plugin_usage')" name="plugin">
         <plugin-content-module class="content-module"/>
       </el-tab-pane>
-      <el-tab-pane :label="$t(lang + '.instruction_set_manage')" name="instructionSet">
+      <el-tab-pane :label="$t(lang + '.instruction_set')" name="instructionSet">
         <instruction-set-content-module class="content-module"/>
       </el-tab-pane>
-      <el-tab-pane :label="$t(lang + '.data_set_manage')"  name="dataPool"></el-tab-pane>
+      <el-tab-pane :label="$t(lang + '.data_set')" name="dataPool"></el-tab-pane>
     </el-tabs>
   </div>
 </template>
 <script>
 import PluginContentModule from '../../task/pluginUsage/PluginUsageContent'
 import InstructionSetContentModule from '../../task/instruction/InstructionSetContent'
+import TaskMenuBar from '../../task/bar/TaskMenuBar'
 export default {
   name: 'TaskDetailContainerModule',
-  components: {InstructionSetContentModule, PluginContentModule},
+  components: {InstructionSetContentModule, PluginContentModule, TaskMenuBar},
   data () {
     return {
-      lang: 'main.content.content_container',
+      lang: 'struct.framework.taskDetailContainer',
       selectedTab: 'plugin'
     }
   },
@@ -38,18 +30,7 @@ export default {
 
 </script>
 <style scoped>
-  .content-container{
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-  }
   .container-tab{
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-  }
-  .container-tab >>> .el-tabs__content{
-    flex-grow: 1;
-    overflow-y: scroll;
+    margin: 0 14px;
   }
 </style>

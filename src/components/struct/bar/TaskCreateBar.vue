@@ -63,7 +63,7 @@ export default {
   },
   data () {
     return {
-      lang: 'main.system.task_create',
+      lang: 'struct.bar.taskCreateBar',
       // 创建任务的对话框是不是打开状态
       dialog_visible_create_local_task: false,
       // 任务标识
