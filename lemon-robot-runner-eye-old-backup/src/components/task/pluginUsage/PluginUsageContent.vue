@@ -1,5 +1,5 @@
 <template>
-    <div class="plugin-content-module">
+    <div class="plugin-usage-content">
         <div v-for="(plugin, index) in this.global.repo.pluginList" v-bind:key="index" class="plugin-item">
           <div class="plugin-name">{{$t(lang + '.plugin_name')}}: {{plugin.name}}</div>
           <div class="plugin-author">{{$t(lang + '.plugin_author')}}: {{plugin.author}}</div>
@@ -29,17 +29,18 @@ export default {
 </script>
 
 <style scoped>
-.plugin-content-module{
+.plugin-usage-content{
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
 }
 .plugin-item{
   border: 1px solid #eee;
   background: #fcfcfc;
   width: 320px;
+  height: 90px;
   padding: 20px;
   margin: 0 18px 10px 0;
-  /*box-shadow: 0 0 8px #eee;*/
   font-size: 13px;
   position: relative;
   border-radius: 6px;

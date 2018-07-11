@@ -1,5 +1,5 @@
 <template>
-  <div class="instruction-set-content-module">
+  <div class="instruction-set-content">
     <el-menu
       :default-active="this.global.repo.taskList.current.instruction_set_key[1]"
       @select="onInstructionSetSelect"
@@ -75,12 +75,9 @@ export default {
 </script>
 
 <style scoped>
-  .instruction-set-content-module {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+  .instruction-set-content {
+    flex-grow: 1;
+    background: red;
     display: flex;
     flex-direction: row;
     align-items: stretch;

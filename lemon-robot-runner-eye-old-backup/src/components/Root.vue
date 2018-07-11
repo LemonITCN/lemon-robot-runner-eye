@@ -12,8 +12,8 @@
 </template>
 
 <script>
-import SystemBarModule from './struct/framework/LeftContainer'
-import MainMenuBar from './struct/bar/MainMenuBar'
+import SystemBarModule from '@/components/app/framework/LeftContainer'
+import MainMenuBar from '@/components/app/systemBar/MainMenuBar'
 export default {
   name: 'Root',
   components: {MainMenuBar, SystemBarModule},
