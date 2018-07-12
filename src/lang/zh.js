@@ -21,5 +21,23 @@ module.exports = {
     connect: '连接',
     saving: '正在保存中',
     run: '运行'
+  },
+  operator: {
+    userPart: {
+      login_to: '登录到',
+      sign_up: '立即创建用户'
+    },
+    cloudPart: {},
+    mainMenuPart: {
+      task: '任务编辑器',
+      executor: '执行器',
+      plan: '计划任务',
+      cloud: '云端管理',
+      plugin: '插件管理',
+      data: '数据中心',
+      logs: '日志',
+      system: '系统设置'
+    },
+    technologySupportPart: {}
   }
 }

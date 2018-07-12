@@ -21,5 +21,23 @@ module.exports = {
     connect: 'Connect',
     saving: 'Saving',
     run: 'Run'
+  },
+  operator: {
+    userPart: {
+      login_to: 'Login to ',
+      sign_up: 'Create a user now!'
+    },
+    cloudPart: {},
+    mainMenuPart: {
+      task: 'Task editor',
+      executor: 'Executor',
+      plan: 'Planned task',
+      cloud: 'Cloud manager',
+      plugin: 'Plugin manager',
+      data: 'Data center',
+      logs: 'Logs',
+      system: 'System settings'
+    },
+    technologySupportPart: {}
   }
 }

@@ -1,10 +1,10 @@
 <template>
-  <div class="copyright-part"></div>
+  <div class="plan-container">plan</div>
 </template>
 
 <script>
   export default {
-    name: "CopyrightPart"
+    name: "PlanContainer"
   }
 </script>
 
