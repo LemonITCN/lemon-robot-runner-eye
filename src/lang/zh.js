@@ -1,5 +1,5 @@
 module.exports = {
-  system: {
+  app: {
     app_name: '柠檬机器人',
     cloud_name: '柠檬云',
     company_name: '柠檬信息技术有限公司',
@@ -49,5 +49,20 @@ module.exports = {
       connect_disconnected_tip: 'LRC服务已断开，请重新连接',
       connect_connected_tip: 'LRC服务连接成功'
     }
-  }
+  },
+  task: {},
+  executor: {},
+  plan: {},
+  cloud: {},
+  plugin: {
+    pluginContainer: {
+      mTitle: '插件管理器',
+      mIntro: '在这里，您可以对您本地的插件进行管理，也可以访问插件商店来在线安装新的插件',
+      installed: '已安装插件',
+      store: '插件商店'
+    }
+  },
+  data: {},
+  logs: {},
+  system: {}
 }

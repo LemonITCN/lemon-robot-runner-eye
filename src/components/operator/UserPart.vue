@@ -2,7 +2,7 @@
   <div class="user-part">
     <img src="@/assets/images/logo.png" class="user-part-avatar"/>
     <div class="user-part-operate">
-      <div class="user-part-operate-a">{{$t(lang + 'login_to') + $t('system.cloud_name')}}</div>
+      <div class="user-part-operate-a">{{$t(lang + 'login_to') + $t('app.cloud_name')}}</div>
       <div class="user-part-operate-b">{{$t(lang + 'sign_up')}}</div>
     </div>
   </div>

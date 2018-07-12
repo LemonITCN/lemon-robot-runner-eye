@@ -1,7 +1,7 @@
 <template>
   <div class="main-menu-part">
     <div class="main-menu-part-line" :key="line[0]" v-for="line in menu">
-      <router-link class="main-menu-part-item" :key="item" v-for="item in line" :to="item"
+      <router-link class="main-menu-part-item" :key="item" v-for="item in line" :to="'/' + item"
                    active-class="main-menu-part-item-active">
         <i class="main-menu-part-icon" :class="'el-icon-' + item"></i>
         <div class="main-menu-part-title">{{$t(lang + item)}}</div>

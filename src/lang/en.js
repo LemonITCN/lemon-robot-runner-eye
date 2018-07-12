@@ -1,5 +1,5 @@
 module.exports = {
-  system: {
+  app: {
     app_name: 'LemonRobot',
     cloud_name: 'LemonCloud',
     company_name: 'Lemon Information Technology Co., Ltd.',
@@ -49,5 +49,20 @@ module.exports = {
       connect_disconnected_tip: 'LRC service has been disconnected, please reconnect',
       connect_connected_tip: 'LRC service connection success'
     }
-  }
+  },
+  task: {},
+  executor: {},
+  plan: {},
+  cloud: {},
+  plugin: {
+    pluginContainer: {
+      mTitle: 'Plugin manager',
+      mIntro: 'Here, you can manage your local plugins, or you can access plugin stores to install new plugins online.',
+      installed: 'Installed plugin',
+      store: 'Plugin store'
+    }
+  },
+  data: {},
+  logs: {},
+  system: {}
 }

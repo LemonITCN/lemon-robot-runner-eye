@@ -1,10 +1,10 @@
 <template>
   <div class="lrc-container">
     <el-dialog
-      :title="$t('system.app_name')"
+      :title="$t('app.app_name')"
       :visible.sync="$store.getters[$NS.LRC.GET_IS_SHOW_PANEL]"
       width="30%" :before-close="dialogClose">
-      <span>{{$t(lang + 'tip_pre') + $t('system.app_name') +  $t(lang + 'tip_end')}}</span>
+      <span>{{$t(lang + 'tip_pre') + $t('app.app_name') +  $t(lang + 'tip_end')}}</span>
       <el-form>
         <el-form-item :label="$t(lang + 'server_address')">
           <el-input v-model="$store.state.lrc.address"></el-input>

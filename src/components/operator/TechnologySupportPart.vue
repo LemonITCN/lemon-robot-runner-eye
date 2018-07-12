@@ -1,7 +1,7 @@
 <template>
   <div class="technology-support-part">
-    <div class="technology-support-title-a">{{$t('system.company_name')}}</div>
-    <div class="technology-support-title-b">{{$t('system.company_domain')}}</div>
+    <div class="technology-support-title-a">{{$t('app.company_name')}}</div>
+    <div class="technology-support-title-b">{{$t('app.company_domain')}}</div>
   </div>
 </template>
 

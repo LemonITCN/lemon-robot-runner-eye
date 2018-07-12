@@ -2,7 +2,7 @@
   <div class="cloud-part">
     <div class="cloud-part-state  cloud-part-state-disconn">
       <i class="el-icon-success cloud-part-state-icon"></i>
-      <div class="cloud-part-state-title">{{$t('system.cloud_name')}}</div>
+      <div class="cloud-part-state-title">{{$t('app.cloud_name')}}</div>
     </div>
     <div class="cloud-part-state">
       <i class="el-icon-error cloud-part-state-icon cloud-part-state-conn"></i>
