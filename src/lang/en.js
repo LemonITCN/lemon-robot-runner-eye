@@ -39,5 +39,15 @@ module.exports = {
       system: 'System settings'
     },
     technologySupportPart: {}
+  },
+  lrc: {
+    lrcContainer: {
+      server_address: 'Server address',
+      tip_pre: 'You are not connected to ',
+      tip_end: ' server. Please input the connection information.',
+      connect_failed_tip: 'LRC attempted connection failure because it could not connect to the server.',
+      connect_disconnected_tip: 'LRC service has been disconnected, please reconnect',
+      connect_connected_tip: 'LRC service connection success'
+    }
   }
 }

@@ -1,18 +1,19 @@
 <template>
-  <div id="app">
+  <div id="app" v-loading.lock="$store.getters[this.$NS.GLOBAL_LOADING.GET_IS_SHOW]"
+       :element-loading-text="$store.getters[this.$NS.GLOBAL_LOADING.GET_TITLE]">
     <operator-container class="operator-container"/>
-    <router-view/>
+    <router-view class="router-view-main"/>
+    <lrc-container/>
   </div>
 </template>
 
 <script>
   import OperatorContainer from './components/operator/OperatorContainer'
+  import LrcContainer from './components/lrc/LrcContainer'
 
   export default {
     name: 'app',
-    components: {
-      OperatorContainer
-    },
+    components: {OperatorContainer, LrcContainer},
     data() {
       return {}
     }
@@ -42,5 +43,9 @@
 
   .operator-container {
     width: 300px;
+  }
+
+  .router-view-main {
+    flex-grow: 1;
   }
 </style>

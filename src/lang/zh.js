@@ -38,6 +38,16 @@ module.exports = {
       logs: '日志',
       system: '系统设置'
     },
-    technologySupportPart: {}
+    technologySupportPart: {},
+  },
+  lrc: {
+    lrcContainer: {
+      server_address: '服務器地址',
+      tip_pre: '您还没有连接至',
+      tip_end: '服务，请您输入连接信息',
+      connect_failed_tip: 'LRC尝试连接失败，无法连接至服务器',
+      connect_disconnected_tip: 'LRC服务已断开，请重新连接',
+      connect_connected_tip: 'LRC服务连接成功'
+    }
   }
 }

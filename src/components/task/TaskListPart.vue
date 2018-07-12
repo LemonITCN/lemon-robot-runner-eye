@@ -1,10 +1,11 @@
 <template>
-  <div class="task-container">task</div>
+  <div class="task-list-part">
+  </div>
 </template>
 
 <script>
   export default {
-    name: "TaskContainer"
+    name: "TaskListPart"
   }
 </script>
 

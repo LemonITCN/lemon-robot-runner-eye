@@ -1280,6 +1280,13 @@ aws4@^1.6.0:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.7.0.tgz#d4d0e9b9dbfca77bf08eeb0a8a471550fe39e289"
 
+axios@^0.18.0:
+  version "0.18.0"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.18.0.tgz#32d53e4851efdc0a11993b6cd000789d70c05102"
+  dependencies:
+    follow-redirects "^1.3.0"
+    is-buffer "^1.1.5"
+
 babel-code-frame@^6.22.0, babel-code-frame@^6.26.0:
   version "6.26.0"
   resolved "https://registry.yarnpkg.com/babel-code-frame/-/babel-code-frame-6.26.0.tgz#63fd43f7dc1e3bb7ce35947db8fe369a3f58c74b"
@@ -2978,7 +2985,7 @@ flush-write-stream@^1.0.0:
     inherits "^2.0.1"
     readable-stream "^2.0.4"
 
-follow-redirects@^1.0.0:
+follow-redirects@^1.0.0, follow-redirects@^1.3.0:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.5.1.tgz#67a8f14f5a1f67f962c2c46469c79eaec0a90291"
   dependencies:
@@ -3891,6 +3898,10 @@ js-yaml@~3.7.0:
 jsbn@~0.1.0:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/jsbn/-/jsbn-0.1.1.tgz#a5e654c2e5a2deb5f201d96cefbca80c0ef2f513"
+
+jsencrypt@^3.0.0-rc.1:
+  version "3.0.0-rc.1"
+  resolved "https://registry.yarnpkg.com/jsencrypt/-/jsencrypt-3.0.0-rc.1.tgz#0e0a4744ba43cc557fb5cf62fe8646bceb561b1c"
 
 jsesc@^2.5.1:
   version "2.5.1"
