@@ -95,9 +95,9 @@ export default {
       }
     },
     [NS.LRC.ACT_CONN_ACTIVE] (context, connInfo) {
-      util.log.info('Start active connector...')
+      util.log.info('Start active lrc...')
       context.commit(NS.LRC.MUT_SET_STATE_ACTIVING)
-      axios.post(context.state.address + '/connector/active', {
+      axios.post(context.state.address + '/lrc/active', {
         'lrct': context.state.lrct,
         'lrcs': connInfo.encryptedLrcs,
         'activeCode': connInfo.activeCode

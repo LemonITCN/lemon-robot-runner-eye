@@ -31,7 +31,7 @@ module.exports = {
     mainMenuPart: {
       task: '任务编辑器',
       executor: '执行器',
-      plan: '计划任务',
+      plan: '计划',
       cloud: '云端管理',
       plugin: '插件管理',
       data: '数据中心',

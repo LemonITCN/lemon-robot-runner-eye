@@ -1,5 +1,5 @@
 /**
- * 是否展示Connector面板
+ * 是否展示LRC面板
  */
 const GET_IS_SHOW_PANEL = 'GET_IS_SHOW_PANEL'
 /**

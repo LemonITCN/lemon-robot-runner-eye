@@ -14,7 +14,10 @@ import System from './system'
 Vue.use(VueRouter)
 
 export default new VueRouter({
-  routes: [
+  routes: [{
+    path: '/',
+    redirect: '/task'
+  },
     Task, TaskEdit, Executor, Plan, Cloud, Plugin, Data, Logs, System
   ]
 })

@@ -31,7 +31,7 @@ module.exports = {
     mainMenuPart: {
       task: 'Task editor',
       executor: 'Executor',
-      plan: 'Planned task',
+      plan: 'Plan',
       cloud: 'Cloud manager',
       plugin: 'Plugin manager',
       data: 'Data center',
