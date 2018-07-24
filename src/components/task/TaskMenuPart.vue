@@ -9,7 +9,7 @@
 
 <script>
   export default {
-    name: "TaskMenuPart"
+    name: 'TaskMenuPart'
   }
 </script>
 

@@ -22,6 +22,12 @@ module.exports = {
     saving: 'Saving',
     run: 'Run'
   },
+  responseMsg: {
+    timeout: 'Sorry, the connection server timed out',
+    error: 'Sorry, the server response parsing exception',
+    task_create_failed_server_error: 'Sorry, task creation failed, server internal error',
+    task_create_failed_key_exists: 'Sorry, task creation failed, task key already exists'
+  },
   operator: {
     userPart: {
       login_to: 'Login to ',
@@ -50,7 +56,24 @@ module.exports = {
       connect_connected_tip: 'LRC service connection success'
     }
   },
-  task: {},
+  task: {
+    taskSelectorContainer: {
+      main_title: 'Please choose a task to edit',
+      sub_title1: 'You can select the tasks you have added in the list below to edit them.',
+      sub_title2: 'Or you can click the add task button to create a new task.',
+      task_list_tip_empty: 'There are currently no tasks to edit',
+      task_list_tip_pulling: 'Getting task list from server'
+    },
+    taskCreatePart: {
+      create_task: 'Create task',
+      task_key: ' Task key',
+      task_name: 'Task name',
+      task_key_placeholder: 'Only allowed to consist of English, numbers, and underscores.',
+      task_name_placeholder: 'Please enter a short and clear name',
+      create_task_loading: 'Creating a task, please wait...',
+      create_task_success: 'Task created successfully'
+    }
+  },
   executor: {},
   plan: {},
   cloud: {},

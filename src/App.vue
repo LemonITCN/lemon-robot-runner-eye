@@ -14,7 +14,7 @@
   export default {
     name: 'app',
     components: {OperatorContainer, LrcContainer},
-    data() {
+    data () {
       return {}
     }
   }
@@ -47,5 +47,9 @@
 
   .router-view-main {
     flex-grow: 1;
+  }
+
+  .el-loading-mask {
+    z-index: 99999 !important;
   }
 </style>

@@ -1,10 +1,11 @@
 <template>
   <div class="lrc-container">
     <el-dialog
-      :title="$t('app.app_name')"
-      :visible.sync="$store.getters[$NS.LRC.GET_IS_SHOW_PANEL]"
-      width="30%" :before-close="dialogClose">
-      <span>{{$t(lang + 'tip_pre') + $t('app.app_name') +  $t(lang + 'tip_end')}}</span>
+        :title="$t('app.app_name')"
+        :visible.sync="$store.getters[$NS.LRC.GET_IS_SHOW_PANEL]"
+        class="lrc-container-panel"
+        width="30%" :before-close="dialogClose">
+      <span>{{$t(lang + 'tip_pre') + $t('app.app_name') + $t(lang + 'tip_end')}}</span>
       <el-form>
         <el-form-item :label="$t(lang + 'server_address')">
           <el-input v-model="$store.state.lrc.address"></el-input>
@@ -17,7 +18,8 @@
         </el-form-item>
       </el-form>
       <span slot="footer" class="dialog-footer">
-        <el-button type="success" @click="connect" :loading="!$store.getters[$NS.LRC.GET_IS_CAN_START_CONNECT]">{{$t('common.connect')}}</el-button>
+        <el-button type="success" @click="connect"
+                   :loading="!$store.getters[$NS.LRC.GET_IS_CAN_START_CONNECT]">{{$t('common.connect')}}</el-button>
       </span>
     </el-dialog>
   </div>
@@ -27,14 +29,15 @@
 
   export default {
     name: 'LrcContainer',
-    mounted() {
+    mounted () {
       this.$store.dispatch(this.$NS.LRC.ACT_RESTORE_CONN_INFO)
+      this.connect()
     },
     methods: {
       /**
        * 发起连接请求
        */
-      connect() {
+      connect () {
         try {
           this.$store.dispatch(this.$NS.LRC.ACT_CONN_START)
         } catch (e) {
@@ -43,17 +46,17 @@
           this.$util.tip.notification_error(this.$t('common.failed'), this.$t(this.lang + 'connect_failed_tip'))
         }
       },
-      dialogClose() {
+      dialogClose () {
         this.$util.log.debug('Refusing to close')
       }
     },
     computed: {
-      lrcState() {
+      lrcState () {
         return this.$store.state.lrc.state
       }
     },
     watch: {
-      lrcState(state) {
+      lrcState (state) {
         if (state === this.$NS.LRC.MUT_SET_STATE_DISCONNECTED) {
           this.$util.tip.notification_error('LRC', this.$t(this.lang + 'connect_disconnected_tip'))
         } else if (state === this.$NS.LRC.MUT_SET_STATE_CONNECTED) {
@@ -61,7 +64,7 @@
         }
       }
     },
-    data() {
+    data () {
       return {
         lang: 'lrc.lrcContainer.'
       }
@@ -70,7 +73,8 @@
 </script>
 
 <style scoped>
-  .lrc-request {
+  .lrc-container-panel {
+    z-index: 100000 !important;
   }
 
 </style>

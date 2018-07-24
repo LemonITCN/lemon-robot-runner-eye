@@ -39,6 +39,6 @@ export default {
   }
 
   .el-loading-mask {
-    z-index: 99999;
-  }
+     z-index: 99999;
+   }
 </style>

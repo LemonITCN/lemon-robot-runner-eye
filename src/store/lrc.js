@@ -6,7 +6,7 @@ import JSEncrypt from 'jsencrypt/bin/jsencrypt'
 export default {
   state: {
     // state: 0 已断开 ， 1 正在建立WS连接 ，2 正在激活 ，3 Connector已激活完毕
-    state: 0,
+    state: NS.LRC.MUT_SET_STATE_DISCONNECTED,
     address: '',
     lrct: '',
     lrck: '',
@@ -97,7 +97,9 @@ export default {
     [NS.LRC.ACT_CONN_ACTIVE] (context, connInfo) {
       util.log.info('Start active lrc...')
       context.commit(NS.LRC.MUT_SET_STATE_ACTIVING)
-      axios.post(context.state.address + '/lrc/active', {
+      // 设置基础URL，供全局使用
+      axios.defaults.baseURL = context.state.address
+      axios.post('/lrc/active', {
         'lrct': context.state.lrct,
         'lrcs': connInfo.encryptedLrcs,
         'activeCode': connInfo.activeCode
@@ -107,6 +109,7 @@ export default {
             localStorage.connector_address = context.state.address
             localStorage.connector_lrct = context.state.lrct
             localStorage.connector_lrck = context.state.lrck
+            axios.defaults.headers = {}
             util.log.info('LRC successful connection')
             context.commit(NS.LRC.MUT_SET_STATE_CONNECTED)
           } else {

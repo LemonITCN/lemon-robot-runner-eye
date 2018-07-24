@@ -6,12 +6,12 @@
       :content="$t(lang + '.create_local_task_button_tip') + ' ' + $t(lang + '.create_local_task')"
       placement="top-start">
       <el-button class="local-task-create-button" type="success" icon="el-icon-plus" circle
-                 @click="dialog_visible_create_local_task = true"></el-button>
+                 @click="create_task_panel_state = true"></el-button>
     </el-tooltip>
     <!--创建本地任务对话框开始-->
     <el-dialog
       :title="$t(lang + '.create_local_task')"
-      :visible.sync="dialog_visible_create_local_task"
+      :visible.sync="create_task_panel_state"
       width="50%">
       <div>
         <el-input :placeholder="$t(lang + '.create_dialog_task_key_placeholder')" class="task-prop-input" v-model="create_task_text_key">
@@ -22,7 +22,7 @@
         </el-input>
       </div>
       <span slot="footer" class="dialog-footer">
-        <el-button @click="dialog_visible_create_local_task = false">{{$t('common.cancel')}}</el-button>
+        <el-button @click="create_task_panel_state = false">{{$t('common.cancel')}}</el-button>
         <el-button type="primary" @click="create_local_task">{{$t('common.create')}}</el-button>
       </span>
     </el-dialog>
@@ -49,7 +49,7 @@ export default {
       // eslint-disable-next-line no-undef
       let createTaskResult = _lr.task.localCreateTask(this.create_task_text_key, this.create_task_text_name)
       if (createTaskResult) {
-        this.dialog_visible_create_local_task = false
+        this.create_task_panel_state = false
         this.create_task_text_key = ''
         this.create_task_text_name = ''
       }
