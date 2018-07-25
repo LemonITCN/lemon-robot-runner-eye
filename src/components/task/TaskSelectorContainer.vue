@@ -7,20 +7,20 @@
       {{$t(lang + 'sub_title1')}}<br>{{$t(lang + 'sub_title2')}}
     </div>
     <task-create-part/>
-    <!--<el-button round>{{$t(lang + 'addTask')}}</el-button>-->
-    <div class="task-list-container">
-      <div class="task-list-tip">
-      </div>
-    </div>
+    <task-list-part class="task-list-part"/>
   </div>
 </template>
 
 <script>
   import TaskCreatePart from './TaskCreatePart.vue'
+  import TaskListPart from './TaskListPart.vue'
 
   export default {
     name: 'TaskSelectorContainer',
-    components: {TaskCreatePart},
+    components: {
+      TaskListPart,
+      TaskCreatePart
+    },
     mounted () {
       this.$store.dispatch(this.$NS.TASK.ACT_REFRESH_TASK_LIST)
     },
@@ -48,6 +48,8 @@
 <style scoped>
   .task-selector-container {
     text-align: center;
+    display: flex;
+    flex-direction: column;
     background: linear-gradient(to top, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 50%);
   }
 
@@ -65,15 +67,7 @@
     margin-bottom: 10px;
   }
 
-  .task-list-container {
-    margin-top: 20px;
-    border-top: 1px solid silver;
-    border-image: linear-gradient(to right, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0) 90%) 30 30 30;
-  }
-
-  .task-list-tip {
-    font-size: 30px;
-    color: rgba(100, 100, 100, 0.4);
-    padding: 120px 0;
+  .task-list-part {
+    flex-grow: 1;
   }
 </style>

@@ -20,11 +20,13 @@ module.exports = {
     create: '创建',
     connect: '连接',
     saving: '正在保存中',
-    run: '运行'
+    run: '运行',
+    dateStr: 'yyyy年MM月dd日 hh:mm:ss'
   },
   responseMsg: {
     timeout: '对不起，连接服务器超时',
     error: '对不起，服务器响应解析异常',
+    lrc_disconnected: '与服务器的LRC连接已断开，无法完成请求',
     task_create_failed_server_error: '对不起，任务创建失败，服务器内部错误',
     task_create_failed_key_exists: '对不起，任务创建失败，任务标识已存在'
   },
@@ -60,9 +62,7 @@ module.exports = {
     taskSelectorContainer: {
       main_title: '请您选择一个要编辑的任务',
       sub_title1: '您可以在下面的列表中选择已添加的任务进行编辑',
-      sub_title2: '或者您也可以点击添加任务按钮来创建一个新的任务',
-      task_list_tip_empty: '当前没有可以编辑的任务',
-      task_list_tip_pulling: '正在从服务器中获取任务列表'
+      sub_title2: '或者您也可以点击添加任务按钮来创建一个新的任务'
     },
     taskCreatePart: {
       create_task: '创建任务',
@@ -72,6 +72,12 @@ module.exports = {
       task_name_placeholder: '请输入一个简短而清晰的名称',
       create_task_loading: '任务正在创建中，请稍候...',
       create_task_success: '任务创建成功'
+    },
+    taskListPart: {
+      task_list_tip_empty: '当前没有可以编辑的任务',
+      task_list_tip_pulling: '正在从服务器中获取任务列表...',
+      task_list_tip_failed: '从服务器端获取任务列表失败',
+      task_create_time: '任务创建时间'
     }
   },
   executor: {},

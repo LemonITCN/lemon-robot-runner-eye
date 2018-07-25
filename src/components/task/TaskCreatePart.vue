@@ -50,6 +50,7 @@
           .then(() => {
             this.$util.tip.notification_success(this.$t(this.lang + 'create_task_success'))
             this.create_task_panel_state = false
+            this.$store.dispatch(this.$NS.TASK.ACT_REFRESH_TASK_LIST)
             this.$util.globalLoading.hide()
           })
           .catch(() => {

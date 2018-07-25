@@ -20,6 +20,9 @@ export default {
     [NS.LRC.GET_IS_CAN_START_CONNECT] (state) {
       return state.state === NS.LRC.MUT_SET_STATE_DISCONNECTED
     },
+    [NS.LRC.GET_IS_CAN_SEND_REQUEST](state) {
+      return state.state === NS.LRC.MUT_SET_STATE_CONNECTED
+    },
     [NS.LRC.GET_LRCT] (state) {
       return state.lrct
     },
@@ -86,7 +89,7 @@ export default {
             activeCode: data.data
           })
         } else {
-          util.log.info(data)
+          // 不是激活码分发过程
         }
       }
       // ws连接关闭后重置连接
