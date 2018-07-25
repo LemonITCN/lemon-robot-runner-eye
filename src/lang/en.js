@@ -84,6 +84,9 @@ module.exports = {
       mIntro: 'You can write your instruction set and data set through the task editor.',
       instruction: 'Instruction set',
       data: 'Data set'
+    },
+    instructionSetAddPart: {
+      add: 'Add instruction set'
     }
   },
   executor: {},

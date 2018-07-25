@@ -84,6 +84,9 @@ module.exports = {
       mIntro: '你可以通过任务编辑器来编写您的指令集、数据集',
       instruction: '指令集',
       data: '数据集'
+    },
+    instructionSetAddPart: {
+      add: '添加指令集'
     }
   },
   executor: {},
