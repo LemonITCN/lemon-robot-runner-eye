@@ -78,6 +78,12 @@ module.exports = {
       task_list_tip_pulling: '正在从服务器中获取任务列表...',
       task_list_tip_failed: '从服务器端获取任务列表失败',
       task_create_time: '任务创建时间'
+    },
+    taskEditPart: {
+      mTitle: '任务编辑器',
+      mIntro: '你可以通过任务编辑器来编写您的指令集、数据集',
+      instruction: '指令集',
+      data: '数据集'
     }
   },
   executor: {},

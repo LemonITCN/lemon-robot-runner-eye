@@ -1,23 +1,28 @@
 <template>
-  <div class="task-selector-container">
-    <div class="task-selector-main-title">
-      {{$t(lang + 'main_title')}}
+  <div class="task-container">
+    <div class="task-selector-part" v-if="!$store.getters[$NS.TASK.GET_HAVE_EDITING_TASK]">
+      <div class="task-selector-main-title">
+        {{$t(lang + 'main_title')}}
+      </div>
+      <div class="task-selector-sub-title">
+        {{$t(lang + 'sub_title1')}}<br>{{$t(lang + 'sub_title2')}}
+      </div>
+      <task-create-part></task-create-part>
+      <task-list-part class="task-list-part"></task-list-part>
     </div>
-    <div class="task-selector-sub-title">
-      {{$t(lang + 'sub_title1')}}<br>{{$t(lang + 'sub_title2')}}
-    </div>
-    <task-create-part/>
-    <task-list-part class="task-list-part"/>
+    <task-edit-part class="task-edit-part" v-if="$store.getters[$NS.TASK.GET_HAVE_EDITING_TASK]"></task-edit-part>
   </div>
 </template>
 
 <script>
   import TaskCreatePart from './TaskCreatePart.vue'
   import TaskListPart from './TaskListPart.vue'
+  import TaskEditPart from './TaskEditPart.vue'
 
   export default {
     name: 'TaskSelectorContainer',
     components: {
+      TaskEditPart,
       TaskListPart,
       TaskCreatePart
     },
@@ -46,11 +51,18 @@
 </script>
 
 <style scoped>
-  .task-selector-container {
-    text-align: center;
+  .task-container {
     display: flex;
     flex-direction: column;
     background: linear-gradient(to top, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 50%);
+    position: relative;
+  }
+
+  .task-selector-part {
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
   }
 
   .task-selector-main-title {
@@ -69,5 +81,11 @@
 
   .task-list-part {
     flex-grow: 1;
+  }
+
+  .task-edit-part {
+    position: absolute;
+    width: 100%;
+    height: 100%;
   }
 </style>

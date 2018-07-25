@@ -78,6 +78,12 @@ module.exports = {
       task_list_tip_pulling: 'Getting task list from server...',
       task_list_tip_failed: 'Getting the task list from the server side failed',
       task_create_time: 'Task creation time'
+    },
+    taskEditPart: {
+      mTitle: 'Task editor',
+      mIntro: 'You can write your instruction set and data set through the task editor.',
+      instruction: 'Instruction set',
+      data: 'Data set'
     }
   },
   executor: {},

@@ -5,7 +5,8 @@ import util from '@/util'
 export default {
   state: {
     taskList: [],
-    state: ''
+    state: '',
+    currentEditTask: {}
   },
   getters: {
     [NS.TASK.GET_TASK_LIST] (state) {
@@ -13,6 +14,12 @@ export default {
     },
     [NS.TASK.GET_CURRENT_STATE] (state) {
       return state.state
+    },
+    [NS.TASK.GET_CURRENT_EDIT_TASK] (state) {
+      return state.currentEditTask
+    },
+    [NS.TASK.GET_HAVE_EDITING_TASK] (state) {
+      return state.currentEditTask !== null && state.currentEditTask.taskId !== undefined
     }
   },
   mutations: {
@@ -30,6 +37,12 @@ export default {
     },
     [NS.TASK.MUT_SET_TASK_LIST] (state, taskList) {
       state.taskList = taskList
+    },
+    [NS.TASK.MUT_SET_CURRENT_EDIT_TASK] (state, task) {
+      state.currentEditTask = task
+    },
+    [NS.TASK.MUT_SET_CLOSE_EDIT_TASK] (state) {
+      state.currentEditTask = null
     }
   },
   actions: {

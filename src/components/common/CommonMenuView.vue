@@ -29,7 +29,7 @@
     margin: 0 10px;
     cursor: pointer;
     text-decoration: none;
-    color: #888;
+    color: #444;
   }
 
   .common-menu-view-item-active {

@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import 'element-ui/lib/theme-chalk/index.css'
 import '@/assets/iconfont/iconfont.css'
+import '@/assets/general/general.css'
 import ElementUI from 'element-ui'
 import Vuex from 'vuex'
 import VueI18n from 'vue-i18n'
@@ -23,7 +24,7 @@ Vue.config.productionTip = false
 
 // 多语言
 const i18n = new VueI18n({
-  locale: 'en',
+  locale: 'zh',
   messages: {
     'zh': require('./lang/zh'),
     'en': require('./lang/en')

@@ -1,7 +1,8 @@
 <template>
   <div class="task-list-part">
     <div class="task-list-item" v-if="$store.getters[$NS.TASK.GET_CURRENT_STATE] === $NS.TASK.MUT_SET_STATE_NORMAL"
-         v-for="task in $store.getters[$NS.TASK.GET_TASK_LIST]" :key="task.key">
+         v-for="task in $store.getters[$NS.TASK.GET_TASK_LIST]" :key="task.key"
+         @click="onSelectTask(task)">
       <div class="task-list-item-name">
         {{task.taskName}} <span class="task-list-item-key">[ {{$t('common.task_key')}}: {{task.taskKey}} ]</span>
       </div>
@@ -18,6 +19,11 @@
 <script>
   export default {
     name: 'TaskListPart',
+    methods: {
+      onSelectTask (task) {
+        this.$store.commit(this.$NS.TASK.MUT_SET_CURRENT_EDIT_TASK, task)
+      }
+    },
     data () {
       return {
         lang: 'task.taskListPart.',
@@ -52,6 +58,10 @@
     cursor: pointer;
     flex-direction: column;
     text-align: left;
+  }
+
+  .task-list-item:hover {
+    background: rgba(200, 200, 200, 0.4);
   }
 
   .task-list-item-key {

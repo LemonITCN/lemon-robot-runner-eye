@@ -2,7 +2,6 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 import Task from './task'
-import TaskEdit from './taskEdit'
 import Executor from './executor'
 import Plan from './plan'
 import Cloud from './cloud'
@@ -18,6 +17,6 @@ export default new VueRouter({
     path: '/',
     redirect: '/task'
   },
-    Task, TaskEdit, Executor, Plan, Cloud, Plugin, Data, Logs, System
+    Task, Executor, Plan, Cloud, Plugin, Data, Logs, System
   ]
 })

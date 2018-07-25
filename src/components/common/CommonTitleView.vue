@@ -17,7 +17,7 @@
 
 <style scoped>
   .common-title-view {
-    color: #555;
+    color: #333;
     padding: 10px 20px;
     display: flex;
     flex-direction: row;
@@ -27,7 +27,7 @@
   .common-title-view-icon {
     font-size: 40px;
     margin-right: 20px;
-    color: #bbb;
+    color: #777;
   }
 
   .common-title-view-text-area {
@@ -41,7 +41,7 @@
   }
 
   .common-title-view-intro {
-    font-size: 12px;
-    color: #888;
+    font-size: 14px;
+    color: #666;
   }
 </style>
