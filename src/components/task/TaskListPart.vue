@@ -4,7 +4,7 @@
          v-for="task in $store.getters[$NS.TASK.GET_TASK_LIST]" :key="task.key"
          @click="onSelectTask(task)">
       <div class="task-list-item-name">
-        {{task.taskName}} <span class="task-list-item-key">[ {{$t('common.task_key')}}: {{task.taskKey}} ]</span>
+        {{task.taskName}} <span class="task-list-item-key">[ {{$t('common.task_id')}}: {{task.taskId}} ]</span>
       </div>
       <div class="task-list-item-date">
         {{$t(lang + 'task_create_time')}}: {{$util.date.unixTimeStampToLocalStr(task.createTime, $t('common.dateStr'))}}

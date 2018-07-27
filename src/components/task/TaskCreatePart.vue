@@ -9,11 +9,7 @@
         :visible.sync="create_task_panel_state"
         width="50%">
       <div>
-        <el-input :placeholder="$t(lang + 'task_key_placeholder')" class="task-prop-input"
-                  v-model="create_task_text_key">
-          <template slot="prepend">{{$t('common.task_key')}}</template>
-        </el-input>
-        <el-input :placeholder="$t(lang +  'task_name_placeholder')" class="task-prop-input"
+        <el-input :placeholder="$t(lang +  'task_name_placeholder')" class="dialog-field"
                   v-model="create_task_text_name">
           <template slot="prepend">{{$t('common.task_name')}}</template>
         </el-input>
@@ -43,8 +39,7 @@
         }
         this.$util.globalLoading.show(this.$t(this.lang + 'create_task_loading'))
         // 提交到服务器创建任务
-        this.$axios.post('/task/create', {
-          key: this.create_task_text_key,
+        this.$axios.put('/task/create', {
           name: this.create_task_text_name
         })
           .then(() => {
@@ -63,8 +58,6 @@
         lang: 'task.taskCreatePart.',
         // 创建任务的对话框是不是打开状态
         create_task_panel_state: false,
-        // 任务标识
-        create_task_text_key: '',
         // 任务名称
         create_task_text_name: ''
       }
@@ -73,7 +66,4 @@
 </script>
 
 <style scoped>
-  .task-prop-input {
-    margin-bottom: 10px;
-  }
 </style>

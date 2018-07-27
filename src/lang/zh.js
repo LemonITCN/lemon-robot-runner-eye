@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   app: {
     app_name: '柠檬机器人',
     cloud_name: '柠檬云',
@@ -9,7 +9,7 @@ module.exports = {
     private_cloud: '私有云',
     successful: '成功',
     failed: '失败',
-    task_key: '任务标识',
+    task_id: '任务ID',
     task_name: '任务名称',
     instruction_set_key: '指令集标识',
     instruction_set_name: '指令集名称',
@@ -86,7 +86,11 @@ module.exports = {
       data: '数据集'
     },
     instructionSetAddPart: {
-      add: '添加指令集'
+      add: '添加指令集',
+      instruction_set_key: '指令集标识',
+      instruction_set_remark: '指令集说明',
+      instruction_set_key_placeholder: '请输入指令集标识',
+      instruction_set_remark_placeholder: '请输入指令集备注说明信息'
     }
   },
   executor: {},

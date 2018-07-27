@@ -12,6 +12,9 @@ import axios from 'axios'
 import namespace from './namespace'
 import util from './util'
 
+import lang_zh from './lang/zh'
+import lang_en from './lang/en'
+
 Vue.use(ElementUI)
 Vue.use(Vuex)
 Vue.use(VueI18n)
@@ -24,10 +27,10 @@ Vue.config.productionTip = false
 
 // 多语言
 const i18n = new VueI18n({
-  locale: 'en',
+  locale: 'zh',
   messages: {
-    'zh': require('./lang/zh'),
-    'en': require('./lang/en')
+    'zh': lang_zh,
+    'en': lang_en
   }
 })
 

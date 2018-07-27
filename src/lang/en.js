@@ -1,4 +1,4 @@
-module.exports = {
+export default{
   app: {
     app_name: 'LemonRobot',
     cloud_name: 'LemonCloud',
@@ -9,7 +9,7 @@ module.exports = {
     private_cloud: 'PrivateCloud',
     successful: 'Successful',
     failed: 'Failed',
-    task_key: 'Task key',
+    task_id: 'Task id',
     task_name: 'Task name',
     instruction_set_key: 'Instruction set key',
     instruction_set_name: 'Instruction set name',
@@ -86,7 +86,11 @@ module.exports = {
       data: 'Data set'
     },
     instructionSetAddPart: {
-      add: 'Add instruction set'
+      add: 'Add instruction set',
+      instruction_set_key: 'Instruction set key',
+      instruction_set_remark: 'Instruction set remark',
+      instruction_set_key_placeholder: 'Please enter the instruction set key string',
+      instruction_set_remark_placeholder: 'Please enter the instruction set remark string'
     }
   },
   executor: {},

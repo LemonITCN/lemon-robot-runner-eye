@@ -6,7 +6,8 @@ export default {
   state: {
     taskList: [],
     state: '',
-    currentEditTask: {}
+    currentEditTask: {},
+    currentInstructionSetList: []
   },
   getters: {
     [NS.TASK.GET_TASK_LIST] (state) {
@@ -17,6 +18,9 @@ export default {
     },
     [NS.TASK.GET_CURRENT_EDIT_TASK] (state) {
       return state.currentEditTask
+    },
+    [NS.TASK.GET_CURRENT_INSTRUCTION_SET_LIST] (state) {
+      return state.currentInstructionSetList
     },
     [NS.TASK.GET_HAVE_EDITING_TASK] (state) {
       return state.currentEditTask !== null && state.currentEditTask.taskId !== undefined
@@ -41,8 +45,12 @@ export default {
     [NS.TASK.MUT_SET_CURRENT_EDIT_TASK] (state, task) {
       state.currentEditTask = task
     },
+    [NS.TASK.MUT_SET_CURRENT_INSTRUCTION_SET_LIST] (state, instructionSetList) {
+      state.currentInstructionSetList = instructionSetList
+    },
     [NS.TASK.MUT_SET_CLOSE_EDIT_TASK] (state) {
       state.currentEditTask = null
+      state.currentInstructionSetList = null
     }
   },
   actions: {
@@ -63,6 +71,21 @@ export default {
         .catch(() => {
           context.commit(NS.TASK.MUT_SET_STATE_FAILED)
         })
+    },
+    [NS.TASK.ACT_REFRESH_INSTRUCTION_SET_LIST] (context) {
+      if (context.getters[NS.TASK.GET_HAVE_EDITING_TASK]) {
+        // 有正在编辑的任务时候才可用
+        axios.get('/task/instruction/list')
+          .then((res) => {
+            context.commit(NS.TASK.MUT_SET_CURRENT_INSTRUCTION_SET_LIST, res.data.data)
+          })
+          .catch(() => {
+            context.commit(NS.TASK.MUT_SET_CURRENT_INSTRUCTION_SET_LIST, null)
+          })
+      }
+    },
+    [NS.TASK.ACT_SAVE_CURRENT_EDITING_TASK] (context, callbacks) {
+      callbacks
     }
   }
 }
