@@ -84,6 +84,7 @@ export default {
     [NS.TASK.ACT_REFRESH_INSTRUCTION_SET_LIST] (context) {
       if (context.getters[NS.TASK.GET_HAVE_EDITING_TASK]) {
         // 有正在编辑的任务时候才可用
+        context.commit(NS.TASK.MUT_SET_CURRENT_INSTRUCTION_SET_LIST, null)
         axios.get(define.URL.TASK.INSTRUCTION.LIST, {
           params: {
             taskId: context.getters[NS.TASK.GET_CURRENT_EDIT_TASK].taskId
@@ -94,7 +95,7 @@ export default {
             context.commit(NS.TASK.MUT_SET_CURRENT_INSTRUCTION_SET_KEY, define.STRING.MAIN_INSTRUCTION)
           })
           .catch(() => {
-            context.commit(NS.TASK.MUT_SET_CURRENT_INSTRUCTION_SET_LIST, null)
+            context.commit(NS.TASK.MUT_SET_CURRENT_INSTRUCTION_SET_LIST, [])
           })
       }
     },
