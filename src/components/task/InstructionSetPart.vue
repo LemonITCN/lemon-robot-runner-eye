@@ -1,7 +1,7 @@
 <template>
   <div class="instruction-set-part">
     <instruction-set-list-part class="instruction-set-list"></instruction-set-list-part>
-    <codemirror v-model="script" :options="options" class="instruction-set-editor"></codemirror>
+    <codemirror v-loading="script == null" v-model="script" :options="options" class="instruction-set-editor"></codemirror>
   </div>
 </template>
 
@@ -22,9 +22,31 @@
       InstructionSetListPart,
       codemirror
     },
+    computed: {
+      instructionSetKey () {
+        return this.$store.getters[this.$NS.TASK.GET_CURRENT_INSTRUCTION_SET_KEY]
+      }
+    },
+    watch: {
+      instructionSetKey (val) {
+        if (val !== null) {
+          this.script = null
+          this.$util.log.info('Change instruction set: ' + val)
+          this.$axios.get(this.$define.URL.TASK.INSTRUCTION.GET, {
+            params: {
+              taskId: this.$store.getters[this.$NS.TASK.GET_CURRENT_EDIT_TASK].taskId,
+              instructionSetKey: val
+            }
+          })
+            .then(res => {
+              this.script = res.data.data
+            })
+        }
+      }
+    },
     data () {
       return {
-        script: '',
+        script: null,
         options: {
           tabSize: 2,
           mode: 'text/javascript',

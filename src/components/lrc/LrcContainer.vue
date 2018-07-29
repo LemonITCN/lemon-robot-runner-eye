@@ -56,10 +56,10 @@
       }
     },
     watch: {
-      lrcState (state) {
-        if (state === this.$NS.LRC.MUT_SET_STATE_DISCONNECTED) {
+      lrcState (val) {
+        if (val === this.$NS.LRC.MUT_SET_STATE_DISCONNECTED) {
           this.$util.tip.notification_error('LRC', this.$t(this.lang + 'connect_disconnected_tip'))
-        } else if (state === this.$NS.LRC.MUT_SET_STATE_CONNECTED) {
+        } else if (val === this.$NS.LRC.MUT_SET_STATE_CONNECTED) {
           this.$util.tip.notification_success('LRC', this.$t(this.lang + 'connect_connected_tip'))
         }
       }

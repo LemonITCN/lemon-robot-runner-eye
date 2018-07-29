@@ -1,13 +1,12 @@
 <template>
   <div class="instruction-set-list-part">
-    <el-tooltip
-        :key="instructionSet.key"
-        v-for="instructionSet in $store.getters[$NS.TASK.GET_CURRENT_EDIT_TASK].instructionSetList"
-        class="item" effect="dark" :content="instructionSet.remark" placement="right">
-      <div class="instruction-set-item instruction-set-item-selected">
-        {{instructionSet.key}}
-      </div>
-    </el-tooltip>
+    <div class="instruction-set-item"
+         @click="$store.commit($NS.TASK.MUT_SET_CURRENT_INSTRUCTION_SET_KEY, instructionSetKey)"
+         :class="instructionSetKey === $store.getters[$NS.TASK.GET_CURRENT_INSTRUCTION_SET_KEY] ? 'instruction-set-item-selected' : ''"
+         :key="instructionSetKey"
+         v-for="instructionSetKey in $store.getters[$NS.TASK.GET_CURRENT_INSTRUCTION_SET_LIST]">
+      {{instructionSetKey}}
+    </div>
     <instruction-set-add-part></instruction-set-add-part>
   </div>
 </template>
@@ -18,6 +17,9 @@
   export default {
     components: {InstructionSetAddPart},
     name: 'InstructionSetListPart',
+    mounted () {
+      this.$store.dispatch(this.$NS.TASK.ACT_REFRESH_INSTRUCTION_SET_LIST)
+    }
   }
 </script>
 

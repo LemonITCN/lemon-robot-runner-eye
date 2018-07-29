@@ -2,6 +2,7 @@ import NS from '@/namespace'
 import axios from 'axios'
 import util from '@/util'
 import JSEncrypt from 'jsencrypt/bin/jsencrypt'
+import define from '@/define'
 
 export default {
   state: {
@@ -20,7 +21,7 @@ export default {
     [NS.LRC.GET_IS_CAN_START_CONNECT] (state) {
       return state.state === NS.LRC.MUT_SET_STATE_DISCONNECTED
     },
-    [NS.LRC.GET_IS_CAN_SEND_REQUEST](state) {
+    [NS.LRC.GET_IS_CAN_SEND_REQUEST] (state) {
       return state.state === NS.LRC.MUT_SET_STATE_CONNECTED
     },
     [NS.LRC.GET_LRCT] (state) {
@@ -75,7 +76,7 @@ export default {
       // 首先保存连接数据
       context.commit(NS.LRC.MUT_SET_LRCS, lrcs)
       // 然后发起WS连接
-      let wsUrl = context.state.address.replace('https:', 'ws:').replace('http:', 'ws:') + '/websocket'
+      let wsUrl = context.state.address.replace('https:', 'ws:').replace('http:', 'ws:') + define.URL.WEB_SOCKET
       context.state.globalWs = new WebSocket(wsUrl)
       context.state.globalWs.onmessage = ev => {
         let data = JSON.parse(ev.data)
@@ -102,7 +103,7 @@ export default {
       context.commit(NS.LRC.MUT_SET_STATE_ACTIVING)
       // 设置基础URL，供全局使用
       axios.defaults.baseURL = context.state.address
-      axios.post('/lrc/active', {
+      axios.post(define.URL.LRC.ACTIVE, {
         'lrct': context.state.lrct,
         'lrcs': connInfo.encryptedLrcs,
         'activeCode': connInfo.activeCode

@@ -58,6 +58,7 @@
     cursor: pointer;
     flex-direction: column;
     text-align: left;
+    min-height: 44px;
   }
 
   .task-list-item:hover {

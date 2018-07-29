@@ -39,7 +39,7 @@
         }
         this.$util.globalLoading.show(this.$t(this.lang + 'create_task_loading'))
         // 提交到服务器创建任务
-        this.$axios.put('/task/create', {
+        this.$axios.put(this.$define.URL.TASK.CREATE, {
           name: this.create_task_text_name
         })
           .then(() => {
@@ -47,6 +47,7 @@
             this.create_task_panel_state = false
             this.$store.dispatch(this.$NS.TASK.ACT_REFRESH_TASK_LIST)
             this.$util.globalLoading.hide()
+            this.create_task_text_name = ''
           })
           .catch(() => {
             this.$util.globalLoading.hide()

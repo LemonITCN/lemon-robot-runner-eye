@@ -27,8 +27,12 @@ export default{
     timeout: 'Sorry, the connection server timed out',
     error: 'Sorry, the server response parsing exception',
     lrc_disconnected: 'The LRC connection to the server has been disconnected and the request could not be completed',
-    task_create_failed_server_error: 'Sorry, task creation failed, server internal error',
-    task_create_failed_key_exists: 'Sorry, task creation failed, task key already exists'
+    task_operate_failed_server_error: 'Sorry, the task operation failed, the server internal error',
+    instruction_set_operate_failed_key_exists: 'Sorry, the instruction set operation failed, because the instruction set key you provided already exists.',
+    task_operate_failed_not_exists: 'Sorry, the task operation failed, the task you want to operate no longer exists.',
+    task_update_base_info_mismatch: 'Sorry, the basic information of the update task failed, because the basic information of the task is not allowed to be modified.',
+    instruction_set_not_exists: 'Sorry, the instruction set does not exist and cannot be operated.',
+    instruction_set_main_cannot_change: 'Sorry, the main instruction set cannot delete or modify key'
   },
   operator: {
     userPart: {
@@ -88,9 +92,8 @@ export default{
     instructionSetAddPart: {
       add: 'Add instruction set',
       instruction_set_key: 'Instruction set key',
-      instruction_set_remark: 'Instruction set remark',
-      instruction_set_key_placeholder: 'Please enter the instruction set key string',
-      instruction_set_remark_placeholder: 'Please enter the instruction set remark string'
+      instruction_set_key_placeholder: 'Please input instruction set key',
+      tip_add_success: 'The instruction set was created successfully.'
     }
   },
   executor: {},

@@ -13,10 +13,6 @@
                   v-model="create_instruction_set_text_key">
           <template slot="prepend">{{$t(lang + 'instruction_set_key')}}</template>
         </el-input>
-        <el-input :placeholder="$t(lang +  'instruction_set_remark_placeholder')" class="dialog-field"
-                  v-model="create_instruction_set_text_name">
-          <template slot="prepend">{{$t(lang + 'instruction_set_remark')}}</template>
-        </el-input>
       </div>
       <span slot="footer" class="dialog-footer">
         <el-button @click="create_instruction_set_panel_state = false">{{$t('common.cancel')}}</el-button>
@@ -34,15 +30,23 @@
     name: 'InstructionSetAddPart',
     methods: {
       create_instruction_set () {
-
+        this.$axios.put(this.$define.URL.TASK.INSTRUCTION.CREATE, {
+          taskId: this.$store.getters[this.$NS.TASK.GET_CURRENT_EDIT_TASK].taskId,
+          instructionSetKey: this.create_instruction_set_text_key
+        })
+          .then(() => {
+            this.$store.dispatch(this.$NS.TASK.ACT_REFRESH_INSTRUCTION_SET_LIST)
+            this.$util.tip.notification_success(this.$t(this.lang + 'tip_add_success'))
+            this.create_instruction_set_panel_state = false
+            this.create_instruction_set_text_key = ''
+          })
       }
     },
     data () {
       return {
         lang: 'task.instructionSetAddPart.',
         create_instruction_set_panel_state: false,
-        create_instruction_set_text_key: '',
-        create_instruction_set_text_name: ''
+        create_instruction_set_text_key: ''
       }
     }
   }

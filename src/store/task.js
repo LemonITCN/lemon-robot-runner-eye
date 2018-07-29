@@ -1,13 +1,15 @@
 import NS from '@/namespace'
 import axios from 'axios'
 import util from '@/util'
+import define from '@/define'
 
 export default {
   state: {
     taskList: [],
     state: '',
     currentEditTask: {},
-    currentInstructionSetList: []
+    currentInstructionSetList: [],
+    currentInstructionSetKey: null
   },
   getters: {
     [NS.TASK.GET_TASK_LIST] (state) {
@@ -22,9 +24,12 @@ export default {
     [NS.TASK.GET_CURRENT_INSTRUCTION_SET_LIST] (state) {
       return state.currentInstructionSetList
     },
+    [NS.TASK.GET_CURRENT_INSTRUCTION_SET_KEY] (state) {
+      return state.currentInstructionSetKey
+    },
     [NS.TASK.GET_HAVE_EDITING_TASK] (state) {
       return state.currentEditTask !== null && state.currentEditTask.taskId !== undefined
-    }
+    },
   },
   mutations: {
     [NS.TASK.MUT_SET_STATE_EMPTY] (state) {
@@ -48,9 +53,13 @@ export default {
     [NS.TASK.MUT_SET_CURRENT_INSTRUCTION_SET_LIST] (state, instructionSetList) {
       state.currentInstructionSetList = instructionSetList
     },
+    [NS.TASK.MUT_SET_CURRENT_INSTRUCTION_SET_KEY] (state, instructionSetKey) {
+      state.currentInstructionSetKey = instructionSetKey
+    },
     [NS.TASK.MUT_SET_CLOSE_EDIT_TASK] (state) {
       state.currentEditTask = null
       state.currentInstructionSetList = null
+      state.currentInstructionSetKey = null
     }
   },
   actions: {
@@ -58,7 +67,7 @@ export default {
       context.commit(NS.TASK.MUT_SET_STATE_PULLING)
       util.log.info('Prepare to refresh the task list')
       // 网络请求任务列表
-      axios.get('/task/list')
+      axios.get(define.URL.TASK.LIST)
         .then((res) => {
           context.commit(NS.TASK.MUT_SET_TASK_LIST, res.data.data)
           if (context.getters[NS.TASK.GET_TASK_LIST].length > 0) {
@@ -75,9 +84,14 @@ export default {
     [NS.TASK.ACT_REFRESH_INSTRUCTION_SET_LIST] (context) {
       if (context.getters[NS.TASK.GET_HAVE_EDITING_TASK]) {
         // 有正在编辑的任务时候才可用
-        axios.get('/task/instruction/list')
+        axios.get(define.URL.TASK.INSTRUCTION.LIST, {
+          params: {
+            taskId: context.getters[NS.TASK.GET_CURRENT_EDIT_TASK].taskId
+          }
+        })
           .then((res) => {
             context.commit(NS.TASK.MUT_SET_CURRENT_INSTRUCTION_SET_LIST, res.data.data)
+            context.commit(NS.TASK.MUT_SET_CURRENT_INSTRUCTION_SET_KEY, define.STRING.MAIN_INSTRUCTION)
           })
           .catch(() => {
             context.commit(NS.TASK.MUT_SET_CURRENT_INSTRUCTION_SET_LIST, null)

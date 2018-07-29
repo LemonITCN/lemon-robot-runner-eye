@@ -27,8 +27,12 @@ export default {
     timeout: '对不起，连接服务器超时',
     error: '对不起，服务器响应解析异常',
     lrc_disconnected: '与服务器的LRC连接已断开，无法完成请求',
-    task_create_failed_server_error: '对不起，任务创建失败，服务器内部错误',
-    task_create_failed_key_exists: '对不起，任务创建失败，任务标识已存在'
+    task_operate_failed_server_error: '对不起，任务操作失败，服务器内部错误',
+    instruction_set_operate_failed_key_exists: '对不起，指令集操作失败，您提供的指令集关键字已经存在',
+    task_operate_failed_not_exists: '对不起，任务操作失败，您要操作的任务已经不存在',
+    task_update_base_info_mismatch: '对不起，更新任务基本信息失败，任务基础信息不允许被修改',
+    instruction_set_not_exists: '对不起，指令集不存在，无法进行操作',
+    instruction_set_main_cannot_change: '对不起，主指令集不能进行删除或修改关键字等操作'
   },
   operator: {
     userPart: {
@@ -87,10 +91,9 @@ export default {
     },
     instructionSetAddPart: {
       add: '添加指令集',
-      instruction_set_key: '指令集标识',
-      instruction_set_remark: '指令集说明',
-      instruction_set_key_placeholder: '请输入指令集标识',
-      instruction_set_remark_placeholder: '请输入指令集备注说明信息'
+      instruction_set_key: '指令集关键字',
+      instruction_set_key_placeholder: '请输入指令集关键字字符串',
+      tip_add_success: '指令集创建成功'
     }
   },
   executor: {},

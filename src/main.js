@@ -11,6 +11,7 @@ import router from './routers'
 import axios from 'axios'
 import namespace from './namespace'
 import util from './util'
+import define from './define'
 
 import lang_zh from './lang/zh'
 import lang_en from './lang/en'
@@ -22,6 +23,7 @@ Vue.use(VueI18n)
 Vue.prototype.$axios = axios
 Vue.prototype.$NS = namespace
 Vue.prototype.$util = util
+Vue.prototype.$define = define
 
 Vue.config.productionTip = false
 
@@ -56,6 +58,7 @@ axios.interceptors.response.use(res => {
   // }
   if (!res.data.success) {
     util.tip.notification_error(i18n.t(RESPONSE_MSG_LANG + res.data.msg))
+    return Promise.reject(res)
   }
   return res
 }, (error) => {
