@@ -89,11 +89,20 @@ export default {
       instruction: '指令集',
       data: '数据集'
     },
+    instructionSetPart: {
+      loading_script: '正在加载指令集脚本...'
+    },
     instructionSetAddPart: {
       add: '添加指令集',
       instruction_set_key: '指令集关键字',
       instruction_set_key_placeholder: '请输入指令集关键字字符串',
       tip_add_success: '指令集创建成功'
+    },
+    instructionSetOperatePart: {
+      rekey: '修改指令集关键字',
+      delete: '删除这个指令集',
+      instruction_set_key: '指令集关键字',
+      instruction_set_key_placeholder: '请您输入新的指令集关键字'
     }
   },
   executor: {},

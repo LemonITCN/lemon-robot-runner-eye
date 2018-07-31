@@ -89,11 +89,20 @@ export default{
       instruction: 'Instruction set',
       data: 'Data set'
     },
+    instructionSetPart: {
+      loading_script: 'Loading instruction set script...'
+    },
     instructionSetAddPart: {
       add: 'Add instruction set',
       instruction_set_key: 'Instruction set key',
       instruction_set_key_placeholder: 'Please input instruction set key',
       tip_add_success: 'The instruction set was created successfully.'
+    },
+    instructionSetOperatePart: {
+      rekey: 'Modify the instruction set key',
+      delete: 'Delete this instruction set',
+      instruction_set_key: 'Instruction set key',
+      instruction_set_key_placeholder: 'Please enter a new instruction set key'
     }
   },
   executor: {},

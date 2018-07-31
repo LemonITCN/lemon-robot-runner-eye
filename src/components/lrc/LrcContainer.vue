@@ -19,7 +19,7 @@
       </el-form>
       <span slot="footer" class="dialog-footer">
         <el-button type="success" @click="connect"
-                   :loading="!$store.getters[$NS.LRC.GET_IS_CAN_START_CONNECT]">{{$t('common.connect')}}</el-button>
+                   v-loading="!$store.getters[$NS.LRC.GET_IS_CAN_START_CONNECT]">{{$t('common.connect')}}</el-button>
       </span>
     </el-dialog>
   </div>

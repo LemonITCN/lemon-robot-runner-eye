@@ -1,8 +1,11 @@
 <template>
   <div class="instruction-set-part">
     <instruction-set-list-part class="instruction-set-list"></instruction-set-list-part>
-    <codemirror :loading="script === null" v-model="script" :options="options"
-                class="instruction-set-editor"></codemirror>
+    <div class="editor-area" v-loading="script === null" :element-loading-text="$t(lang + 'loading_script')">
+      <codemirror v-model="script" :options="options"
+                  v-if="script !== null"
+                  class="instruction-set-editor"></codemirror>
+    </div>
   </div>
 </template>
 
@@ -62,6 +65,7 @@
     data () {
       return {
         script: null,
+        lang: 'task.instructionSetPart.',
         options: {
           tabSize: 2,
           mode: 'text/javascript',
@@ -84,6 +88,11 @@
 
   .instruction-set-list {
     width: 220px;
+  }
+
+  .editor-area {
+    flex-grow: 1;
+    display: flex;
   }
 
   .instruction-set-editor {

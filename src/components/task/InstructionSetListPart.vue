@@ -1,6 +1,6 @@
 <template>
   <div class="instruction-set-list-part"
-       :loading="$store.getters[$NS.TASK.GET_CURRENT_INSTRUCTION_SET_LIST] === null">
+       v-loading="$store.getters[$NS.TASK.GET_CURRENT_INSTRUCTION_SET_LIST] === null">
     <div class="instruction-set-item"
          @click="$store.commit($NS.TASK.MUT_SET_CURRENT_INSTRUCTION_SET_KEY, instructionSetKey)"
          :class="instructionSetKey === $store.getters[$NS.TASK.GET_CURRENT_INSTRUCTION_SET_KEY] ? 'instruction-set-item-selected' : ''"
@@ -8,9 +8,8 @@
          v-for="instructionSetKey in $store.getters[$NS.TASK.GET_CURRENT_INSTRUCTION_SET_LIST]">
       {{instructionSetKey}}
       <div class="instruction-set-operation"
-           v-if="instructionSetKey === $store.getters[$NS.TASK.GET_CURRENT_INSTRUCTION_SET_KEY]">
-        <el-button icon="el-icon-edit" size="mini" circle=""></el-button>
-        <el-button icon="el-icon-delete" size="mini" circle=""></el-button>
+           v-if="instructionSetKey === $store.getters[$NS.TASK.GET_CURRENT_INSTRUCTION_SET_KEY] && instructionSetKey !== $define.STRING.MAIN_INSTRUCTION">
+        <instruction-set-operate-part></instruction-set-operate-part>
       </div>
     </div>
     <instruction-set-add-part></instruction-set-add-part>
@@ -22,9 +21,11 @@
   import InstructionSetAddPart from './InstructionSetAddPart.vue'
   import ElButton from '../../../node_modules/element-ui/packages/button/src/button.vue'
   import InstructionSetRefreshPart from './InstructionSetRefreshPart.vue'
+  import InstructionSetOperatePart from './InstructionSetOperatePart.vue'
 
   export default {
     components: {
+      InstructionSetOperatePart,
       InstructionSetRefreshPart,
       ElButton,
       InstructionSetAddPart
