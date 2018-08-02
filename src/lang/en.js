@@ -18,6 +18,7 @@ export default{
     please_input: 'Please input',
     cancel: 'Cancel',
     create: 'Create',
+    modify: 'Modify',
     connect: 'Connect',
     saving: 'Saving',
     run: 'Run',
@@ -102,7 +103,8 @@ export default{
       rekey: 'Modify the instruction set key',
       delete: 'Delete this instruction set',
       instruction_set_key: 'Instruction set key',
-      instruction_set_key_placeholder: 'Please enter a new instruction set key'
+      instruction_set_key_placeholder: 'Please enter a new instruction set key',
+      rekey_success: 'Modify instruction set key success!'
     }
   },
   executor: {},

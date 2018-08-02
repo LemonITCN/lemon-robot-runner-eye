@@ -81,7 +81,7 @@ export default {
           context.commit(NS.TASK.MUT_SET_STATE_FAILED)
         })
     },
-    [NS.TASK.ACT_REFRESH_INSTRUCTION_SET_LIST] (context) {
+    [NS.TASK.ACT_REFRESH_INSTRUCTION_SET_LIST] (context, callbacks) {
       if (context.getters[NS.TASK.GET_HAVE_EDITING_TASK]) {
         // 有正在编辑的任务时候才可用
         context.commit(NS.TASK.MUT_SET_CURRENT_INSTRUCTION_SET_LIST, null)
@@ -93,9 +93,24 @@ export default {
           .then((res) => {
             context.commit(NS.TASK.MUT_SET_CURRENT_INSTRUCTION_SET_LIST, res.data.data)
             context.commit(NS.TASK.MUT_SET_CURRENT_INSTRUCTION_SET_KEY, define.STRING.MAIN_INSTRUCTION)
+            if (callbacks){
+              // callbacks存在
+              util.log.info(callbacks.success)
+              try {
+                callbacks.success()
+              }catch (e){
+                util.log.error(e)
+                util.log.warn(NS.TASK.ACT_REFRESH_INSTRUCTION_SET_LIST + ' do not have success callback')
+              }
+            }
           })
           .catch(() => {
             context.commit(NS.TASK.MUT_SET_CURRENT_INSTRUCTION_SET_LIST, [])
+            try {
+              callbacks['failed']()
+            }catch (e){
+              util.log.warn(NS.TASK.ACT_REFRESH_INSTRUCTION_SET_LIST + ' do not have failed callback')
+            }
           })
       }
     },
