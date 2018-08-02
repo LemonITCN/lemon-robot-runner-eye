@@ -106,7 +106,8 @@ export default {
       instruction_set_key: '指令集关键字',
       instruction_set_key_placeholder: '请您输入新的指令集关键字',
       rekey_success: '修改指令集关键字成功!',
-      delete_tip: '确认要删除这个指令集吗？'
+      delete_tip: '确认要删除这个指令集吗？',
+      delete_success: '指令集删除成功!'
     }
   },
   executor: {},

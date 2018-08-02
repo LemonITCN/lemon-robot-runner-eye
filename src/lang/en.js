@@ -106,7 +106,8 @@ export default{
       instruction_set_key: 'Instruction set key',
       instruction_set_key_placeholder: 'Please enter a new instruction set key',
       rekey_success: 'Modify instruction set key success!',
-      delete_tip: 'Are you sure you want to delete this instruction set?'
+      delete_tip: 'Are you sure you want to delete this instruction set?',
+      delete_success: 'The instruction set was deleted successfully!'
     }
   },
   executor: {},

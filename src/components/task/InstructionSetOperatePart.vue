@@ -4,7 +4,8 @@
       <el-button icon="el-icon-edit" @click="rekey_instruction_set_panel_state = true" size="mini" circle></el-button>
     </el-tooltip>
     <el-tooltip class="item" effect="dark" :content="$t(lang + 'delete')" placement="top">
-      <el-button icon="el-icon-delete" @click="delete_instruction_set_panel_state = true" size="mini" circle></el-button>
+      <el-button icon="el-icon-delete" @click="delete_instruction_set_panel_state = true" size="mini"
+                 circle></el-button>
     </el-tooltip>
     <!--修改指令集名称的对话框-->
     <el-dialog
@@ -66,7 +67,16 @@
           })
       },
       delete_instruction_set () {
-
+        this.$axios.delete(this.$define.URL.TASK.INSTRUCTION.DELETE, {
+          data: {
+            taskId: this.$store.getters[this.$NS.TASK.GET_CURRENT_EDIT_TASK].taskId,
+            instructionSetKey: this.$store.getters[this.$NS.TASK.GET_CURRENT_INSTRUCTION_SET_KEY]
+          }
+        })
+          .then(() => {
+            this.$store.dispatch(this.$NS.TASK.ACT_REFRESH_INSTRUCTION_SET_LIST)
+            this.$util.tip.notification_success(this.$t(this.lang + 'delete_success'))
+          })
       }
     },
     data () {
