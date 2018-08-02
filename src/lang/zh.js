@@ -19,6 +19,7 @@ export default {
     cancel: '取消',
     create: '创建',
     modify: '修改',
+    delete: "删除",
     connect: '连接',
     saving: '正在保存中',
     run: '运行',
@@ -104,7 +105,8 @@ export default {
       delete: '删除这个指令集',
       instruction_set_key: '指令集关键字',
       instruction_set_key_placeholder: '请您输入新的指令集关键字',
-      rekey_success: '修改指令集关键字成功!'
+      rekey_success: '修改指令集关键字成功!',
+      delete_tip: '确认要删除这个指令集吗？'
     }
   },
   executor: {},

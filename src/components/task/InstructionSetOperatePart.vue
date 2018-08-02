@@ -4,7 +4,7 @@
       <el-button icon="el-icon-edit" @click="rekey_instruction_set_panel_state = true" size="mini" circle></el-button>
     </el-tooltip>
     <el-tooltip class="item" effect="dark" :content="$t(lang + 'delete')" placement="top">
-      <el-button icon="el-icon-delete" size="mini" circle></el-button>
+      <el-button icon="el-icon-delete" @click="delete_instruction_set_panel_state = true" size="mini" circle></el-button>
     </el-tooltip>
     <!--修改指令集名称的对话框-->
     <el-dialog
@@ -24,6 +24,18 @@
       </span>
     </el-dialog>
     <!--修改指令集名称的对话框 结束-->
+    <!--删除指令集的确认对话框-->
+    <el-dialog
+        :title="$t(lang + 'delete')"
+        :visible.sync="delete_instruction_set_panel_state"
+        width="30%">
+      <span>{{$t(lang + 'delete_tip')}}【 {{$store.getters[$NS.TASK.GET_CURRENT_INSTRUCTION_SET_KEY]}} 】</span>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="delete_instruction_set_panel_state = false">{{$t('common.cancel')}}</el-button>
+        <el-button type="danger" @click="delete_instruction_set">{{$t('common.delete')}}</el-button>
+      </span>
+    </el-dialog>
+    <!--删除指令集的确认对话框 结束-->
 
   </div>
 </template>
@@ -52,12 +64,16 @@
             })
             this.$util.tip.notification_success(this.$t(this.lang + 'rekey_success'))
           })
+      },
+      delete_instruction_set () {
+
       }
     },
     data () {
       return {
         lang: 'task.instructionSetOperatePart.',
         rekey_instruction_set_panel_state: false,
+        delete_instruction_set_panel_state: false,
         instruction_set_key: ''
       }
     }

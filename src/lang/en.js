@@ -19,6 +19,7 @@ export default{
     cancel: 'Cancel',
     create: 'Create',
     modify: 'Modify',
+    delete: 'Delete',
     connect: 'Connect',
     saving: 'Saving',
     run: 'Run',
@@ -104,7 +105,8 @@ export default{
       delete: 'Delete this instruction set',
       instruction_set_key: 'Instruction set key',
       instruction_set_key_placeholder: 'Please enter a new instruction set key',
-      rekey_success: 'Modify instruction set key success!'
+      rekey_success: 'Modify instruction set key success!',
+      delete_tip: 'Are you sure you want to delete this instruction set?'
     }
   },
   executor: {},
