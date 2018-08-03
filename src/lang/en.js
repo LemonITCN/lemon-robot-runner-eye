@@ -1,4 +1,4 @@
-export default{
+export default {
   app: {
     app_name: 'LemonRobot',
     cloud_name: 'LemonCloud',
@@ -66,7 +66,8 @@ export default{
   },
   task: {
     store: {
-      instruction_set_list_refresh_success: 'The instruction set list is refreshed successfully.'
+      instruction_set_list_refresh_success: 'The instruction set list is refreshed successfully.',
+      task_change_submit_success: 'The modification of the task has been successfully submitted'
     },
     taskSelectorContainer: {
       main_title: 'Please choose a task to edit',
@@ -87,6 +88,15 @@ export default{
       task_list_tip_pulling: 'Getting task list from server...',
       task_list_tip_failed: 'Getting the task list from the server side failed',
       task_create_time: 'Task creation time'
+    },
+    taskOperatePart: {
+      rename: 'Modify the task name',
+      delete: 'Delete this task',
+      task_name: 'Task name',
+      task_name_placeholder: 'Please enter a new task name',
+      rename_success: 'Modify task name success!',
+      delete_tip: 'Are you sure you want to delete this task? All the information associated with the task (including the data that has been generated since it was deleted) will also be deleted.',
+      delete_success: 'The task was deleted successfully!'
     },
     taskEditPart: {
       mTitle: 'Task editor',

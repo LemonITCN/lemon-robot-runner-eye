@@ -66,7 +66,8 @@ export default {
   },
   task: {
     store: {
-      instruction_set_list_refresh_success: '指令集列表刷新成功'
+      instruction_set_list_refresh_success: '指令集列表刷新成功',
+      task_change_submit_success: '任务的修改已提交成功'
     },
     taskSelectorContainer: {
       main_title: '请您选择一个要编辑的任务',
@@ -87,6 +88,15 @@ export default {
       task_list_tip_pulling: '正在从服务器中获取任务列表...',
       task_list_tip_failed: '从服务器端获取任务列表失败',
       task_create_time: '任务创建时间'
+    },
+    taskOperatePart: {
+      rename: '修改这个任务的名称',
+      delete: '删除这个任务',
+      task_name: '任务名称',
+      task_name_placeholder: '请您输入新的任务名称',
+      rename_success: '任务名称修改成功！',
+      delete_tip: '您确定要删除这个任务吗?删除任务的同时该任务所关联的所有信息（包括已经执行后产生的数据）也会被一同删除。',
+      delete_success: '任务删除成功!'
     },
     taskEditPart: {
       mTitle: '任务编辑器',

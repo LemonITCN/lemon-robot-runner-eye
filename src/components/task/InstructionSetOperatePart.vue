@@ -47,7 +47,6 @@
     name: 'InstructionSetOperatePart',
     methods: {
       handle_open () {
-        this.$util.log.info('hello')
         this.instruction_set_key = this.$store.getters[this.$NS.TASK.GET_CURRENT_INSTRUCTION_SET_KEY]
       },
       rekey_instruction_set () {

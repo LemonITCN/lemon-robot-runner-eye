@@ -7,6 +7,7 @@ export default {
     CREATE: '/task/create',
     DELETE: '/task/delete',
     UPDATE: '/task/update',
+    RENAME: '/task/rename',
     GET: '/task/get',
     LIST: '/task/list',
     INSTRUCTION: {
