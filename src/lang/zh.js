@@ -67,7 +67,8 @@ export default {
   task: {
     store: {
       instruction_set_list_refresh_success: '指令集列表刷新成功',
-      task_change_submit_success: '任务的修改已提交成功'
+      task_change_submit_success: '任务的修改已提交成功',
+      instruction_set_script_save_success: '任务指令集脚本保存成功!'
     },
     taskSelectorContainer: {
       main_title: '请您选择一个要编辑的任务',

@@ -1,5 +1,5 @@
 <template>
-  <div class="instruction-set-part">
+  <div class="instruction-set-part" @keydown.alt.stop="keyboardSave($event)">
     <instruction-set-list-part class="instruction-set-list"></instruction-set-list-part>
     <div class="editor-area" v-loading="script === null" :element-loading-text="$t(lang + 'loading_script')">
       <codemirror v-model="script" :options="options"
@@ -10,7 +10,7 @@
 </template>
 
 <script>
-  import { codemirror } from 'vue-codemirror'
+  import {codemirror} from 'vue-codemirror'
   import 'codemirror/lib/codemirror.css'
   import 'codemirror/mode/javascript/javascript.js'
   import 'codemirror/addon/hint/javascript-hint.js'
@@ -26,7 +26,7 @@
       InstructionSetListPart,
       codemirror
     },
-    mounted () {
+    mounted() {
       let instructionSetKey = this.$store.getters[this.$NS.TASK.GET_CURRENT_INSTRUCTION_SET_KEY]
       if (instructionSetKey !== null) {
         this.loadScript(instructionSetKey)
@@ -36,19 +36,29 @@
       }
     },
     computed: {
-      instructionSetKey () {
+      instructionSetKey() {
         return this.$store.getters[this.$NS.TASK.GET_CURRENT_INSTRUCTION_SET_KEY]
       }
     },
     watch: {
-      instructionSetKey (val) {
+      instructionSetKey(val, oldVal) {
+        this.not_save_instruction_set_key = val
+        this.not_save_task_id = this.$store.getters[this.$NS.TASK.GET_CURRENT_EDIT_TASK].taskId
+        if (oldVal !== null) {
+          // 保存任务
+          this.saveScript(oldVal)
+        }
         if (val !== null) {
           this.loadScript(val)
         }
       }
     },
+    beforeDestroy() {
+      // 组件马上销毁了，保存任务
+      this.saveScript(this.not_save_instruction_set_key)
+    },
     methods: {
-      loadScript (instructionSetKey) {
+      loadScript(instructionSetKey) {
         this.script = null
         this.$util.log.info('Change instruction set: ' + instructionSetKey)
         this.$axios.get(this.$define.URL.TASK.INSTRUCTION.GET, {
@@ -60,12 +70,26 @@
           .then(res => {
             this.script = res.data.data
           })
+      },
+      saveScript(instructionSetKey) {
+        this.$store.dispatch(this.$NS.TASK.ACT_SAVE_INSTRUCTION_SET_SCRIPT, {
+          taskId: this.not_save_task_id,
+          instructionSetKey: instructionSetKey,
+          script: this.script
+        })
+      },
+      keyboardSave(event) {
+        if (event.altKey && event.key === 's') {
+          this.$util.log.info(event)
+        }
       }
     },
-    data () {
+    data() {
       return {
         script: null,
         lang: 'task.instructionSetPart.',
+        not_save_task_id: '',
+        not_save_instruction_set_key: '',
         options: {
           tabSize: 2,
           mode: 'text/javascript',

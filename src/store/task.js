@@ -60,9 +60,9 @@ export default {
       state.currentInstructionSetKey = instructionSetKey
     },
     [NS.TASK.MUT_SET_CLOSE_EDIT_TASK](state) {
-      state.currentEditTask = null
-      state.currentInstructionSetList = null
       state.currentInstructionSetKey = null
+      state.currentInstructionSetList = null
+      state.currentEditTask = null
     }
   },
   actions: {
@@ -158,6 +158,12 @@ export default {
               util.log.warn('An error occurred while calling the failed callback function')
             }
           }
+        })
+    },
+    [NS.TASK.ACT_SAVE_INSTRUCTION_SET_SCRIPT] (content, info) {
+      axios.post(define.URL.TASK.INSTRUCTION.SAVE_SCRIPT, info)
+        .then(() => {
+          util.tip.message_success(i18n.t(lang + 'instruction_set_script_save_success'))
         })
     }
   }

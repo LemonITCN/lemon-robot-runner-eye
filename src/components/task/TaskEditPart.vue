@@ -29,7 +29,6 @@
     methods: {
       closeEditingTask () {
         this.$store.commit(this.$NS.TASK.MUT_SET_CLOSE_EDIT_TASK)
-        this.$util.log.info(this.$store)
       }
     },
     data () {

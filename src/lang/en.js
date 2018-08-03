@@ -67,7 +67,8 @@ export default {
   task: {
     store: {
       instruction_set_list_refresh_success: 'The instruction set list is refreshed successfully.',
-      task_change_submit_success: 'The modification of the task has been successfully submitted'
+      task_change_submit_success: 'The modification of the task has been successfully submitted',
+      instruction_set_script_save_success: 'The task instruction set script was saved successfully.'
     },
     taskSelectorContainer: {
       main_title: 'Please choose a task to edit',
