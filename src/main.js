@@ -5,20 +5,16 @@ import '@/assets/iconfont/iconfont.css'
 import '@/assets/general/general.css'
 import ElementUI from 'element-ui'
 import Vuex from 'vuex'
-import VueI18n from 'vue-i18n'
 import store from './store'
 import router from './routers'
 import axios from 'axios'
 import namespace from './namespace'
 import util from './util'
 import define from './define'
-
-import lang_zh from './lang/zh'
-import lang_en from './lang/en'
+import i18n from './lang'
 
 Vue.use(ElementUI)
 Vue.use(Vuex)
-Vue.use(VueI18n)
 
 Vue.prototype.$axios = axios
 Vue.prototype.$NS = namespace
@@ -26,15 +22,6 @@ Vue.prototype.$util = util
 Vue.prototype.$define = define
 
 Vue.config.productionTip = false
-
-// 多语言
-const i18n = new VueI18n({
-  locale: 'en',
-  messages: {
-    'zh': lang_zh,
-    'en': lang_en
-  }
-})
 
 // 拦截器，拦截所有请求 ，当超时的时候给出统一的提示
 const RESPONSE_MSG_LANG = 'responseMsg.'

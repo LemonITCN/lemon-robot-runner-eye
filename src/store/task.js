@@ -2,6 +2,9 @@ import NS from '@/namespace'
 import axios from 'axios'
 import util from '@/util'
 import define from '@/define'
+import i18n from '@/lang'
+
+const lang = 'task.store.'
 
 export default {
   state: {
@@ -103,6 +106,7 @@ export default {
                 util.log.warn(NS.TASK.ACT_REFRESH_INSTRUCTION_SET_LIST + ' do not have success callback')
               }
             }
+            util.tip.message_success(i18n.t(lang + 'instruction_set_list_refresh_success'))
           })
           .catch(() => {
             context.commit(NS.TASK.MUT_SET_CURRENT_INSTRUCTION_SET_LIST, [])

@@ -65,6 +65,9 @@ export default{
     }
   },
   task: {
+    store: {
+      instruction_set_list_refresh_success: 'The instruction set list is refreshed successfully.'
+    },
     taskSelectorContainer: {
       main_title: 'Please choose a task to edit',
       sub_title1: 'You can select the tasks you have added in the list below to edit them.',

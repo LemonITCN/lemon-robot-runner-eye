@@ -65,6 +65,9 @@ export default {
     }
   },
   task: {
+    store: {
+      instruction_set_list_refresh_success: '指令集列表刷新成功'
+    },
     taskSelectorContainer: {
       main_title: '请您选择一个要编辑的任务',
       sub_title1: '您可以在下面的列表中选择已添加的任务进行编辑',
