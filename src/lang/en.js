@@ -31,7 +31,7 @@ export default {
     lrc_disconnected: 'The LRC connection to the server has been disconnected and the request could not be completed',
     task_operate_failed_server_error: 'Sorry, the task operation failed, the server internal error',
     instruction_set_operate_failed_key_exists: 'Sorry, the instruction set operation failed, because the instruction set key you provided already exists.',
-    task_operate_failed_not_exists: 'Sorry, the task operation failed, the task you want to operate no longer exists.',
+    task_operate_failed_not_exists: 'Sorry, the task operation failed, the task you want to operate not exists.',
     task_update_base_info_mismatch: 'Sorry, the basic information of the update task failed, because the basic information of the task is not allowed to be modified.',
     instruction_set_not_exists: 'Sorry, the instruction set does not exist and cannot be operated.',
     instruction_set_main_cannot_change: 'Sorry, the main instruction set cannot delete or modify key'
