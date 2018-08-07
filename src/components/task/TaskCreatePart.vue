@@ -29,14 +29,6 @@
     methods: {
       // 创建本地任务
       create_local_task () {
-        if (this.create_task_text_key === '' || this.create_task_text_name === '') {
-          this.$util.tip.notification_info({
-            title: this.$t('common.failed'),
-            message: this.$t(this.lang + '.local_task_create_error_msg_empty'),
-            type: 'error'
-          })
-          return
-        }
         this.$util.globalLoading.show(this.$t(this.lang + 'create_task_loading'))
         // 提交到服务器创建任务
         this.$axios.put(this.$define.URL.TASK.CREATE, {

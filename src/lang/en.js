@@ -34,7 +34,8 @@ export default {
     task_operate_failed_not_exists: 'Sorry, the task operation failed, the task you want to operate not exists.',
     task_update_base_info_mismatch: 'Sorry, the basic information of the update task failed, because the basic information of the task is not allowed to be modified.',
     instruction_set_not_exists: 'Sorry, the instruction set does not exist and cannot be operated.',
-    instruction_set_main_cannot_change: 'Sorry, the main instruction set cannot delete or modify key'
+    instruction_set_main_cannot_change: 'Sorry, the main instruction set cannot delete or modify key',
+    common_name_illegal: 'Sorry, the operation failed, the name you provided is illegal.'
   },
   operator: {
     userPart: {

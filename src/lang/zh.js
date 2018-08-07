@@ -34,7 +34,8 @@ export default {
     task_operate_failed_not_exists: '对不起，任务操作失败，您要操作的任务已经不存在',
     task_update_base_info_mismatch: '对不起，更新任务基本信息失败，任务基础信息不允许被修改',
     instruction_set_not_exists: '对不起，指令集不存在，无法进行操作',
-    instruction_set_main_cannot_change: '对不起，主指令集不能进行删除或修改关键字等操作'
+    instruction_set_main_cannot_change: '对不起，主指令集不能进行删除或修改关键字等操作',
+    common_name_illegal: '对不起，操作失败，您提供的名称不合法'
   },
   operator: {
     userPart: {
