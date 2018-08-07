@@ -7,7 +7,7 @@
     </div>
     <el-tooltip class="item" effect="dark" :content="$t(lang + 'save_button_tip')" placement="left">
       <el-button @click="saveScript(not_save_instruction_set_key)" type="success" class="editor-save"
-                 icon="el-icon-check" circle></el-button>
+                 icon="el-icon-save" circle></el-button>
     </el-tooltip>
   </div>
 </template>

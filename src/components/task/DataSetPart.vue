@@ -1,11 +1,14 @@
 <template>
   <div class="data-set-part">
-    数据集
+    <data-set-list-part></data-set-list-part>
   </div>
 </template>
 
 <script>
+  import DataSetListPart from './DataSetListPart.vue'
+
   export default {
+    components: {DataSetListPart},
     name: 'DataSetPart'
   }
 </script>
