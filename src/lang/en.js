@@ -106,13 +106,18 @@ export default {
       data: 'Data set'
     },
     instructionSetPart: {
-      loading_script: 'Loading instruction set script...'
+      loading_script: 'Loading instruction set script...',
+      save_button_tip: 'Click this button to save the instruction set script being edited, or you can use the shortcut Ctrl+S to save',
+      no_to_save_tip: 'The instruction set script has not changed and does not need to be saved.'
     },
     instructionSetAddPart: {
       add: 'Add instruction set',
       instruction_set_key: 'Instruction set key',
       instruction_set_key_placeholder: 'Please input instruction set key',
       tip_add_success: 'The instruction set was created successfully.'
+    },
+    instructionSetRefreshPart: {
+      refresh_button_tip: 'Click this button to refresh the instruction set list'
     },
     instructionSetOperatePart: {
       rekey: 'Modify the instruction set key',

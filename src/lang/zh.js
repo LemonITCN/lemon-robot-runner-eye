@@ -106,13 +106,18 @@ export default {
       data: '数据集'
     },
     instructionSetPart: {
-      loading_script: '正在加载指令集脚本...'
+      loading_script: '正在加载指令集脚本...',
+      save_button_tip: '点击这个按钮来保存正在编辑中的指令集脚本，或者您也可以使用快捷键Ctrl+S来保存',
+      no_to_save_tip: '指令集脚本没有更改，不需要进行保存'
     },
     instructionSetAddPart: {
       add: '添加指令集',
       instruction_set_key: '指令集关键字',
       instruction_set_key_placeholder: '请输入指令集关键字字符串',
       tip_add_success: '指令集创建成功'
+    },
+    instructionSetRefreshPart: {
+      refresh_button_tip: '点击这个按钮来刷新指令集列表'
     },
     instructionSetOperatePart: {
       rekey: '修改指令集关键字',

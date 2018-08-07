@@ -78,23 +78,14 @@ export default {
           } else {
             context.commit(NS.TASK.MUT_SET_STATE_EMPTY)
           }
-          if (callbacks) {
-            try {
-              callbacks.success()
-            } catch (e) {
-              util.log.warn('An error occurred while calling the successful callback function')
-            }
+          if (callbacks && typeof callbacks.success === 'function') {
+            callbacks.success()
           }
         })
         .catch(() => {
           context.commit(NS.TASK.MUT_SET_STATE_FAILED)
-          if (callbacks) {
-            try {
-              callbacks.failed()
-            }
-            catch (e) {
-              util.log.warn('An error occurred while calling the failed callback function')
-            }
+          if (callbacks && typeof callbacks.failed === 'function') {
+            callbacks.failed()
           }
         })
     },
@@ -110,23 +101,15 @@ export default {
           .then((res) => {
             context.commit(NS.TASK.MUT_SET_CURRENT_INSTRUCTION_SET_LIST, res.data.data)
             context.commit(NS.TASK.MUT_SET_CURRENT_INSTRUCTION_SET_KEY, define.STRING.MAIN_INSTRUCTION)
-            if (callbacks) {
-              // callbacks存在
-              try {
-                callbacks.success()
-              } catch (e) {
-                util.log.error(e)
-                util.log.warn(NS.TASK.ACT_REFRESH_INSTRUCTION_SET_LIST + ' do not have success callback')
-              }
+            if (callbacks && typeof callbacks.success === 'function') {
+              callbacks.success()
             }
             util.tip.message_success(i18n.t(lang + 'instruction_set_list_refresh_success'))
           })
           .catch(() => {
             context.commit(NS.TASK.MUT_SET_CURRENT_INSTRUCTION_SET_LIST, [])
-            try {
-              callbacks['failed']()
-            } catch (e) {
-              util.log.warn(NS.TASK.ACT_REFRESH_INSTRUCTION_SET_LIST + ' do not have failed callback')
+            if (callbacks && typeof callbacks.failed === 'function') {
+              callbacks.failed()
             }
           })
       }
@@ -140,30 +123,28 @@ export default {
       axios.post(define.URL.TASK.UPDATE, task)
         .then(() => {
           util.tip.message_success('success')
-          if (info) {
-            try {
-              info.success()
-              util.tip.message_success(lang + 'task_change_submit_success')
-            } catch (e) {
-              util.log.warn('An error occurred while calling the successful callback function')
-            }
+          if (info && typeof info.success === 'function') {
+            info.success()
           }
         })
         .catch(() => {
-          if (info) {
-            try {
-              info.failed()
-            }
-            catch (e) {
-              util.log.warn('An error occurred while calling the failed callback function')
-            }
+          if (info && typeof info.failed === 'function') {
+            info.failed()
           }
         })
     },
-    [NS.TASK.ACT_SAVE_INSTRUCTION_SET_SCRIPT] (content, info) {
-      axios.post(define.URL.TASK.INSTRUCTION.SAVE_SCRIPT, info)
+    [NS.TASK.ACT_SAVE_INSTRUCTION_SET_SCRIPT](content, info) {
+      axios.post(define.URL.TASK.INSTRUCTION.SAVE_SCRIPT, info.task)
         .then(() => {
           util.tip.message_success(i18n.t(lang + 'instruction_set_script_save_success'))
+          if (info && typeof info.success === 'function') {
+            info.success()
+          }
+        })
+        .catch(() => {
+          if (info && typeof info.failed === 'function') {
+            info.failed()
+          }
         })
     }
   }
