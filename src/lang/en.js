@@ -103,12 +103,12 @@ export default {
       mTitle: 'Task editor',
       mIntro: 'You can write your instruction set and data set through the task editor.',
       instruction: 'Instruction set',
+      plugin: 'Plugins usage',
       data: 'Data set'
     },
     instructionSetPart: {
       loading_script: 'Loading instruction set script...',
       save_button_tip: 'Click this button to save the instruction set script being edited, or you can use the shortcut Ctrl+S to save',
-      no_to_save_tip: 'The instruction set script has not changed and does not need to be saved.'
     },
     instructionSetAddPart: {
       add: 'Add instruction set',

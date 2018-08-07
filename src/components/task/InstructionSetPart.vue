@@ -81,21 +81,23 @@
           });
       },
       saveScript(instructionSetKey) {
-        if (this.old_script !== null && this.old_script === this.script) {
-          this.$util.tip.message_info(this.$t(this.lang + 'no_to_save_tip'))
+        if (this.old_script === this.script) {
+          this.$util.log.debug('The instruction set script has not changed and does not need to be saved.')
           return;
         }
-        let self = this
-        this.$store.dispatch(this.$NS.TASK.ACT_SAVE_INSTRUCTION_SET_SCRIPT, {
-          task: {
-            taskId: this.not_save_task_id,
-            instructionSetKey: instructionSetKey,
-            script: this.script
-          },
-          success() {
-            self.old_script = self.script
-          }
-        });
+        if (this.old_script !== null && this.script !== null) {
+          let self = this
+          this.$store.dispatch(this.$NS.TASK.ACT_SAVE_INSTRUCTION_SET_SCRIPT, {
+            task: {
+              taskId: this.not_save_task_id,
+              instructionSetKey: instructionSetKey,
+              script: this.script
+            },
+            success() {
+              self.old_script = self.script
+            }
+          });
+        }
       },
       keyboardSave(event) {
         if (event.ctrlKey && event.key === "s") {

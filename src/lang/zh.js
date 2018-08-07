@@ -103,12 +103,12 @@ export default {
       mTitle: '任务编辑器',
       mIntro: '你可以通过任务编辑器来编写您的指令集、数据集',
       instruction: '指令集',
+      plugin: '插件引用',
       data: '数据集'
     },
     instructionSetPart: {
       loading_script: '正在加载指令集脚本...',
       save_button_tip: '点击这个按钮来保存正在编辑中的指令集脚本，或者您也可以使用快捷键Ctrl+S来保存',
-      no_to_save_tip: '指令集脚本没有更改，不需要进行保存'
     },
     instructionSetAddPart: {
       add: '添加指令集',

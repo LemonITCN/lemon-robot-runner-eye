@@ -40,6 +40,10 @@
             target: '/task/instruction'
           },
           {
+            title: 'plugin',
+            target: '/task/plugin'
+          },
+          {
             title: 'data',
             target: '/task/data'
           }
