@@ -63,7 +63,7 @@
   .instruction-set-refresh-part {
     position: absolute;
     right: 20px;
-    bottom: 20px;
+    bottom: 50px;
   }
 
 </style>

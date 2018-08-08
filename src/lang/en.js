@@ -128,7 +128,15 @@ export default {
       rekey_success: 'Modify instruction set key success!',
       delete_tip: 'Are you sure you want to delete this instruction set?',
       delete_success: 'The instruction set was deleted successfully!'
-    }
+    },
+    dataSetAddPart: {
+      add: 'Add data set',
+      data_set_key: 'Data set key',
+      data_set_key_placeholder: 'Please input data set key',
+      data_set_remark: 'Data set remark',
+      data_set_remark_placeholder: 'Please input data set remark',
+      tip_add_success: 'The data set was created successfully.'
+    },
   },
   executor: {},
   plan: {},

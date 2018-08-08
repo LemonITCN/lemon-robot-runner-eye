@@ -69,7 +69,7 @@ export default {
     store: {
       instruction_set_list_refresh_success: '指令集列表刷新成功',
       task_change_submit_success: '任务的修改已提交成功',
-      instruction_set_script_save_success: '任务指令集脚本保存成功!'
+      instruction_set_script_save_success: '任务指令集脚本保存成功!',
     },
     taskSelectorContainer: {
       main_title: '请您选择一个要编辑的任务',
@@ -128,7 +128,15 @@ export default {
       rekey_success: '修改指令集关键字成功!',
       delete_tip: '确认要删除这个指令集吗？',
       delete_success: '指令集删除成功!'
-    }
+    },
+    dataSetAddPart: {
+      add: '添加数据集',
+      data_set_key: '数据集关键字',
+      data_set_key_placeholder: '请您输入数据集关键字',
+      data_set_remark: '数据集描述',
+      data_set_remark_placeholder: '请您用简短的语句描述这个数据集',
+      tip_add_success: '数据集创建成功！'
+    },
   },
   executor: {},
   plan: {},
