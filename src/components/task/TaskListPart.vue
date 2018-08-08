@@ -15,7 +15,7 @@
       <task-operate-part v-if="task.taskId === mouseOverTaskId" :taskId="task.taskId" :taskName="task.taskName"
                          class="task-operate-part"></task-operate-part>
     </div>
-    <div class="task-list-tip" v-if="$store.getters[$NS.TASK.GET_CURRENT_STATE] !== $NS.TASK.MUT_SET_STATE_NORMAL">
+    <div class="task-list-tip" v-if="$store.getters[$NS.TASK.GET_CURRENT_STATE] !== '' && $store.getters[$NS.TASK.GET_CURRENT_STATE] !== $NS.TASK.MUT_SET_STATE_NORMAL">
       {{$t(lang + stateTipRelation[$store.getters[$NS.TASK.GET_CURRENT_STATE]])}}
     </div>
   </div>
