@@ -137,6 +137,18 @@ export default {
       data_set_remark_placeholder: '请您用简短的语句描述这个数据集',
       tip_add_success: '数据集创建成功！'
     },
+    dataSetOperatePart: {
+      reinfo: '修改数据集的基本信息',
+      delete: '删除这个数据集',
+      data_set_key: '数据集关键字',
+      data_set_key_placeholder: '请输入一个新的数据集关键字',
+      data_set_remark: '数据集描述',
+      data_set_remark_placeholder: '请您输入一个新的数据集描述信息',
+      reinfo_success: '数据集基本信息修改成功！',
+      delete_tip: '您确定要删除这个数据集吗？该操作不可逆',
+      delete_success: '数据集删除成功',
+      data_set_key_exists_tip: '您输入的新数据集名称已存在，请重新修改'
+    },
   },
   executor: {},
   plan: {},

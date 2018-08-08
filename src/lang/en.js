@@ -137,6 +137,18 @@ export default {
       data_set_remark_placeholder: 'Please input data set remark',
       tip_add_success: 'The data set was created successfully.'
     },
+    dataSetOperatePart: {
+      reinfo: 'Modify the data set base info',
+      delete: 'Delete this data set',
+      data_set_key: 'Data set key',
+      data_set_key_placeholder: 'Please enter a new data set key',
+      data_set_remark: 'Data set remark',
+      data_set_remark_placeholder: 'Please enter a new data set remark',
+      reinfo_success: 'Modify data set base info success!',
+      delete_tip: 'Are you sure you want to delete this data set?',
+      delete_success: 'The data set was deleted successfully!',
+      data_set_key_exists_tip: 'The new dataset name you entered already exists. Please re-edit'
+    },
   },
   executor: {},
   plan: {},

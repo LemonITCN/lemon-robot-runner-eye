@@ -37,6 +37,12 @@ export default {
     },
     [NS.TASK.GET_CURRENT_DATA_SET_KEY] (state) {
       return state.currentDataSetKey
+    },
+    [NS.TASK.GET_CURRENT_DATA_SET] (state) {
+      if (state.currentEditTask !== null && state.currentDataSetKey !== '') {
+        return state.currentEditTask.dataSet[state.currentDataSetKey]
+      }
+      return {}
     }
 
   },
@@ -69,6 +75,7 @@ export default {
       state.currentInstructionSetKey = null
       state.currentInstructionSetList = null
       state.currentEditTask = null
+      state.currentDataSetKey = ''
     },
     [NS.TASK.MUT_PUT_EDITING_TASK_DATA_SET] (state, info) {
       if (state.currentEditTask !== null) {

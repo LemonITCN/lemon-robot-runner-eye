@@ -41,6 +41,7 @@
         })
         this.create_data_set_panel_state = false
         this.$store.dispatch(this.$NS.TASK.ACT_SAVE_CURRENT_EDITING_TASK)
+        this.$store.commit(this.$NS.TASK.MUT_SET_CURRENT_DATA_SET_KEY, this.create_data_set_text_key)
       }
     },
     data () {
