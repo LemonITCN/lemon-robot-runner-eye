@@ -149,6 +149,12 @@ export default {
       delete_success: '数据集删除成功',
       data_set_key_exists_tip: '您输入的新数据集名称已存在，请重新修改'
     },
+    dataSetPropertyListPart: {
+      column_data_set_key: '数据集属性关键字',
+      column_data_set_type: '属性类型',
+      column_data_set_remark: '数据集属性描述',
+      column_data_set_operate: '操作'
+    }
   },
   executor: {},
   plan: {},

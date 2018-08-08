@@ -149,6 +149,12 @@ export default {
       delete_success: 'The data set was deleted successfully!',
       data_set_key_exists_tip: 'The new dataset name you entered already exists. Please re-edit'
     },
+    dataSetPropertyListPart: {
+      column_data_set_key: 'DataSetProperty key',
+      column_data_set_type: 'Property type',
+      column_data_set_remark: 'DataSetProperty remark',
+      column_data_set_operate: 'Operate'
+    }
   },
   executor: {},
   plan: {},
