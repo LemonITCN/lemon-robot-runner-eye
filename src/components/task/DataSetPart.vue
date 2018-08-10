@@ -25,7 +25,7 @@
 
   .data-set-list {
     width: 220px;
-    border-right: 6px solid #669933;
+    border-right: 6px solid #5e8ebd;
   }
 
   .data-set-property-list-part {

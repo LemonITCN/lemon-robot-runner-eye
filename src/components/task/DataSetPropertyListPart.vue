@@ -7,7 +7,6 @@
           :label="$t(lang + 'column_data_set_key')"
           width="180">
         <template slot-scope="scope">
-          <i class="el-icon-time"></i>
           <span style="margin-left: 10px">{{ scope.row.key }}</span>
         </template>
       </el-table-column>
@@ -26,17 +25,7 @@
       </el-table-column>
       <el-table-column :label="$t(lang + 'column_data_set_operate')" width="180">
         <template slot-scope="scope">
-          <el-button
-              size="mini"
-              @click="handleEdit(scope.$index, scope.row)">
-            {{$t('common.modify')}}
-          </el-button>
-          <el-button
-              size="mini"
-              type="danger"
-              @click="handleDelete(scope.$index, scope.row)">
-            {{$t('common.delete')}}
-          </el-button>
+          <data-set-property-operate-part :index="scope.$index"></data-set-property-operate-part>
         </template>
       </el-table-column>
     </el-table>
@@ -48,9 +37,11 @@
   import DataSetAddPart from './DataSetAddPart.vue'
   import DataSetOperatePart from './DataSetOperatePart.vue'
   import DataSetPropertyAddPart from './DataSetPropertyAddPart.vue'
+  import DataSetPropertyOperatePart from './DataSetPropertyOperatePart.vue'
 
   export default {
     components: {
+      DataSetPropertyOperatePart,
       DataSetPropertyAddPart,
       DataSetOperatePart,
       DataSetAddPart

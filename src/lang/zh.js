@@ -174,6 +174,19 @@ export default {
       data_set_property_remark_placeholder: '请您输入对该属性的描述',
       tip_add_success: '数据集属性创建成功',
       data_set_property_already_exists: '您输入的数据集属性关键字已存在'
+    },
+    dataSetPropertyOperatePart: {
+      modify: '修改数据集属性',
+      delete: '删除数据集属性',
+      data_set_property_key: '属性关键字',
+      data_set_property_key_placeholder: '请您输入一个新的数据集属性关键字',
+      data_set_property_type: '属性类型',
+      data_set_property_remark: '属性描述',
+      data_set_property_remark_placeholder: '请您输入数据集的属性描述信息',
+      tip_modify_success: '数据集属性信息修改成功',
+      tip_delete_success: '数据集属性删除成功',
+      delete_tip: '您确定要删除这个数据集属性吗？该操作不可逆',
+      data_set_property_already_exists: '您新设置的数据集属性关键字已经存在'
     }
   },
   executor: {},

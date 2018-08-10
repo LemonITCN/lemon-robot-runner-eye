@@ -174,6 +174,19 @@ export default {
       data_set_property_remark_placeholder: 'Please input data set property remark',
       tip_add_success: 'The data set property was created successfully.',
       data_set_property_already_exists: 'Data set property key already exists'
+    },
+    dataSetPropertyOperatePart: {
+      modify: 'Modify data set property info',
+      delete: 'Delete data set property',
+      data_set_property_key: 'Property key',
+      data_set_property_key_placeholder: 'Please input a new data set property key',
+      data_set_property_type: 'Property type',
+      data_set_property_remark: 'Property remark',
+      data_set_property_remark_placeholder: 'Please input data set property remark',
+      tip_modify_success: 'The data set property was modified successfully.',
+      tip_delete_success: 'The data set property was deleted successfully.',
+      delete_tip: 'Are you sure you want to delete this data set property?',
+      data_set_property_already_exists: 'Your newly set data set property key already exists'
     }
   },
   executor: {},
