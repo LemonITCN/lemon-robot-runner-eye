@@ -23,7 +23,7 @@
           {{scope.row.remark}}
         </template>
       </el-table-column>
-      <el-table-column :label="$t(lang + 'column_data_set_operate')" width="180">
+      <el-table-column :label="$t(lang + 'column_data_set_operate')" width="260">
         <template slot-scope="scope">
           <data-set-property-operate-part :index="scope.$index"></data-set-property-operate-part>
         </template>
