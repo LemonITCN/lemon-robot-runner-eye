@@ -8,7 +8,7 @@
       <el-tab-pane :label="$t(lang + '.instruction_set')" name="instructionSet">
         <instruction-set-content-module class="content-module"/>
       </el-tab-pane>
-      <el-tab-pane :label="$t(lang + '.data_set')" name="dataPool"></el-tab-pane>
+      <el-tab-pane :label="$t(lang + '.dataSet')" name="dataPool"></el-tab-pane>
     </el-tabs>
   </div>
 </template>

@@ -26,7 +26,8 @@ export default {
     dateStr: 'yyyy年MM月dd日 hh:mm:ss'
   },
   rules: {
-    common_key: '该字段为必填项，且要求：长度：1-64，字母开头，只允许含有字母、数字、下划线'
+    common_key: '该字段为必填项，且要求：长度：1-64，字母开头，只允许含有字母、数字、下划线',
+    common_name: '该字段为必填项，且要求：长度：1-64，支持输入任意字符'
   },
   responseMsg: {
     timeout: '对不起，连接服务器超时',

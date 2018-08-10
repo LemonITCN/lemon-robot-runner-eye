@@ -6,7 +6,7 @@
                   class="instruction-set-editor"></codemirror>
     </div>
     <el-tooltip class="item" effect="dark" :content="$t(lang + 'save_button_tip')" placement="left">
-      <el-button @click="saveScript(not_save_instruction_set_key)" type="success" class="editor-save"
+      <el-button @click="saveScript(notSaveInstructionSetKey)" type="success" class="editor-save"
                  icon="el-icon-save" circle></el-button>
     </el-tooltip>
   </div>
@@ -46,8 +46,8 @@
     },
     watch: {
       instructionSetKey(val, oldVal) {
-        this.not_save_instruction_set_key = val;
-        this.not_save_task_id = this.$store.getters[
+        this.notSaveInstructionSetKey = val;
+        this.notSaveTaskId = this.$store.getters[
           this.$NS.TASK.GET_CURRENT_EDIT_TASK
           ].taskId;
         if (oldVal !== null) {
@@ -61,7 +61,7 @@
     },
     beforeDestroy() {
       // 组件马上销毁了，保存任务
-      this.saveScript(this.not_save_instruction_set_key);
+      this.saveScript(this.notSaveInstructionSetKey);
     },
     methods: {
       loadScript(instructionSetKey) {
@@ -76,25 +76,25 @@
             }
           })
           .then(res => {
-            this.old_script = res.data.data
+            this.oldScript = res.data.data
             this.script = res.data.data;
           });
       },
       saveScript(instructionSetKey) {
-        if (this.old_script === this.script) {
+        if (this.oldScript === this.script) {
           this.$util.log.debug('The instruction set script has not changed and does not need to be saved.')
           return;
         }
-        if (this.old_script !== null && this.script !== null) {
+        if (this.oldScript !== null && this.script !== null) {
           let self = this
           this.$store.dispatch(this.$NS.TASK.ACT_SAVE_INSTRUCTION_SET_SCRIPT, {
             task: {
-              taskId: this.not_save_task_id,
+              taskId: this.notSaveTaskId,
               instructionSetKey: instructionSetKey,
               script: this.script
             },
             success() {
-              self.old_script = self.script
+              self.oldScript = self.script
             }
           });
         }
@@ -103,7 +103,7 @@
         if (event.ctrlKey && event.key === "s") {
           let self = this;
           setTimeout(function () {
-            self.saveScript(self.not_save_instruction_set_key);
+            self.saveScript(self.notSaveInstructionSetKey);
           }, 1);
           event.preventDefault();
         }
@@ -112,11 +112,11 @@
     data() {
       return {
         // 保存最原始的脚本指令，在保存的时候进行对比，如果发现一模一样，那就不保存了
-        old_script: null,
+        oldScript: null,
         script: null,
         lang: "task.instructionSetPart.",
-        not_save_task_id: "",
-        not_save_instruction_set_key: "",
+        notSaveTaskId: "",
+        notSaveInstructionSetKey: "",
         options: {
           tabSize: 2,
           mode: "text/javascript",

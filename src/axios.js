@@ -19,11 +19,6 @@ axios.interceptors.request.use(config => {
 })
 // 拦截器，拦截所有响应，当返回的数据中success为false的时候，将msg中的信息本地化处理后提示
 axios.interceptors.response.use(res => {
-  // // 如果当前LRC没有连接，那么除了LRC的所有请求都会被拒接，返回一个空对象
-  // if ((res.config.url.indexOf('lrc') < 0) && !store.getters[namespace.LRC.GET_IS_CAN_SEND_REQUEST]) {
-  //   // 返回对象里面加装data，防止后面程序报错
-  //   return {data: {}}
-  // }
   if (!res.data.success) {
     util.tip.notification_error(i18n.t(RESPONSE_MSG_LANG + res.data.msg))
     return Promise.reject(res)

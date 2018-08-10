@@ -1,22 +1,23 @@
 <template>
   <div class="instruction-set-add-part">
     <div class="instruction-set-add-button"
-         @click="create_instruction_set_panel_state = true">
+         @click="createPanelState = true">
       <i class="el-icon-plus"></i> {{$t(lang + 'add')}}
     </div>
     <el-dialog
         :title="$t(lang + 'add')"
-        :visible.sync="create_instruction_set_panel_state"
-        width="50%">
-      <div>
-        <el-input :placeholder="$t(lang + 'instruction_set_key_placeholder')" class="dialog-field"
-                  v-model="create_instruction_set_text_key">
-          <template slot="prepend">{{$t(lang + 'instruction_set_key')}}</template>
-        </el-input>
-      </div>
+        :visible.sync="createPanelState"
+        class="form-dialog">
+      <el-form :ref="formName" :model="form" :rules="rules" label-width="140px">
+        <el-form-item :label="$t(lang + 'instruction_set_key')" prop="instructionSetKey" class="dialog-field">
+          <el-input :placeholder="$t(lang + 'instruction_set_key_placeholder')"
+                    v-model="form.instructionSetKey">
+          </el-input>
+        </el-form-item>
+      </el-form>
       <span slot="footer" class="dialog-footer">
-        <el-button @click="create_instruction_set_panel_state = false">{{$t('common.cancel')}}</el-button>
-        <el-button type="primary" @click="create_instruction_set">{{$t('common.create')}}</el-button>
+        <el-button @click="createPanelState = false">{{$t('common.cancel')}}</el-button>
+        <el-button type="primary" @click="createInstructionSet">{{$t('common.create')}}</el-button>
       </span>
     </el-dialog>
   </div>
@@ -29,24 +30,32 @@
     components: {ElButton},
     name: 'InstructionSetAddPart',
     methods: {
-      create_instruction_set () {
-        this.$axios.put(this.$define.URL.TASK.INSTRUCTION.CREATE, {
-          taskId: this.$store.getters[this.$NS.TASK.GET_CURRENT_EDIT_TASK].taskId,
-          instructionSetKey: this.create_instruction_set_text_key
+      createInstructionSet () {
+        this.$refs[this.formName].validate((valid) => {
+          if (valid) {
+            this.$axios.put(this.$define.URL.TASK.INSTRUCTION.CREATE, this.form)
+              .then(() => {
+                this.$store.dispatch(this.$NS.TASK.ACT_REFRESH_INSTRUCTION_SET_LIST)
+                this.$util.tip.notification_success(this.$t(this.lang + 'tip_add_success'))
+                this.createPanelState = false
+                this.form.instructionSetKey = ''
+              })
+          }
         })
-          .then(() => {
-            this.$store.dispatch(this.$NS.TASK.ACT_REFRESH_INSTRUCTION_SET_LIST)
-            this.$util.tip.notification_success(this.$t(this.lang + 'tip_add_success'))
-            this.create_instruction_set_panel_state = false
-            this.create_instruction_set_text_key = ''
-          })
       }
     },
     data () {
       return {
         lang: 'task.instructionSetAddPart.',
-        create_instruction_set_panel_state: false,
-        create_instruction_set_text_key: ''
+        createPanelState: false,
+        formName: 'addInstructionSet',
+        form: {
+          taskId: this.$store.getters[this.$NS.TASK.GET_CURRENT_EDIT_TASK].taskId,
+          instructionSetKey: ''
+        },
+        rules: {
+          instructionSetKey: this.$define.RULES.COMMON_KEY
+        }
       }
     }
   }

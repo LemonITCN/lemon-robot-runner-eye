@@ -8,3 +8,14 @@
 .dialog-field {
     margin-bottom: 34px;
 }
+
+.form-dialog {
+    width: 1320px;
+    margin: 0 auto;
+}
+
+/*覆盖element-默认样式*/
+
+.form-dialog .el-dialog__body {
+    padding-bottom: 0;
+}

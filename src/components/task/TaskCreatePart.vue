@@ -1,22 +1,22 @@
 <template>
   <div class="task-create-part">
     <el-button class="local-task-create-button" type="success" icon="el-icon-plus" round
-               @click="create_task_panel_state = true">{{$t(lang + 'create_task')}}
+               @click="createPanelState = true">{{$t(lang + 'create_task')}}
     </el-button>
     <!--创建本地任务对话框开始-->
     <el-dialog
         :title="$t(lang + 'create_task')"
-        :visible.sync="create_task_panel_state"
-        width="50%">
-      <div>
-        <el-input :placeholder="$t(lang +  'task_name_placeholder')" class="dialog-field"
-                  v-model="create_task_text_name">
-          <template slot="prepend">{{$t('common.task_name')}}</template>
-        </el-input>
-      </div>
+        :visible.sync="createPanelState"
+        class="form-dialog">
+      <el-form :ref="formName" :model="form" :rules="rules" label-width="140px">
+        <el-form-item :label="$t('common.task_name')" prop="name" class="dialog-field">
+          <el-input :placeholder="$t(lang +  'task_name_placeholder')" v-model="form.name">
+          </el-input>
+        </el-form-item>
+      </el-form>
       <span slot="footer" class="dialog-footer">
-        <el-button @click="create_task_panel_state = false">{{$t('common.cancel')}}</el-button>
-        <el-button type="primary" @click="create_local_task">{{$t('common.create')}}</el-button>
+        <el-button @click="createPanelState = false">{{$t('common.cancel')}}</el-button>
+        <el-button type="primary" @click="createTask">{{$t('common.create')}}</el-button>
       </span>
     </el-dialog>
     <!--创建本地任务对话框结束-->
@@ -28,31 +28,39 @@
     name: 'TaskCreatePart',
     methods: {
       // 创建本地任务
-      create_local_task () {
-        this.$util.globalLoading.show(this.$t(this.lang + 'create_task_loading'))
-        // 提交到服务器创建任务
-        this.$axios.put(this.$define.URL.TASK.CREATE, {
-          name: this.create_task_text_name
+      createTask () {
+        this.$refs[this.formName].validate((valid) => {
+          if (valid) {
+            this.$util.globalLoading.show(this.$t(this.lang + 'create_task_loading'))
+            // 提交到服务器创建任务
+            this.$axios.put(this.$define.URL.TASK.CREATE, this.form)
+              .then(() => {
+                this.$util.tip.notification_success(this.$t(this.lang + 'create_task_success'))
+                this.createPanelState = false
+                this.$store.dispatch(this.$NS.TASK.ACT_REFRESH_TASK_LIST)
+                this.$util.globalLoading.hide()
+                this.form.name = ''
+              })
+              .catch(() => {
+                this.$util.globalLoading.hide()
+              })
+          }
         })
-          .then(() => {
-            this.$util.tip.notification_success(this.$t(this.lang + 'create_task_success'))
-            this.create_task_panel_state = false
-            this.$store.dispatch(this.$NS.TASK.ACT_REFRESH_TASK_LIST)
-            this.$util.globalLoading.hide()
-            this.create_task_text_name = ''
-          })
-          .catch(() => {
-            this.$util.globalLoading.hide()
-          })
       }
     },
     data () {
       return {
         lang: 'task.taskCreatePart.',
         // 创建任务的对话框是不是打开状态
-        create_task_panel_state: false,
+        createPanelState: false,
+        formName: 'createTask',
         // 任务名称
-        create_task_text_name: ''
+        form: {
+          name: ''
+        },
+        rules: {
+          name: this.$define.RULES.COMMON_NAME
+        }
       }
     }
   }

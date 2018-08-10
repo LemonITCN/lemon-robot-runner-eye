@@ -38,7 +38,8 @@ export default {
     common_name_illegal: 'Sorry, the operation failed, the name you provided is illegal.'
   },
   rules: {
-    common_key: 'This field is required and requires: length: 1-64, beginning with a letter, only letters, numbers, and underscores are allowed.'
+    common_key: 'This field is required and requires: length: 1-64, beginning with a letter, only letters, numbers, and underscores are allowed.',
+    common_name: 'This field is required and requires: length: 1-64 and allow any character to be filled in.'
   },
   operator: {
     userPart: {
@@ -70,9 +71,9 @@ export default {
   },
   define: {
     options: {
-      data_set_property_type_str: 'String type',
-      data_set_property_type_num: 'Number type',
-      data_set_property_type_bin: 'Binary type',
+      data_set_property_type_str: 'STRING',
+      data_set_property_type_num: 'NUMBER',
+      data_set_property_type_bin: 'BINARY',
     }
   },
   task: {
