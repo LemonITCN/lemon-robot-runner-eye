@@ -14,7 +14,7 @@
           :label="$t(lang + 'column_data_set_type')"
           width="180">
         <template slot-scope="scope">
-          <el-tag size="medium">{{ typeNameMapping[scope.row.type] }}</el-tag>
+          <el-tag size="medium" :type="typeColorMapping[scope.row.type]">{{ typeNameMapping[scope.row.type] }}</el-tag>
         </template>
       </el-table-column>
       <el-table-column
@@ -48,8 +48,9 @@
     },
     name: 'DataSetPropertyListPart',
     mounted () {
-      this.$define.OPTIONS.DATA_SET_PROPERTY_TYPE.forEach((item) => {
+      this.$define.OPTIONS.DATA_SET_PROPERTY_TYPE.forEach((item, index) => {
         this.typeNameMapping[item.value] = item.name
+        this.typeColorMapping[item.value] = ['', 'success', 'warning'][index]
       })
     },
     methods: {
@@ -60,7 +61,8 @@
     data () {
       return {
         lang: 'task.dataSetPropertyListPart.',
-        typeNameMapping: {}
+        typeNameMapping: {},
+        typeColorMapping: {}
       }
     }
   }
@@ -70,18 +72,5 @@
   .data-set-property-list-part {
     overflow-y: scroll;
     position: relative;
-  }
-
-  .data-set-property-item {
-    padding: 14px 18px;
-    border-bottom: 1px solid rgba(200, 200, 200, 0.2);
-    cursor: pointer;
-    position: relative;
-  }
-
-  .data-set-operation {
-    position: absolute;
-    top: 10px;
-    right: 10px;
   }
 </style>
