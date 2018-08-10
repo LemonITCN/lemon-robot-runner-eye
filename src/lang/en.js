@@ -37,6 +37,9 @@ export default {
     instruction_set_main_cannot_change: 'Sorry, the main instruction set cannot delete or modify key',
     common_name_illegal: 'Sorry, the operation failed, the name you provided is illegal.'
   },
+  rules: {
+    common_key: 'This field is required and requires: length: 1-64, beginning with a letter, only letters, numbers, and underscores are allowed.'
+  },
   operator: {
     userPart: {
       login_to: 'Login to ',
@@ -65,11 +68,18 @@ export default {
       connect_connected_tip: 'LRC service connection success'
     }
   },
+  define: {
+    options: {
+      data_set_property_type_str: 'String type',
+      data_set_property_type_num: 'Number type',
+      data_set_property_type_bin: 'Binary type',
+    }
+  },
   task: {
     store: {
       instruction_set_list_refresh_success: 'The instruction set list is refreshed successfully.',
       task_change_submit_success: 'The modification of the task has been successfully submitted',
-      instruction_set_script_save_success: 'The task instruction set script was saved successfully.'
+      instruction_set_script_save_success: 'The task instruction set script was saved successfully.',
     },
     taskSelectorContainer: {
       main_title: 'Please choose a task to edit',
@@ -150,10 +160,20 @@ export default {
       data_set_key_exists_tip: 'The new dataset name you entered already exists. Please re-edit'
     },
     dataSetPropertyListPart: {
-      column_data_set_key: 'DataSetProperty key',
+      column_data_set_key: 'Property key',
       column_data_set_type: 'Property type',
-      column_data_set_remark: 'DataSetProperty remark',
+      column_data_set_remark: 'Property remark',
       column_data_set_operate: 'Operate'
+    },
+    dataSetPropertyAddPart: {
+      add: 'Add data set property',
+      data_set_property_key: 'Property key',
+      data_set_property_key_placeholder: 'Please input data set property key',
+      data_set_property_type: 'Property type',
+      data_set_property_remark: 'Property remark',
+      data_set_property_remark_placeholder: 'Please input data set property remark',
+      tip_add_success: 'The data set property was created successfully.',
+      data_set_property_already_exists: 'Data set property key already exists'
     }
   },
   executor: {},

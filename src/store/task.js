@@ -43,8 +43,7 @@ export default {
         return state.currentEditTask.dataSet[state.currentDataSetKey]
       }
       return {}
-    }
-
+    },
   },
   mutations: {
     [NS.TASK.MUT_SET_STATE_EMPTY] (state) {

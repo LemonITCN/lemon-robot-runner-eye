@@ -19,11 +19,14 @@ export default {
     cancel: '取消',
     create: '创建',
     modify: '修改',
-    delete: "删除",
+    delete: '删除',
     connect: '连接',
     saving: '正在保存中',
     run: '运行',
     dateStr: 'yyyy年MM月dd日 hh:mm:ss'
+  },
+  rules: {
+    common_key: '该字段为必填项，且要求：长度：1-64，字母开头，只允许含有字母、数字、下划线'
   },
   responseMsg: {
     timeout: '对不起，连接服务器超时',
@@ -63,6 +66,13 @@ export default {
       connect_failed_tip: 'LRC尝试连接失败，无法连接至服务器',
       connect_disconnected_tip: 'LRC服务已断开，请重新连接',
       connect_connected_tip: 'LRC服务连接成功'
+    }
+  },
+  define: {
+    options: {
+      data_set_property_type_str: '字符串类型',
+      data_set_property_type_num: '数值类型',
+      data_set_property_type_bin: '二进制类型',
     }
   },
   task: {
@@ -150,10 +160,20 @@ export default {
       data_set_key_exists_tip: '您输入的新数据集名称已存在，请重新修改'
     },
     dataSetPropertyListPart: {
-      column_data_set_key: '数据集属性关键字',
+      column_data_set_key: '属性关键字',
       column_data_set_type: '属性类型',
       column_data_set_remark: '数据集属性描述',
       column_data_set_operate: '操作'
+    },
+    dataSetPropertyAddPart: {
+      add: '添加数据集属性',
+      data_set_property_key: '属性关键字',
+      data_set_property_key_placeholder: '请您输入数据集属性的关键字',
+      data_set_property_type: '属性类型',
+      data_set_property_remark: '属性描述',
+      data_set_property_remark_placeholder: '请您输入对该属性的描述',
+      tip_add_success: '数据集属性创建成功',
+      data_set_property_already_exists: '您输入的数据集属性关键字已存在'
     }
   },
   executor: {},
