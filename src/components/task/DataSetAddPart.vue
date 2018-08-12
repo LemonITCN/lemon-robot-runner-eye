@@ -1,6 +1,6 @@
 <template>
   <div class="data-set-add-part">
-    <div class="data-set-add-button"
+    <div class="list-end-add-button"
          @click="createPanelState = true">
       <i class="el-icon-plus"></i> {{$t(lang + 'add')}}
     </div>
@@ -73,15 +73,5 @@
 <style scoped>
   .data-set-add-part {
     text-align: center;
-  }
-
-  .data-set-add-button {
-    padding: 14px;
-    cursor: pointer;
-    color: #578fbb;
-  }
-
-  .data-set-add-button:hover {
-    color: #0e58bb;
   }
 </style>

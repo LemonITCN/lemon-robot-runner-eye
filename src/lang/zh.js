@@ -114,9 +114,30 @@ export default {
     taskEditPart: {
       mTitle: '任务编辑器',
       mIntro: '你可以通过任务编辑器来编写您的指令集、数据集',
+      parameter: '参数定义',
       instruction: '指令集',
       plugin: '插件引用',
       data: '数据集'
+    },
+    parameterPart: {
+
+    },
+    parameterAddPart: {
+      add: '添加参数定义',
+      parameter_name: '参数名称',
+      parameter_name_placeholder: '请您输入参数名称',
+      parameter_is_binary: '是否为二进制数据',
+      parameter_is_required: '是否为必填项',
+      parameter_remark: '参数描述',
+      parameter_remark_placeholder: '请您输入对该参数作用的描述',
+      tip_add_success: '参数定义创建成功',
+      parameter_already_exists: '您输入的参数名称已存在'
+    },
+    parameterOperatePart: {
+
+    },
+    parameterTemplateEditPart: {
+
     },
     instructionSetPart: {
       loading_script: '正在加载指令集脚本...',

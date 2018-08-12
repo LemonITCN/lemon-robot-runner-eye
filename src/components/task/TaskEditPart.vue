@@ -36,6 +36,10 @@
         lang: 'task.taskEditPart.',
         menu: [
           {
+            title: 'parameter',
+            target: '/task/parameter'
+          },
+          {
             title: 'instruction',
             target: '/task/instruction'
           },

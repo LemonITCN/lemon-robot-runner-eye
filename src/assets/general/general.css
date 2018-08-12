@@ -14,6 +14,16 @@
     margin: 0 auto;
 }
 
+.list-end-add-button {
+    padding: 14px;
+    cursor: pointer;
+    color: #578fbb;
+}
+
+.list-end-add-button:hover {
+    color: #0e58bb;
+}
+
 /*覆盖element-默认样式*/
 
 .form-dialog .el-dialog__body {

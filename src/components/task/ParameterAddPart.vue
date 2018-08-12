@@ -1,5 +1,5 @@
 <template>
-  <div class="data-set-property-add-part">
+  <div class="parameter-add-part">
     <div class="list-end-add-button"
          @click="createPanelState = true">
       <i class="el-icon-plus"></i> {{$t(lang + 'add')}}
@@ -41,7 +41,7 @@
 
   export default {
     components: {ElButton},
-    name: 'DataSetPropertyAddPart',
+    name: 'ParameterAddPart',
     methods: {
       createDataSetProperty () {
         this.$refs[this.formName].validate((valid) => {
@@ -61,7 +61,7 @@
     },
     data () {
       return {
-        lang: 'task.dataSetPropertyAddPart.',
+        lang: 'task.parameterAddPart.',
         dataSetProperty: new DataSetProperty(),
         formName: 'dataSetProperty',
         rules: {
@@ -74,7 +74,7 @@
 </script>
 
 <style scoped>
-  .data-set-property-add-part {
+  .parameter-add-part {
     text-align: center;
   }
 

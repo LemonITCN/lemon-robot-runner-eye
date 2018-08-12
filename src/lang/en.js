@@ -114,9 +114,30 @@ export default {
     taskEditPart: {
       mTitle: 'Task editor',
       mIntro: 'You can write your instruction set and data set through the task editor.',
+      parameter: 'Parameter define',
       instruction: 'Instruction set',
       plugin: 'Plugins usage',
       data: 'Data set'
+    },
+    parameterPart: {
+
+    },
+    parameterAddPart: {
+      add: 'Add parameter define',
+      parameter_name: 'Parameter name',
+      parameter_name_placeholder: 'Please enter a parameter name',
+      parameter_is_binary: 'Is binary',
+      parameter_is_required: 'Is required',
+      parameter_remark: 'Parameter remark',
+      parameter_remark_placeholder: 'Please enter the parameter remark',
+      tip_add_success: 'The parameter added successfully',
+      parameter_already_exists: 'Parameter name already exists'
+    },
+    parameterOperatePart: {
+
+    },
+    parameterTemplateEditPart: {
+
     },
     instructionSetPart: {
       loading_script: 'Loading instruction set script...',
