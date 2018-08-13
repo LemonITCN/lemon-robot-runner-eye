@@ -12,6 +12,7 @@
 .form-dialog {
     width: 1320px;
     margin: 0 auto;
+    text-align: left;
 }
 
 .list-end-add-button {

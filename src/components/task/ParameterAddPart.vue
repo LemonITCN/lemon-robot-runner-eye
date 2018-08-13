@@ -8,28 +8,25 @@
         :title="$t(lang + 'add')"
         :visible.sync="createPanelState"
         class="form-dialog">
-      <el-form :ref="formName" :rules="rules" :model="dataSetProperty" label-width="140px">
-        <el-form-item :label="$t(lang + 'data_set_property_key')" prop="key" class="dialog-field">
-          <el-input v-model="dataSetProperty.key"
-                    :placeholder="$t(lang + 'data_set_property_key_placeholder')"></el-input>
+      <el-form :ref="formName" :rules="rules" :model="parameter" label-width="140px">
+        <el-form-item :label="$t(lang + 'parameter_name')" prop="name" class="dialog-field">
+          <el-input v-model="parameter.name"
+                    :placeholder="$t(lang + 'parameter_name_placeholder')"></el-input>
         </el-form-item>
-        <el-form-item :label="$t(lang + 'data_set_property_type')" class="dialog-field">
-          <el-select v-model="dataSetProperty.type" style="width: 480px">
-            <el-option
-                v-for="item in $define.OPTIONS.DATA_SET_PROPERTY_TYPE"
-                :key="item.value"
-                :label="item.name"
-                :value="item.value">
-            </el-option>
-          </el-select>
+        <el-form-item :label="$t(lang + 'parameter_is_binary')">
+          <el-switch v-model="parameter.isBinary"></el-switch>
         </el-form-item>
-        <el-form-item :label="$t(lang + 'data_set_property_remark')" prop="desc" class="dialog-field">
-          <el-input type="textarea" v-model="dataSetProperty.remark" rows="6"></el-input>
+        <el-form-item :label="$t(lang + 'parameter_is_required')">
+          <el-switch v-model="parameter.isRequired"></el-switch>
+        </el-form-item>
+        <el-form-item :label="$t(lang + 'parameter_remark')" prop="desc" class="dialog-field">
+          <el-input type="textarea" v-model="parameter.remark" rows="6"
+                    :placeholder="$t(lang + 'parameter_remark_placeholder')"></el-input>
         </el-form-item>
       </el-form>
       <span slot="footer" class="dialog-footer">
         <el-button @click="createPanelState = false">{{$t('common.cancel')}}</el-button>
-        <el-button type="primary" @click="createDataSetProperty">{{$t('common.create')}}</el-button>
+        <el-button type="primary" @click="createParameter">{{$t('common.create')}}</el-button>
       </span>
     </el-dialog>
   </div>
@@ -37,24 +34,25 @@
 
 <script>
   import ElButton from '../../../node_modules/element-ui/packages/button/src/button.vue'
-  import DataSetProperty from '../../model/DataSetProperty'
+  import Parameter from '../../model/Parameter'
 
   export default {
     components: {ElButton},
     name: 'ParameterAddPart',
     methods: {
-      createDataSetProperty () {
+      createParameter () {
         this.$refs[this.formName].validate((valid) => {
           if (valid) {
-            let properties = this.$store.getters[this.$NS.TASK.GET_CURRENT_DATA_SET].properties
-            if (this.$util.array.countWithFiledValue(properties, 'key', this.dataSetProperty.key) > 0) {
-              this.$util.tip.notification_error(this.$t(this.lang + 'data_set_property_already_exists'))
+            let parameters = this.$store.getters[this.$NS.TASK.GET_CURRENT_EDIT_TASK].parameters
+            if (this.$util.array.countWithFiledValue(parameters, 'name', this.parameter.name) > 0) {
+              this.$util.tip.notification_error(this.$t(this.lang + 'parameter_already_exists'))
               return
             }
-            properties.push(this.dataSetProperty)
+            this.$store.getters[this.$NS.TASK.GET_CURRENT_EDIT_TASK].parameters.push(this.parameter)
             this.$store.dispatch(this.$NS.TASK.ACT_SAVE_CURRENT_EDITING_TASK)
             this.createPanelState = false
-            this.dataSetProperty = new DataSetProperty()
+            this.$util.tip.notification_success(this.$t(this.lang + 'tip_add_success'))
+            this.parameter = new Parameter()
           }
         })
       }
@@ -62,10 +60,10 @@
     data () {
       return {
         lang: 'task.parameterAddPart.',
-        dataSetProperty: new DataSetProperty(),
-        formName: 'dataSetProperty',
+        parameter: new Parameter(),
+        formName: 'addParameter',
         rules: {
-          key: this.$define.RULES.COMMON_KEY
+          name: this.$define.RULES.COMMON_KEY
         },
         createPanelState: false,
       }

@@ -120,7 +120,11 @@ export default {
       data: 'Data set'
     },
     parameterPart: {
-
+      column_name: 'Parameter name',
+      column_is_binary: 'Is binary',
+      column_is_required: 'Is required',
+      column_remark: 'Parameter remark',
+      column_operate: 'Operate'
     },
     parameterAddPart: {
       add: 'Add parameter define',
@@ -134,7 +138,17 @@ export default {
       parameter_already_exists: 'Parameter name already exists'
     },
     parameterOperatePart: {
-
+      modify: 'Modify parameter info',
+      delete: 'Delete the parameter',
+      template: 'Eidt template',
+      parameter_name: 'Parameter name',
+      parameter_name_placeholder: 'Please enter a parameter name',
+      parameter_is_binary: 'Is binary',
+      parameter_is_required: 'Is required',
+      parameter_remark: 'Parameter remark',
+      parameter_remark_placeholder: 'Please enter the parameter remark',
+      delete_tip: 'Are you sure you want to delete this parameter?',
+      parameter_already_exists: 'Your newly set parameter name already exists'
     },
     parameterTemplateEditPart: {
 

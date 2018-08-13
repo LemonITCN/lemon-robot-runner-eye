@@ -6,6 +6,7 @@
     </div>
     <!--修改数据集属性信息对话框-->
     <el-dialog
+        @open="handleModifyOpen"
         :title="$t(lang + 'modify')"
         :visible.sync="modifyPanelState"
         width="660px">
@@ -58,6 +59,9 @@
     name: 'DataSetPropertyOperatePart',
     props: ['index'],
     methods: {
+      handleModifyOpen () {
+        this.dataSetProperty = Object.assign({}, this.$store.getters[this.$NS.TASK.GET_CURRENT_DATA_SET].properties[this.index])
+      },
       createDataSetProperty () {
         this.$refs[this.formName].validate((valid) => {
           if (valid) {
@@ -76,12 +80,13 @@
       deleteDataSetProperty () {
         Vue.delete(this.$store.getters[this.$NS.TASK.GET_CURRENT_DATA_SET].properties, this.index)
         this.$store.dispatch(this.$NS.TASK.ACT_SAVE_CURRENT_EDITING_TASK)
+        this.deletePanelState = false
       }
     },
     data () {
       return {
         lang: 'task.dataSetPropertyOperatePart.',
-        dataSetProperty: Object.assign({}, this.$store.getters[this.$NS.TASK.GET_CURRENT_DATA_SET].properties[this.index]),
+        dataSetProperty: {},
         formName: 'dataSetProperty',
         rules: {
           key: this.$define.RULES.COMMON_KEY

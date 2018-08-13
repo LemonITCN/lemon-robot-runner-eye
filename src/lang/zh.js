@@ -134,7 +134,17 @@ export default {
       parameter_already_exists: '您输入的参数名称已存在'
     },
     parameterOperatePart: {
-
+      modify: '修改参数定义信息',
+      delete: '删除这个参数定义',
+      template: '编辑模板',
+      parameter_name: '参数名称',
+      parameter_name_placeholder: '请您输入参数名称',
+      parameter_is_binary: '是否为二进制',
+      parameter_is_required: '是否为必填项',
+      parameter_remark: '参数描述',
+      parameter_remark_placeholder: '请您对这个参数进行简单的描述',
+      delete_tip: '您确定要删除这个参数定义吗?',
+      parameter_already_exists: '您新填写的参数名称已存在，请更换。'
     },
     parameterTemplateEditPart: {
 
