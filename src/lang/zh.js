@@ -162,6 +162,8 @@ export default {
     parameterTemplatePart: {
       json: '编辑JSON模板',
       bin: '上传二进制模板',
+      none_uploaded: '该参数您还没有上传过任何二进制模板',
+      have_uploaded: '当前库中存在您上传的二进制模板，文件名为：',
     },
     instructionSetPart: {
       loading_script: '正在加载指令集脚本...',

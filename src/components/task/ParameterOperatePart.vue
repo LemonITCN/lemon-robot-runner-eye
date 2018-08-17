@@ -73,6 +73,10 @@
               this.$util.tip.notification_error(this.$t(this.lang + 'parameter_already_exists'))
               return
             }
+            if (this.$store.getters[this.$NS.TASK.GET_CURRENT_EDIT_TASK].parameters[this.index].isBinary !== this.parameter.isBinary) {
+              // 是否为二进制的开关状态被修改了
+              this.parameter.template = ''
+            }
             Vue.set(parameters, this.index, this.parameter)
             this.$store.dispatch(this.$NS.TASK.ACT_SAVE_CURRENT_EDITING_TASK)
             this.modifyPanelState = false

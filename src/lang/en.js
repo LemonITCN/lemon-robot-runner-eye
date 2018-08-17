@@ -162,6 +162,8 @@ export default {
     parameterTemplatePart: {
       json: 'Edit JSON template',
       bin: 'Upload BIN template',
+      none_uploaded: 'You have not uploaded any binary templates for this parameter.',
+      have_uploaded: 'The binary template you uploaded exists in the current library. The file name is: ',
     },
     instructionSetPart: {
       loading_script: 'Loading instruction set script...',
