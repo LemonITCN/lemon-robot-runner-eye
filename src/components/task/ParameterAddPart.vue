@@ -33,11 +33,9 @@
 </template>
 
 <script>
-  import ElButton from '../../../node_modules/element-ui/packages/button/src/button.vue'
   import Parameter from '../../model/Parameter'
 
   export default {
-    components: {ElButton},
     name: 'ParameterAddPart',
     methods: {
       createParameter () {

@@ -25,6 +25,24 @@
     color: #0e58bb;
 }
 
+.choose-file-button {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    background: #67C23A;
+    padding: 10px 15px;
+    color: #fff;
+    text-align: center;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.choose-file-button .webuploader-element-invisible {
+    position: absolute !important;
+    clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+    clip: rect(1px, 1px, 1px, 1px);
+}
+
 /*覆盖element-默认样式*/
 
 .form-dialog .el-dialog__body {

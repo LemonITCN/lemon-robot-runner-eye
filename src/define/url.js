@@ -1,4 +1,7 @@
 export default {
+  BASE_URL () {
+    return localStorage.connector_address
+  },
   WEB_SOCKET: '/websocket',
   LRC: {
     ACTIVE: '/lrc/active'
@@ -8,6 +11,7 @@ export default {
     DELETE: '/task/delete',
     UPDATE: '/task/update',
     RENAME: '/task/rename',
+    UPLOAD_PARAMETER_BIN: '/task/parameter-bin',
     GET: '/task/get',
     LIST: '/task/list',
     INSTRUCTION: {

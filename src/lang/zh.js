@@ -22,8 +22,17 @@ export default {
     delete: '删除',
     connect: '连接',
     saving: '正在保存中',
+    upload: '上传',
+    choose_file: '选择文件',
     run: '运行',
-    dateStr: 'yyyy年MM月dd日 hh:mm:ss'
+    hide: '隐藏',
+    dateStr: 'yyyy年MM月dd日 hh:mm:ss',
+    upload_view: {
+      tip_choose_file: '请单击[选择文件]按钮以选择要上载的文件',
+      tip_upload_file: '请点击[上传文件]按钮来上传已选中的文件 : ',
+      tip_uploading: '文件正在上传中 : ',
+      tip_upload_success: 'Bin文件模板已成功上传！'
+    }
   },
   rules: {
     common_key: '该字段为必填项，且要求：长度：1-64，字母开头，只允许含有字母、数字、下划线',
@@ -120,7 +129,11 @@ export default {
       data: '数据集'
     },
     parameterPart: {
-
+      column_name: '参数名称',
+      column_is_binary: '是否为二进制',
+      column_is_required: '是否为必填项',
+      column_remark: '参数描述',
+      column_operate: '操作'
     },
     parameterAddPart: {
       add: '添加参数定义',
@@ -144,10 +157,11 @@ export default {
       parameter_remark: '参数描述',
       parameter_remark_placeholder: '请您对这个参数进行简单的描述',
       delete_tip: '您确定要删除这个参数定义吗?',
-      parameter_already_exists: '您新填写的参数名称已存在，请更换。'
+      parameter_already_exists: '您新填写的参数名称已存在，请更换。',
     },
-    parameterTemplateEditPart: {
-
+    parameterTemplatePart: {
+      json: '编辑JSON模板',
+      bin: '上传二进制模板',
     },
     instructionSetPart: {
       loading_script: '正在加载指令集脚本...',

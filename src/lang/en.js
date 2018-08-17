@@ -22,8 +22,17 @@ export default {
     delete: 'Delete',
     connect: 'Connect',
     saving: 'Saving',
+    choose_file: 'Choose File',
+    upload: 'Upload',
     run: 'Run',
-    dateStr: 'yyyy-MM-dd hh:mm:ss'
+    hide: 'Hide',
+    dateStr: 'yyyy-MM-dd hh:mm:ss',
+    upload_view: {
+      tip_choose_file: 'Please click the [Choose File] button to select a file to upload',
+      tip_upload_file: 'Please click the [Upload] button to upload selected file : ',
+      tip_uploading: 'Uploading the file : ',
+      tip_upload_success: 'Bin file template has uploaded successfully!'
+    }
   },
   responseMsg: {
     timeout: 'Sorry, the connection server timed out',
@@ -135,7 +144,7 @@ export default {
       parameter_remark: 'Parameter remark',
       parameter_remark_placeholder: 'Please enter the parameter remark',
       tip_add_success: 'The parameter added successfully',
-      parameter_already_exists: 'Parameter name already exists'
+      parameter_already_exists: 'Parameter name already exists',
     },
     parameterOperatePart: {
       modify: 'Modify parameter info',
@@ -148,10 +157,11 @@ export default {
       parameter_remark: 'Parameter remark',
       parameter_remark_placeholder: 'Please enter the parameter remark',
       delete_tip: 'Are you sure you want to delete this parameter?',
-      parameter_already_exists: 'Your newly set parameter name already exists'
+      parameter_already_exists: 'Your newly set parameter name already exists',
     },
-    parameterTemplateEditPart: {
-
+    parameterTemplatePart: {
+      json: 'Edit JSON template',
+      bin: 'Upload BIN template',
     },
     instructionSetPart: {
       loading_script: 'Loading instruction set script...',
