@@ -16,6 +16,7 @@ export default {
     data_set_key: '数据集标识',
     data_set_name: '数据集名称',
     please_input: '请输入',
+    iknow: '我知道了',
     cancel: '取消',
     create: '创建',
     modify: '修改',
@@ -31,7 +32,6 @@ export default {
       tip_choose_file: '请单击[选择文件]按钮以选择要上载的文件',
       tip_upload_file: '请点击[上传文件]按钮来上传已选中的文件 : ',
       tip_uploading: '文件正在上传中 : ',
-      tip_upload_success: 'Bin文件模板已成功上传！'
     }
   },
   rules: {
@@ -164,6 +164,7 @@ export default {
       bin: '上传二进制模板',
       none_uploaded: '该参数您还没有上传过任何二进制模板',
       have_uploaded: '当前库中存在您上传的二进制模板，文件名为：',
+      tip_upload_success: 'Bin文件模板已成功上传！'
     },
     instructionSetPart: {
       loading_script: '正在加载指令集脚本...',
@@ -241,11 +242,27 @@ export default {
   plan: {},
   cloud: {},
   plugin: {
-    pluginContainer: {
+    pluginPart: {
       mTitle: '插件管理器',
       mIntro: '在这里，您可以对您本地的插件进行管理，也可以访问插件商店来在线安装新的插件',
       installed: '已安装插件',
       store: '插件商店'
+    },
+    pluginUploadPart: {
+      upload: '上传插件包',
+      upload_success: '插件上传成功！',
+      plugin_name: '插件名称: ',
+      plugin_key: '插件关键字: ',
+      plugin_version: '版本号: ',
+      function_package_count: '功能包数量: ',
+      plugin_introduce: '插件介绍: '
+    },
+    pluginInstalledPart: {
+      column_name: '插件名称',
+      column_package: '插件包名',
+      column_version: '版本号',
+      column_key: '插件关键字',
+      column_operate: '操作'
     }
   },
   data: {},

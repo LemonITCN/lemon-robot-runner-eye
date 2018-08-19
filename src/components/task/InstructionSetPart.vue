@@ -13,60 +13,60 @@
 </template>
 
 <script>
-  import {codemirror} from "vue-codemirror";
-  import "codemirror/lib/codemirror.css";
-  import "codemirror/mode/javascript/javascript.js";
-  import "codemirror/addon/hint/javascript-hint.js";
-  import "codemirror/addon/hint/show-hint.css";
-  import "codemirror/addon/hint/show-hint.js";
-  import "codemirror/addon/hint/anyword-hint.js";
-  import "codemirror/theme/mdn-like.css";
-  import InstructionSetListPart from "./InstructionSetListPart.vue";
+  import { codemirror } from 'vue-codemirror'
+  import 'codemirror/lib/codemirror.css'
+  import 'codemirror/mode/javascript/javascript.js'
+  import 'codemirror/addon/hint/javascript-hint.js'
+  import 'codemirror/addon/hint/show-hint.css'
+  import 'codemirror/addon/hint/show-hint.js'
+  import 'codemirror/addon/hint/anyword-hint.js'
+  import 'codemirror/theme/mdn-like.css'
+  import InstructionSetListPart from './InstructionSetListPart.vue'
 
   export default {
-    name: "InstructionSetPart",
+    name: 'InstructionSetPart',
     components: {
       InstructionSetListPart,
       codemirror
     },
-    mounted() {
+    mounted () {
       let instructionSetKey = this.$store.getters[
         this.$NS.TASK.GET_CURRENT_INSTRUCTION_SET_KEY
-        ];
+        ]
       if (instructionSetKey !== null) {
-        this.loadScript(instructionSetKey);
+        this.loadScript(instructionSetKey)
       } else {
-        this.script = "";
+        this.script = ''
       }
     },
     computed: {
-      instructionSetKey() {
-        return this.$store.getters[this.$NS.TASK.GET_CURRENT_INSTRUCTION_SET_KEY];
+      instructionSetKey () {
+        return this.$store.getters[this.$NS.TASK.GET_CURRENT_INSTRUCTION_SET_KEY]
       }
     },
     watch: {
-      instructionSetKey(val, oldVal) {
-        this.notSaveInstructionSetKey = val;
+      instructionSetKey (val, oldVal) {
+        this.notSaveInstructionSetKey = val
         this.notSaveTaskId = this.$store.getters[
           this.$NS.TASK.GET_CURRENT_EDIT_TASK
-          ].taskId;
+          ].taskId
         if (oldVal !== null) {
           // 保存任务
-          this.saveScript(oldVal);
+          this.saveScript(oldVal)
         }
         if (val !== null) {
-          this.loadScript(val);
+          this.loadScript(val)
         }
       }
     },
-    beforeDestroy() {
+    beforeDestroy () {
       // 组件马上销毁了，保存任务
-      this.saveScript(this.notSaveInstructionSetKey);
+      this.saveScript(this.notSaveInstructionSetKey)
     },
     methods: {
-      loadScript(instructionSetKey) {
-        this.script = null;
-        this.$util.log.info("Change instruction set: " + instructionSetKey);
+      loadScript (instructionSetKey) {
+        this.script = null
+        this.$util.log.info('Change instruction set: ' + instructionSetKey)
         this.$axios
           .get(this.$define.URL.TASK.INSTRUCTION.GET, {
             params: {
@@ -77,13 +77,13 @@
           })
           .then(res => {
             this.oldScript = res.data.data
-            this.script = res.data.data;
-          });
+            this.script = res.data.data
+          })
       },
-      saveScript(instructionSetKey) {
+      saveScript (instructionSetKey) {
         if (this.oldScript === this.script) {
           this.$util.log.debug('The instruction set script has not changed and does not need to be saved.')
-          return;
+          return
         }
         if (this.oldScript !== null && this.script !== null) {
           let self = this
@@ -93,43 +93,43 @@
               instructionSetKey: instructionSetKey,
               script: this.script
             },
-            success() {
+            success () {
               self.oldScript = self.script
             }
-          });
+          })
         }
       },
-      keyboardSave(event) {
-        if (event.ctrlKey && event.key === "s") {
-          let self = this;
+      keyboardSave (event) {
+        if (event.ctrlKey && event.key === 's') {
+          let self = this
           setTimeout(function () {
-            self.saveScript(self.notSaveInstructionSetKey);
-          }, 1);
-          event.preventDefault();
+            self.saveScript(self.notSaveInstructionSetKey)
+          }, 1)
+          event.preventDefault()
         }
       }
     },
-    data() {
+    data () {
       return {
         // 保存最原始的脚本指令，在保存的时候进行对比，如果发现一模一样，那就不保存了
         oldScript: null,
         script: null,
-        lang: "task.instructionSetPart.",
-        notSaveTaskId: "",
-        notSaveInstructionSetKey: "",
+        lang: 'task.instructionSetPart.',
+        notSaveTaskId: '',
+        notSaveInstructionSetKey: '',
         options: {
           tabSize: 2,
-          mode: "text/javascript",
-          theme: "mdn-like",
+          mode: 'text/javascript',
+          theme: 'mdn-like',
           extraKeys: {
-            Ctrl: "autocomplete"
+            Ctrl: 'autocomplete'
           },
           lineNumbers: true,
           line: true
         }
-      };
+      }
     }
-  };
+  }
 </script>
 
 <style scoped>
@@ -152,6 +152,7 @@
     position: absolute;
     bottom: 50px;
     right: 50px;
+    font-size: 20px;
   }
 
   .instruction-set-editor {

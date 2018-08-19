@@ -47,13 +47,11 @@
           self.uploadPercentage = Math.ceil(percentage * 100)
           if (percentage === 1) {
             // 上传完成
-            self.uploadFileName = self.$t(self.lang + 'tip_upload_success')
             self.initUploader()
           }
         })
         this.uploader.on('uploadSuccess', (file, response) => {
           if (response.success) {
-            this.$util.tip.notification_success(this.$t(this.lang + 'tip_upload_success'))
             this.uploadSuccess(file, response)
           }
         })
@@ -83,7 +81,6 @@
 
   .operate-area * {
     margin-right: 5px;
-    height: 42px;
   }
 
   .upload-tip {

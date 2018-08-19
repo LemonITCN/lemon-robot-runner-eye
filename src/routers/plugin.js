@@ -1,13 +1,13 @@
-import PluginContainer from '../components/plugin/PluginContainer'
-import PluginInstalledPartContainer from '../components/plugin/PluginInstalledPartContainer'
-import PluginStorePartContainer from '../components/plugin/PluginStorePartContainer'
+import PluginPart from '../components/plugin/PluginPart'
+import PluginInstalledPart from '../components/plugin/PluginInstalledPart'
+import PluginStorePart from '../components/plugin/PluginStorePart'
 
 export default {
   path: '/plugin',
-  component: PluginContainer,
+  component: PluginPart,
   redirect: '/plugin/installed',
   children: [
-    {path: '/plugin/installed', component: PluginInstalledPartContainer},
-    {path: '/plugin/store', component: PluginStorePartContainer}
+    {path: '/plugin/installed', component: PluginInstalledPart},
+    {path: '/plugin/store', component: PluginStorePart}
   ]
 }

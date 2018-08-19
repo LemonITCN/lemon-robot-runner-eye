@@ -16,6 +16,7 @@ export default {
     data_set_key: 'Data set key',
     data_set_name: 'Data set name',
     please_input: 'Please input',
+    iknow: 'I Know',
     cancel: 'Cancel',
     create: 'Create',
     modify: 'Modify',
@@ -31,7 +32,6 @@ export default {
       tip_choose_file: 'Please click the [Choose File] button to select a file to upload',
       tip_upload_file: 'Please click the [Upload] button to upload selected file : ',
       tip_uploading: 'Uploading the file : ',
-      tip_upload_success: 'Bin file template has uploaded successfully!'
     }
   },
   responseMsg: {
@@ -164,6 +164,7 @@ export default {
       bin: 'Upload BIN template',
       none_uploaded: 'You have not uploaded any binary templates for this parameter.',
       have_uploaded: 'The binary template you uploaded exists in the current library. The file name is: ',
+      tip_upload_success: 'Bin file template has uploaded successfully!'
     },
     instructionSetPart: {
       loading_script: 'Loading instruction set script...',
@@ -241,11 +242,27 @@ export default {
   plan: {},
   cloud: {},
   plugin: {
-    pluginContainer: {
+    pluginPart: {
       mTitle: 'Plugin manager',
       mIntro: 'Here, you can manage your local plugins, or you can access plugin stores to install new plugins online.',
       installed: 'Installed plugin',
       store: 'Plugin store'
+    },
+    pluginUploadPart: {
+      upload: 'Upload plugin package',
+      upload_success: 'Plugin upload success!',
+      plugin_name: 'Plugin name: ',
+      plugin_key: 'Plugin key: ',
+      plugin_version: 'Version: ',
+      plugin_introduce: 'Introduce: ',
+      function_package_count: 'Function package count: '
+    },
+    pluginInstalledPart: {
+      column_name: 'Plugin name',
+      column_package: 'Package name',
+      column_version: 'Version',
+      column_key: 'Plugin key',
+      column_operate: 'Operate'
     }
   },
   data: {},

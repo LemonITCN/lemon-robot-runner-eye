@@ -22,5 +22,9 @@ export default {
       GET: '/task/instruction/get',
       LIST: '/task/instruction/list'
     }
+  },
+  PLUGIN: {
+    UPLOAD: '/plugin/upload',
+    LIST: '/plugin/list'
   }
 }

@@ -87,6 +87,7 @@
         this.templateObj = [file.source.name, response.data]
         this.$store.getters[this.$NS.TASK.GET_CURRENT_EDIT_TASK].parameters[this.index].template = JSON.stringify(this.templateObj)
         this.$store.dispatch(this.$NS.TASK.ACT_SAVE_CURRENT_EDITING_TASK)
+        this.$util.tip.notification_success(this.$t(this.lang + 'tip_upload_success'))
       },
       isHaveUploaded () {
         return (Array.isArray(this.templateObj) && this.templateObj.length === 2)
@@ -131,8 +132,8 @@
     font-size: 20px;
   }
 
-  .json-editor > > > .CodeMirror-scroll {
-    margin-right: 0px !important;
+  .json-editor >>> .CodeMirror-scroll {
+    margin-right: 0 !important;
   }
 
   .state-tip {

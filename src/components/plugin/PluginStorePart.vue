@@ -1,12 +1,12 @@
 <template>
-  <div class="plugin-store-part-container">
+  <div class="plugin-store-part">
     Plugin store part container
   </div>
 </template>
 
 <script>
   export default {
-    name: "PluginStorePartContainer"
+    name: "PluginStorePart"
   }
 </script>
 
