@@ -262,7 +262,12 @@ export default {
       column_package: 'Package name',
       column_version: 'Version',
       column_key: 'Plugin key',
-      column_operate: 'Operate'
+      column_operate: 'Operate',
+      detail_introduce: 'Plugin introduce: ',
+      detail_store: 'Source store: '
+    },
+    pluginOperatePart: {
+      uninstall: 'Uninstall'
     }
   },
   data: {},

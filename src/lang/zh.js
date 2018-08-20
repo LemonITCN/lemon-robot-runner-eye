@@ -262,7 +262,12 @@ export default {
       column_package: '插件包名',
       column_version: '版本号',
       column_key: '插件关键字',
-      column_operate: '操作'
+      column_operate: '操作',
+      detail_introduce: '插件介绍: ',
+      detail_store: '插件来源商店: '
+    },
+    pluginOperatePart: {
+      uninstall: '卸载'
     }
   },
   data: {},
