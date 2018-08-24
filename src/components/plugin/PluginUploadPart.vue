@@ -57,6 +57,7 @@
         this.pluginUploadPanelState = false
         this.pluginResultPanelState = true
         this.pluginInfo = response.data
+        this.$store.dispatch(this.$NS.PLUGIN.ACT_REFRESH_PLUGIN_LIST)
       },
       beforeClose () {}
     },

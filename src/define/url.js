@@ -25,6 +25,7 @@ export default {
   },
   PLUGIN: {
     UPLOAD: '/plugin/upload',
+    DELETE: '/plugin/delete',
     LIST: '/plugin/list'
   }
 }

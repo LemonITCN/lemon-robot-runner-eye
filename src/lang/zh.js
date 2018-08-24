@@ -264,10 +264,13 @@ export default {
       column_key: '插件关键字',
       column_operate: '操作',
       detail_introduce: '插件介绍: ',
-      detail_store: '插件来源商店: '
+      detail_store: '插件来源商店: ',
+      user_upload: '用户自行上传'
     },
     pluginOperatePart: {
-      uninstall: '卸载'
+      uninstall: '卸载',
+      uninstall_confirm: '您确定要卸载这个插件吗？卸载后，所有依赖该插件的任务将会无法执行（不会影响已经开始运行的任务）。',
+      uninstall_success: '插件已经成功被卸载！'
     }
   },
   data: {},

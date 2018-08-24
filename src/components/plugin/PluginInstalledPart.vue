@@ -7,11 +7,11 @@
       <el-table-column type="expand">
         <template slot-scope="props">
           <el-form label-position="left" inline class="plugin-detail">
+            <el-form-item :label="$t(lang + 'detail_store')">
+              <span>{{ props.row.store.length === 1 ? $t(lang + 'user_upload') : props.row.store }}</span>
+            </el-form-item>
             <el-form-item :label="$t(lang + 'detail_introduce')">
               <span>{{ props.row.config.introduce }}</span>
-            </el-form-item>
-            <el-form-item :label="$t(lang + 'detail_store')">
-              <span>{{ props.row.config.store }}</span>
             </el-form-item>
           </el-form>
         </template>
@@ -96,7 +96,7 @@
 
   .plugin-detail >>> label {
     color: #99a9bf;
-    width: 90px;
+    width: 120px;
   }
 
   .plugin-detail .el-form-item {

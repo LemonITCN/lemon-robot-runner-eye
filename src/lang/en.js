@@ -264,10 +264,13 @@ export default {
       column_key: 'Plugin key',
       column_operate: 'Operate',
       detail_introduce: 'Plugin introduce: ',
-      detail_store: 'Source store: '
+      detail_store: 'Source store: ',
+      user_upload: 'User upload'
     },
     pluginOperatePart: {
-      uninstall: 'Uninstall'
+      uninstall: 'Uninstall',
+      uninstall_confirm: 'Are you sure you want to uninstall this plugin? After uninstalling, all tasks that depend on the plugin will not be executed (it will not affect the tasks that have already started running).',
+      uninstall_success: 'The plugin has been successfully uninstalled!'
     }
   },
   data: {},
