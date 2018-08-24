@@ -188,6 +188,16 @@ export default {
       delete_tip: '确认要删除这个指令集吗？',
       delete_success: '指令集删除成功!'
     },
+    pluginUsagePart: {
+      column_name: '插件名称',
+      column_package: '插件包名',
+      column_version: '版本号',
+      column_key: '插件关键字',
+      column_enable_state: '启用状态',
+      detail_introduce: '插件介绍: ',
+      detail_store: '插件来源商店: ',
+      user_upload: '用户自行上传'
+    },
     dataSetAddPart: {
       add: '添加数据集',
       data_set_key: '数据集关键字',

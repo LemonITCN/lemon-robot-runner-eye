@@ -6,13 +6,24 @@
  */
 let containsInArray = (array, value) => {
   if (Array.isArray(array)) {
-    array.forEach(item => {
-      if (value === item) {
-        return true
-      }
-    })
+    return array.indexOf(value) >= 0
   }
   return false
+}
+
+/**
+ * 从数组中删除元素
+ * @param array 数组
+ * @param value 要删除的元素
+ */
+let removeFromArray = (array, value) => {
+  if (Array.isArray(array)) {
+    let index = array.indexOf(value)
+    while (index >= 0) {
+      array.splice(index, 1)
+      index = array.indexOf(value)
+    }
+  }
 }
 
 /**
@@ -39,5 +50,6 @@ let countWithFiledValue = (array, fieldName, value, ignoreIndexArr) => {
 
 export default {
   containsInArray,
-  countWithFiledValue
+  removeFromArray,
+  countWithFiledValue,
 }

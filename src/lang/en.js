@@ -188,6 +188,16 @@ export default {
       delete_tip: 'Are you sure you want to delete this instruction set?',
       delete_success: 'The instruction set was deleted successfully!'
     },
+    pluginUsagePart: {
+      column_name: 'Plugin name',
+      column_package: 'Package name',
+      column_version: 'Version',
+      column_key: 'Plugin key',
+      column_enable_state: 'Enable state',
+      detail_introduce: 'Plugin introduce: ',
+      detail_store: 'Source store: ',
+      user_upload: 'User upload'
+    },
     dataSetAddPart: {
       add: 'Add data set',
       data_set_key: 'Data set key',
