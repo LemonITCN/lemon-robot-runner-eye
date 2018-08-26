@@ -19,7 +19,6 @@ export default {
   },
   actions: {
     [NS.PLUGIN.ACT_REFRESH_PLUGIN_LIST] (context, callbacks) {
-      context.commit(NS.TASK.MUT_SET_STATE_PULLING)
       util.log.info('Prepare to refresh the plugin list')
       axios.get(define.URL.PLUGIN.LIST)
         .then((res) => {
@@ -29,7 +28,6 @@ export default {
           }
         })
         .catch(() => {
-          context.commit(NS.TASK.MUT_SET_STATE_FAILED)
           if (callbacks && typeof callbacks.failed === 'function') {
             callbacks.failed()
           }

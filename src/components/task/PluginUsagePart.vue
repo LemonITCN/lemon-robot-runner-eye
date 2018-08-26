@@ -58,23 +58,40 @@
         </template>
       </el-table-column>
     </el-table>
+    <el-dialog
+        :title="showDetailPlugin === null ? '' : showDetailPlugin.config.name"
+        :visible.sync="pluginDetailPanelState"
+        width="720">
+      <plugin-detail-part v-if="showDetailPlugin !== null" :plugin="showDetailPlugin"></plugin-detail-part>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="pluginDetailPanelState = false">{{$t('common.iknow')}}</el-button>
+      </span>
+    </el-dialog>
   </div>
 </template>
 
 <script>
+  import PluginDetailPart from '../plugin/PluginDetailPart.vue'
+
   export default {
+    components: {PluginDetailPart},
     name: 'PluginUsagePart',
     mounted () {
-      let pluginStrArr = []
-      let pluginArr = this.$store.getters[this.$NS.PLUGIN.GET_PLUGIN_LIST]
-      for (let i = 0; i < pluginArr.length; i++) {
-        pluginStrArr[i] = this.createPluginStr(pluginArr[i])
-      }
-      let enabledPluginStrs = this.$store.getters[this.$NS.TASK.GET_CURRENT_EDIT_TASK].pluginsUsage
-      enabledPluginStrs.forEach(pluginStr => {
-        let index = pluginStrArr.indexOf(pluginStr)
-        if (index >= 0) {
-          this.enable_state[index] = true
+      let self = this
+      this.$store.dispatch(this.$NS.PLUGIN.ACT_REFRESH_PLUGIN_LIST, {
+        success () {
+          let pluginStrArr = []
+          let pluginArr = self.$store.getters[self.$NS.PLUGIN.GET_PLUGIN_LIST]
+          for (let i = 0; i < pluginArr.length; i++) {
+            pluginStrArr[i] = self.createPluginStr(pluginArr[i])
+          }
+          let enabledPluginStrs = self.$store.getters[self.$NS.TASK.GET_CURRENT_EDIT_TASK].pluginsUsage
+          enabledPluginStrs.forEach(pluginStr => {
+            let index = pluginStrArr.indexOf(pluginStr)
+            if (index >= 0) {
+              self.enable_state[index] = true
+            }
+          })
         }
       })
     },
@@ -83,7 +100,6 @@
         return plugin.config.packageName + '#' + plugin.config.version + '@' + plugin.store
       },
       onEnabledChange (state) {
-//        this.$store.getters[this.$NS.TASK.GET_CURRENT_EDIT_TASK].pluginsUsage.push()
         let plugin = this.$store.getters[this.$NS.PLUGIN.GET_PLUGIN_LIST][state.$index]
         let pluginStr = this.createPluginStr(plugin)
         let enabledPluginStrs = this.$store.getters[this.$NS.TASK.GET_CURRENT_EDIT_TASK].pluginsUsage
@@ -104,14 +120,17 @@
        */
       showPluginDetail (row, column) {
         if (column.className !== 'operate') {
-          this.$util.log.info(row)
+          this.showDetailPlugin = row
+          this.pluginDetailPanelState = true
         }
       }
     },
     data () {
       return {
         lang: 'task.pluginUsagePart.',
-        enable_state: []
+        enable_state: [],
+        pluginDetailPanelState: false,
+        showDetailPlugin: null
       }
     }
   }
