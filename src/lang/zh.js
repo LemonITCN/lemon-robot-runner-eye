@@ -86,6 +86,11 @@ export default {
     }
   },
   task: {
+    taskMenuPart: {
+      menu: '菜单',
+      execute: '模拟执行任务',
+      export: '导出任务包'
+    },
     store: {
       instruction_set_list_refresh_success: '指令集列表刷新成功',
       task_change_submit_success: '任务的修改已提交成功',

@@ -8,6 +8,7 @@
     </div>
     <el-button class="task-edit-close-button" @click="closeEditingTask" icon="el-icon-close"
                circle></el-button>
+    <task-menu-part class="task-menu-part"></task-menu-part>
     <router-view class="task-edit-part-content"></router-view>
   </div>
 </template>
@@ -68,6 +69,12 @@
     right: 30px;
     top: 35px;
     font-size: 24px;
+  }
+
+  .task-menu-part{
+    position: absolute;
+    right: 100px;
+    top: 35px;
   }
 
   .task-edit-part-content {

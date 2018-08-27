@@ -86,6 +86,11 @@ export default {
     }
   },
   task: {
+    taskMenuPart: {
+      menu: 'Menu',
+      execute: 'Simulate execute',
+      export: 'Export task package'
+    },
     store: {
       instruction_set_list_refresh_success: 'The instruction set list is refreshed successfully.',
       task_change_submit_success: 'The modification of the task has been successfully submitted',
