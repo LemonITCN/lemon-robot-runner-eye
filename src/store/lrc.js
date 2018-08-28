@@ -15,59 +15,59 @@ export default {
     globalWs: null
   },
   getters: {
-    [NS.LRC.GET_IS_SHOW_PANEL] (state) {
+    [NS.LRC.GET_IS_SHOW_PANEL](state) {
       return state.state !== NS.LRC.MUT_SET_STATE_CONNECTED
     },
-    [NS.LRC.GET_IS_CAN_START_CONNECT] (state) {
+    [NS.LRC.GET_IS_CAN_START_CONNECT](state) {
       return state.state === NS.LRC.MUT_SET_STATE_DISCONNECTED
     },
-    [NS.LRC.GET_IS_CAN_SEND_REQUEST] (state) {
+    [NS.LRC.GET_IS_CAN_SEND_REQUEST](state) {
       return state.state === NS.LRC.MUT_SET_STATE_CONNECTED
     },
-    [NS.LRC.GET_LRCT] (state) {
+    [NS.LRC.GET_LRCT](state) {
       return state.lrct
     },
-    [NS.LRC.GET_LRCK] (state) {
+    [NS.LRC.GET_LRCK](state) {
       return state.lrck
     },
-    [NS.LRC.GET_LRCS] (state) {
+    [NS.LRC.GET_LRCS](state) {
       return state.lrcs
     },
-    [NS.LRC.GET_ADDRESS] (state) {
+    [NS.LRC.GET_ADDRESS](state) {
       return state.address
     }
   },
   mutations: {
-    [NS.LRC.MUT_SET_STATE] (state, connState) {
+    [NS.LRC.MUT_SET_STATE](state, connState) {
       state.state = connState
     },
-    [NS.LRC.MUT_SET_STATE_DISCONNECTED] (state) {
+    [NS.LRC.MUT_SET_STATE_DISCONNECTED](state) {
       state.state = NS.LRC.MUT_SET_STATE_DISCONNECTED
     },
-    [NS.LRC.MUT_SET_STATE_WSCONNING] (state) {
+    [NS.LRC.MUT_SET_STATE_WSCONNING](state) {
       state.state = NS.LRC.MUT_SET_STATE_WSCONNING
     },
-    [NS.LRC.MUT_SET_STATE_ACTIVING] (state) {
+    [NS.LRC.MUT_SET_STATE_ACTIVING](state) {
       state.state = NS.LRC.MUT_SET_STATE_ACTIVING
     },
-    [NS.LRC.MUT_SET_STATE_CONNECTED] (state) {
+    [NS.LRC.MUT_SET_STATE_CONNECTED](state) {
       state.state = NS.LRC.MUT_SET_STATE_CONNECTED
     },
-    [NS.LRC.MUT_SET_LRCT] (state, lrct) {
+    [NS.LRC.MUT_SET_LRCT](state, lrct) {
       state.lrct = lrct
     },
-    [NS.LRC.MUT_SET_LRCK] (state, lrck) {
+    [NS.LRC.MUT_SET_LRCK](state, lrck) {
       state.lrck = lrck
     },
-    [NS.LRC.MUT_SET_LRCS] (state, lrcs) {
+    [NS.LRC.MUT_SET_LRCS](state, lrcs) {
       state.lrcs = lrcs
     },
-    [NS.LRC.MUT_SET_ADDRESS] (state, address) {
+    [NS.LRC.MUT_SET_ADDRESS](state, address) {
       state.address = address
     }
   },
   actions: {
-    [NS.LRC.ACT_CONN_START] (context) {
+    [NS.LRC.ACT_CONN_START](context) {
       // 开始发起客户端连接
       util.log.info('Start LRC...')
       context.commit(NS.LRC.MUT_SET_STATE_WSCONNING)
@@ -98,7 +98,7 @@ export default {
         context.dispatch(NS.LRC.ACT_CONN_RESET)
       }
     },
-    [NS.LRC.ACT_CONN_ACTIVE] (context, connInfo) {
+    [NS.LRC.ACT_CONN_ACTIVE](context, connInfo) {
       util.log.info('Start active lrc...')
       context.commit(NS.LRC.MUT_SET_STATE_ACTIVING)
       // 设置基础URL，供全局使用
@@ -106,7 +106,8 @@ export default {
       axios.post(define.URL.LRC.ACTIVE, {
         'lrct': context.state.lrct,
         'lrcs': connInfo.encryptedLrcs,
-        'activeCode': connInfo.activeCode
+        'activeCode': connInfo.activeCode,
+        'clientType': 0
       })
         .then((res) => {
           if (res.data.success) {
@@ -124,12 +125,12 @@ export default {
           context.commit(NS.LRC.MUT_SET_STATE_DISCONNECTED)
         })
     },
-    [NS.LRC.ACT_CONN_RESET] (context) {
+    [NS.LRC.ACT_CONN_RESET](context) {
       context.commit(NS.LRC.MUT_SET_STATE_DISCONNECTED)
       context.commit(NS.LRC.MUT_SET_LRCS, '')
       context.state.globalWs = null
     },
-    [NS.LRC.ACT_RESTORE_CONN_INFO] (context) {
+    [NS.LRC.ACT_RESTORE_CONN_INFO](context) {
       context.commit(NS.LRC.MUT_SET_STATE_DISCONNECTED)
       context.commit(NS.LRC.MUT_SET_LRCT, localStorage.connector_lrct)
       context.commit(NS.LRC.MUT_SET_LRCK, localStorage.connector_lrck)
