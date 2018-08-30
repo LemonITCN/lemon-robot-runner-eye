@@ -201,7 +201,8 @@ export default {
       column_enable_state: 'Enable state',
       detail_introduce: 'Plugin introduce: ',
       detail_store: 'Source store: ',
-      user_upload: 'User upload'
+      user_upload: 'User upload',
+      no_plugin: 'No plugins have been installed in the system.'
     },
     dataSetAddPart: {
       add: 'Add data set',
@@ -280,7 +281,8 @@ export default {
       column_operate: 'Operate',
       detail_introduce: 'Plugin introduce: ',
       detail_store: 'Source store: ',
-      user_upload: 'User upload'
+      user_upload: 'User upload',
+      no_plugin: 'No plugins have been installed in the system.'
     },
     pluginOperatePart: {
       uninstall: 'Uninstall',
@@ -295,6 +297,20 @@ export default {
       mTitle: 'System settings',
       mIntro: 'Here, you can configure the various parameters of the system to make the system more convenient.',
       lrc: 'LRC Manager'
+    },
+    lrcManagePart: {
+      column_lrct: 'LRCT',
+      column_createTime: 'Create time',
+      column_type: 'Client type',
+      column_operate: 'Operate',
+      intro: 'LRC Introduce: ',
+    },
+    lrcOperatePart: {
+      view_lrck: 'View LRCK',
+      delete_confirm: 'Are you sure you want to delete this LRC connection configuration? Clients that use the LRC to establish a connection after deletion will be automatically disconnected! This operation is irreversible!'
+    },
+    lrcCreatePart: {
+      create: 'Create a new LRC info'
     }
   }
 }

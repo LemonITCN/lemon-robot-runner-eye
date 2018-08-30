@@ -12,7 +12,8 @@ export default {
     lrct: '',
     lrck: '',
     lrcs: '',
-    globalWs: null
+    globalWs: null,
+    lrcList: []
   },
   getters: {
     [NS.LRC.GET_IS_SHOW_PANEL](state) {
@@ -35,6 +36,9 @@ export default {
     },
     [NS.LRC.GET_ADDRESS](state) {
       return state.address
+    },
+    [NS.LRC.GET_LRC_LIST](state) {
+      return state.lrcList
     }
   },
   mutations: {
@@ -64,6 +68,9 @@ export default {
     },
     [NS.LRC.MUT_SET_ADDRESS](state, address) {
       state.address = address
+    },
+    [NS.LRC.MUT_SET_LRC_LIST](state, lrcList) {
+      state.lrcList = lrcList
     }
   },
   actions: {
@@ -135,6 +142,12 @@ export default {
       context.commit(NS.LRC.MUT_SET_LRCT, localStorage.connector_lrct)
       context.commit(NS.LRC.MUT_SET_LRCK, localStorage.connector_lrck)
       context.commit(NS.LRC.MUT_SET_ADDRESS, localStorage.connector_address)
+    },
+    [NS.LRC.ACT_REFRESH_LRC_LIST](context) {
+      axios.get(define.URL.LRC.LIST)
+        .then((res) => {
+          context.commit(NS.LRC.MUT_SET_LRC_LIST, res.data.data)
+        })
     }
   }
 }

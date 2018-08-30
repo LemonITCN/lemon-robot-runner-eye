@@ -5,6 +5,7 @@
         stripe
         @cell-click="showPluginDetail"
         :cell-style="{cursor: 'pointer'}"
+        :empty-text="$t(lang + 'no_plugin')"
         :data="$store.getters[$NS.PLUGIN.GET_PLUGIN_LIST]">
       <el-table-column type="expand">
         <template slot-scope="props">

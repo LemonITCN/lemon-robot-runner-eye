@@ -3,6 +3,7 @@
     <plugin-upload-part class="plugin-upload-part"></plugin-upload-part>
     <el-table
         stripe
+        :empty-text="$t(lang + 'no_plugin')"
         :data="$store.getters[$NS.PLUGIN.GET_PLUGIN_LIST]">
       <el-table-column type="expand">
         <template slot-scope="props">
@@ -63,23 +64,23 @@
       PluginUploadPart
     },
     name: 'PluginInstalledPart',
-    mounted () {
+    mounted() {
       this.$store.dispatch(this.$NS.PLUGIN.ACT_REFRESH_PLUGIN_LIST)
     },
     computed: {
-      lrcState () {
+      lrcState() {
         return this.$store.state.lrc.state
       }
     },
     watch: {
-      lrcState (state) {
+      lrcState(state) {
         // LRC重新连接成功的时候自动刷新插件列表
         if (state === this.$NS.LRC.MUT_SET_STATE_CONNECTED) {
           this.$store.dispatch(this.$NS.PLUGIN.ACT_REFRESH_PLUGIN_LIST)
         }
       }
     },
-    data () {
+    data() {
       return {
         lang: 'plugin.pluginInstalledPart.'
       }

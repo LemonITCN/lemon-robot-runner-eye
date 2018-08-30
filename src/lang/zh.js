@@ -201,7 +201,8 @@ export default {
       column_enable_state: '启用状态',
       detail_introduce: '插件介绍: ',
       detail_store: '插件来源商店: ',
-      user_upload: '用户自行上传'
+      user_upload: '用户自行上传',
+      no_plugin: '系统中还没有安装任何插件'
     },
     dataSetAddPart: {
       add: '添加数据集',
@@ -280,7 +281,8 @@ export default {
       column_operate: '操作',
       detail_introduce: '插件介绍: ',
       detail_store: '插件来源商店: ',
-      user_upload: '用户自行上传'
+      user_upload: '用户自行上传',
+      no_plugin: '系统中还没有安装任何插件'
     },
     pluginOperatePart: {
       uninstall: '卸载',
@@ -295,6 +297,20 @@ export default {
       mTitle: '系统设置',
       mIntro: '在这里，你可以对系统的各种参数进行配置，让系统更加得心应手',
       lrc: 'LRC管理器'
+    },
+    lrcManagePart: {
+      column_lrct: 'LRCT',
+      column_createTime: '创建时间',
+      column_type: '客户端类型',
+      column_operate: '操作',
+      intro: 'LRC简介: ',
+    },
+    lrcOperatePart: {
+      view_lrck: '查看LRCK',
+      delete_confirm: '您确认要删除这个LRC连接配置吗？删除后使用该LRC所建立连接的客户端将会自动被断开连接！该操作不可逆！'
+    },
+    lrcCreatePart: {
+      create: '创建新的LRC信息'
     }
   }
 }

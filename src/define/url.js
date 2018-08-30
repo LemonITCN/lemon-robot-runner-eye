@@ -1,10 +1,14 @@
 export default {
-  BASE_URL () {
+  BASE_URL() {
     return localStorage.connector_address
   },
   WEB_SOCKET: '/websocket',
   LRC: {
-    ACTIVE: '/lrc/active'
+    CREATE: '/lrc/create',
+    DELETE: '/lrc/delete',
+    UPDATE: '/lrc/update',
+    ACTIVE: '/lrc/active',
+    LIST: '/lrc/list'
   },
   TASK: {
     CREATE: '/task/create',

@@ -29,6 +29,10 @@ const GET_LRCS = 'LRC_GET_LRCS'
  */
 const GET_ADDRESS = 'LRC_GET_ADDRESS'
 /**
+ * 获取LRC公开信息列表
+ */
+const GET_LRC_LIST = 'LRC_GET_LRC_LIST'
+/**
  * 修改展示连接器面板的状态
  */
 const MUT_SET_STATE = 'LRC_MUT_SET_STATE'
@@ -65,6 +69,10 @@ const MUT_SET_LRCS = 'LRC_MUT_SET_LRCS'
  */
 const MUT_SET_ADDRESS = 'LRC_MUT_SET_ADDRESS'
 /**
+ * 设置LRC公开信息列表的内容
+ */
+const MUT_SET_LRC_LIST = 'LRC_MUT_SET_LRC_LIST'
+/**
  * 发起连接请求
  * 此时是发起Websocket长连接请求
  */
@@ -81,6 +89,10 @@ const ACT_CONN_RESET = 'LRC_ACT_CONN_RESET'
  * 恢复连接信息
  */
 const ACT_RESTORE_CONN_INFO = 'LRC_ACT_RESTORE_CONN_INFO'
+/**
+ * 刷新LRC公开信息列表
+ */
+const ACT_REFRESH_LRC_LIST = 'LRC_ACT_REFRESH_LRC_LIST'
 
 export default {
   GET_IS_SHOW_PANEL,
@@ -90,6 +102,7 @@ export default {
   GET_LRCK,
   GET_LRCS,
   GET_ADDRESS,
+  GET_LRC_LIST,
   MUT_SET_STATE,
   MUT_SET_STATE_DISCONNECTED,
   MUT_SET_STATE_WSCONNING,
@@ -99,8 +112,10 @@ export default {
   MUT_SET_LRCK,
   MUT_SET_LRCS,
   MUT_SET_ADDRESS,
+  MUT_SET_LRC_LIST,
   ACT_CONN_START,
   ACT_CONN_ACTIVE,
   ACT_CONN_RESET,
-  ACT_RESTORE_CONN_INFO
+  ACT_RESTORE_CONN_INFO,
+  ACT_REFRESH_LRC_LIST
 }

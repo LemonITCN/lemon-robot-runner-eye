@@ -3,13 +3,14 @@ import i18n from './lang'
 import util from './util'
 import namespace from './namespace'
 import store from './store'
+import define from './define'
 
 // 拦截器，拦截所有请求 ，当超时的时候给出统一的提示
 const RESPONSE_MSG_LANG = 'responseMsg.'
 let CancelToken = axios.CancelToken
 axios.interceptors.request.use(config => {
   // 如果当前LRC没有连接，那么除了LRC的请求之外的所有请求全部取消
-  if ((config.url.indexOf('lrc') < 0) && !store.getters[namespace.LRC.GET_IS_CAN_SEND_REQUEST]) {
+  if ((config.url.indexOf(define.URL.LRC.ACTIVE) < 0) && !store.getters[namespace.LRC.GET_IS_CAN_SEND_REQUEST]) {
     config.cancelToken = new CancelToken(c => c(config.url))
   }
   return config
