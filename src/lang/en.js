@@ -290,5 +290,11 @@ export default {
   },
   data: {},
   logs: {},
-  system: {}
+  system: {
+    systemPart: {
+      mTitle: 'System settings',
+      mIntro: 'Here, you can configure the various parameters of the system to make the system more convenient.',
+      lrc: 'LRC Manager'
+    }
+  }
 }

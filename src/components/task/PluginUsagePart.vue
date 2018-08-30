@@ -1,6 +1,7 @@
 <template>
   <div class="plugin-usage-part">
     <el-table
+        class="plugin-usage-list"
         stripe
         @cell-click="showPluginDetail"
         :cell-style="{cursor: 'pointer'}"
@@ -76,10 +77,10 @@
   export default {
     components: {PluginDetailPart},
     name: 'PluginUsagePart',
-    mounted () {
+    mounted() {
       let self = this
       this.$store.dispatch(this.$NS.PLUGIN.ACT_REFRESH_PLUGIN_LIST, {
-        success () {
+        success() {
           let pluginStrArr = []
           let pluginArr = self.$store.getters[self.$NS.PLUGIN.GET_PLUGIN_LIST]
           for (let i = 0; i < pluginArr.length; i++) {
@@ -96,10 +97,10 @@
       })
     },
     methods: {
-      createPluginStr (plugin) {
+      createPluginStr(plugin) {
         return plugin.config.packageName + '#' + plugin.config.version + '@' + plugin.store
       },
-      onEnabledChange (state) {
+      onEnabledChange(state) {
         let plugin = this.$store.getters[this.$NS.PLUGIN.GET_PLUGIN_LIST][state.$index]
         let pluginStr = this.createPluginStr(plugin)
         let enabledPluginStrs = this.$store.getters[this.$NS.TASK.GET_CURRENT_EDIT_TASK].pluginsUsage
@@ -118,14 +119,14 @@
       /**
        * 展示插件详情
        */
-      showPluginDetail (row, column) {
+      showPluginDetail(row, column) {
         if (column.className !== 'operate') {
           this.showDetailPlugin = row
           this.pluginDetailPanelState = true
         }
       }
     },
-    data () {
+    data() {
       return {
         lang: 'task.pluginUsagePart.',
         enable_state: [],
@@ -137,7 +138,7 @@
 </script>
 
 <style scoped>
-  .plugin-detail > > > label {
+  .plugin-detail >>> label {
     color: #99a9bf;
     width: 120px;
   }

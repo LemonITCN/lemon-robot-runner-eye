@@ -1,6 +1,11 @@
-import SystemContainer from '../components/system/SystemContainer'
+import SystemPart from '../components/system/SystemPart'
+import LrcManagePart from '../components/system/LrcManagePart'
 
 export default {
   path: '/system',
-  component:   SystemContainer
+  component:   SystemPart,
+  redirect: '/system/lrc',
+  children: [
+    {path: '/system/lrc', component: LrcManagePart},
+  ]
 }

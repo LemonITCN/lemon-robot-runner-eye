@@ -290,5 +290,11 @@ export default {
   },
   data: {},
   logs: {},
-  system: {}
+  system: {
+    systemPart: {
+      mTitle: '系统设置',
+      mIntro: '在这里，你可以对系统的各种参数进行配置，让系统更加得心应手',
+      lrc: 'LRC管理器'
+    }
+  }
 }
