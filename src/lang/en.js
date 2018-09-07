@@ -48,7 +48,8 @@ export default {
   },
   rules: {
     common_key: 'This field is required and requires: length: 1-64, beginning with a letter, only letters, numbers, and underscores are allowed.',
-    common_name: 'This field is required and requires: length: 1-64 and allow any character to be filled in.'
+    common_name: 'This field is required and requires: length: 1-64 and allow any character to be filled in.',
+    common_ipv4: 'This field is required and requires a standard IPV4 format address.'
   },
   operator: {
     userPart: {
@@ -310,7 +311,12 @@ export default {
       delete_confirm: 'Are you sure you want to delete this LRC connection configuration? Clients that use the LRC to establish a connection after deletion will be automatically disconnected! This operation is irreversible!'
     },
     lrcCreatePart: {
-      create: 'Create a new LRC info'
+      create: 'Create a new LRC info',
+      field_type: 'Client type',
+      field_intro: 'Introduce',
+      field_ip_white_list: 'Ip white list',
+      field_ip_item: 'IpAddr',
+      add_ip_item: 'Add a ip address item'
     }
   }
 }

@@ -36,7 +36,8 @@ export default {
   },
   rules: {
     common_key: '该字段为必填项，且要求：长度：1-64，字母开头，只允许含有字母、数字、下划线',
-    common_name: '该字段为必填项，且要求：长度：1-64，支持输入任意字符'
+    common_name: '该字段为必填项，且要求：长度：1-64，支持输入任意字符',
+    common_ipv4: '该字段为必填项，且要求填写标准的IPV4格式的地址'
   },
   responseMsg: {
     timeout: '对不起，连接服务器超时',
@@ -310,7 +311,12 @@ export default {
       delete_confirm: '您确认要删除这个LRC连接配置吗？删除后使用该LRC所建立连接的客户端将会自动被断开连接！该操作不可逆！'
     },
     lrcCreatePart: {
-      create: '创建新的LRC信息'
+      create: '创建新的LRC信息',
+      field_type: '客户端类型',
+      field_intro: 'LRC简介',
+      field_ip_white_list: 'IP白名单列表',
+      field_ip_item: 'Ip地址',
+      add_ip_item: '增加一条IP地址'
     }
   }
 }
