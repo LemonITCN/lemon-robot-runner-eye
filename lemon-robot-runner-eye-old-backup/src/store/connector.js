@@ -20,7 +20,7 @@ export default {
     [NS.CONNECTOR.GET_IS_CAN_START_CONNECT] (state) {
       return state.state === NS.CONNECTOR.MUT_SET_STATE_DISCONNECTED
     },
-    [NS.CONNECTOR.GET_LRCT] (state) {
+    [NS.CONNECTOR.GET_LRC_KEY] (state) {
       return state.lrct
     },
     [NS.CONNECTOR.GET_LRCK] (state) {
