@@ -3,6 +3,7 @@ import axios from 'axios'
 import util from '@/util'
 import JSEncrypt from 'jsencrypt/bin/jsencrypt'
 import define from '@/define'
+import Vue from 'vue'
 
 export default {
   state: {
@@ -73,6 +74,7 @@ export default {
       jsEncrypt.setPublicKey('-----BEGIN RSA PRIVATE KEY-----' + context.state.lrck + '-----END RSA PRIVATE KEY-----')
       // 设置基础URL，供全局使用
       axios.defaults.baseURL = context.state.address
+      // axios.defaults.headers = {"lrcs": lrcs}
       let lrcs = util.uuid.random()
       axios.post(define.URL.LRC.ACTIVE, {
         'lrcKey': context.state.lrcKey,
@@ -85,8 +87,18 @@ export default {
             localStorage.connector_address = context.state.address
             localStorage.connector_lrc_key = context.state.lrcKey
             localStorage.connector_lrck = context.state.lrck
-            axios.defaults.headers = {}
+            axios.defaults.headers.lrcs = lrcs
             util.log.info('LRC successful connection')
+            Vue.prototype.heartbeatTimer = setInterval(() => {
+              util.log.info('Heartbeat to server.')
+              // 发送心跳包
+              axios.post(define.URL.LRC.HEARTBEAT, {})
+                .catch(() => {
+                  util.log.error('Heartbeat failed! Reset LRC')
+                  context.dispatch(NS.LRC.ACT_CONN_RESET)
+                })
+            }, res.data.data.heartbeatLength * 1000)
+            util.log.info('Start heartbeat module: ' + res.data.data.heartbeatLength)
             context.commit(NS.LRC.MUT_SET_STATE_CONNECTED)
           } else {
             context.commit(NS.LRC.MUT_SET_STATE_DISCONNECTED)
@@ -99,6 +111,10 @@ export default {
     [NS.LRC.ACT_CONN_RESET](context) {
       context.commit(NS.LRC.MUT_SET_STATE_DISCONNECTED)
       context.commit(NS.LRC.MUT_SET_LRCS, '')
+      if (Vue.prototype.heartbeatTimer !== null) {
+        clearInterval(Vue.prototype.heartbeatTimer)
+        Vue.prototype.heartbeatTimer = null
+      }
       context.state.globalWs = null
     },
     [NS.LRC.ACT_RESTORE_CONN_INFO](context) {

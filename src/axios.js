@@ -21,6 +21,11 @@ axios.interceptors.request.use(config => {
 // 拦截器，拦截所有响应，当返回的数据中success为false的时候，将msg中的信息本地化处理后提示
 axios.interceptors.response.use(res => {
   if (!res.data.success) {
+    if (res.data.code === 30003) {
+      // 会话失效，重置LRC
+      store.dispatch(namespace.LRC.ACT_CONN_RESET)
+      return Promise.reject(res)
+    }
     util.tip.notification_error(i18n.t(RESPONSE_MSG_LANG + res.data.msg))
     return Promise.reject(res)
   }

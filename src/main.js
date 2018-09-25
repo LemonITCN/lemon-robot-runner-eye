@@ -20,6 +20,7 @@ Vue.prototype.$axios = axios
 Vue.prototype.$NS = namespace
 Vue.prototype.$util = util
 Vue.prototype.$define = define
+Vue.prototype.heartbeatTimer = null
 
 Vue.config.productionTip = false
 

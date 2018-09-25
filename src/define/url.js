@@ -8,6 +8,7 @@ export default {
     DELETE: '/lrc/delete',
     UPDATE: '/lrc/update',
     ACTIVE: '/lrc/active',
+    HEARTBEAT: '/lrc/heartbeat',
     LIST: '/lrc/list'
   },
   TASK: {
