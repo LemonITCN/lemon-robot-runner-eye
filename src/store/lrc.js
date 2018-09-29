@@ -95,7 +95,7 @@ export default {
               axios.post(define.URL.LRC.HEARTBEAT, {})
                 .catch(() => {
                   util.log.error('Heartbeat failed! Reset LRC')
-                  context.dispatch(NS.LRC.ACT_CONN_RESET)
+                  context.dispatch(NS.LRC.ACT_CONN_RESET)  
                 })
             }, res.data.data.heartbeatLength * 1000)
             util.log.info('Start heartbeat module: ' + res.data.data.heartbeatLength)
