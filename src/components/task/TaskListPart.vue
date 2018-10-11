@@ -7,12 +7,12 @@
          v-for="task in $store.getters[$NS.TASK.GET_TASK_LIST]" :key="task.taskId"
          @click="onSelectTask(task)">
       <div class="task-list-item-name">
-        {{task.taskName}} <span class="task-list-item-key">[ {{$t('common.task_id')}}: {{task.taskId}} ]</span>
+        {{task.taskName}} <span class="task-list-item-key">[ {{$t('common.task_key')}}: {{task.taskKey}} ]</span>
       </div>
       <div class="task-list-item-date">
         {{$t(lang + 'task_create_time')}}: {{$util.date.unixTimeStampToLocalStr(task.createTime, $t('common.dateStr'))}}
       </div>
-      <task-operate-part v-if="task.taskId === mouseOverTaskId" :taskId="task.taskId" :taskName="task.taskName"
+      <task-operate-part v-if="task.taskId === mouseOverTaskId" :taskKey="task.taskKey" :taskName="task.taskName"
                          class="task-operate-part"></task-operate-part>
     </div>
     <div class="task-list-tip" v-if="$store.getters[$NS.TASK.GET_CURRENT_STATE] !== '' && $store.getters[$NS.TASK.GET_CURRENT_STATE] !== $NS.TASK.MUT_SET_STATE_NORMAL">

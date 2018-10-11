@@ -70,8 +70,6 @@
         this.$axios
           .get(this.$define.URL.TASK.INSTRUCTION.GET, {
             params: {
-              taskId: this.$store.getters[this.$NS.TASK.GET_CURRENT_EDIT_TASK]
-                .taskId,
               instructionSetKey: instructionSetKey
             }
           })

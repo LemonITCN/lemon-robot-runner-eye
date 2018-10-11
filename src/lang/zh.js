@@ -10,6 +10,7 @@ export default {
     successful: '成功',
     failed: '失败',
     task_id: '任务ID',
+    task_key: '任务关键字',
     task_name: '任务名称',
     instruction_set_key: '指令集标识',
     instruction_set_name: '指令集名称',
@@ -178,19 +179,19 @@ export default {
     },
     instructionSetAddPart: {
       add: '添加指令集',
-      instruction_set_key: '指令集关键字',
-      instruction_set_key_placeholder: '请输入指令集关键字字符串',
+      instruction_set_name: '指令集名称',
+      instruction_set_name_placeholder: '请输入指令集名称字符串',
       tip_add_success: '指令集创建成功'
     },
     instructionSetRefreshPart: {
       refresh_button_tip: '点击这个按钮来刷新指令集列表'
     },
     instructionSetOperatePart: {
-      rekey: '修改指令集关键字',
+      rename: '修改指令集名称',
       delete: '删除这个指令集',
-      instruction_set_key: '指令集关键字',
-      instruction_set_key_placeholder: '请您输入新的指令集关键字',
-      rekey_success: '修改指令集关键字成功!',
+      instruction_set_name: '指令集名称',
+      instruction_set_name_placeholder: '请您输入新的指令集名称',
+      rename_success: '修改指令集名称成功!',
       delete_tip: '确认要删除这个指令集吗？',
       delete_success: '指令集删除成功!'
     },

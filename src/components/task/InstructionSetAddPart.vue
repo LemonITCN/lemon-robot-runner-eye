@@ -5,13 +5,14 @@
       <i class="el-icon-plus"></i> {{$t(lang + 'add')}}
     </div>
     <el-dialog
+        @open="handleOpen"
         :title="$t(lang + 'add')"
         :visible.sync="createPanelState"
         class="form-dialog">
       <el-form :ref="formName" :model="form" :rules="rules" label-width="140px">
-        <el-form-item :label="$t(lang + 'instruction_set_key')" prop="instructionSetKey" class="dialog-field">
-          <el-input :placeholder="$t(lang + 'instruction_set_key_placeholder')"
-                    v-model="form.instructionSetKey">
+        <el-form-item :label="$t(lang + 'instruction_set_name')" prop="instructionSetKey" class="dialog-field">
+          <el-input :placeholder="$t(lang + 'instruction_set_name_placeholder')"
+                    v-model="form.name">
           </el-input>
         </el-form-item>
       </el-form>
@@ -30,6 +31,9 @@
     components: {ElButton},
     name: 'InstructionSetAddPart',
     methods: {
+      handleOpen () {
+        this.form.name = ''
+      },
       createInstructionSet () {
         this.$refs[this.formName].validate((valid) => {
           if (valid) {
@@ -50,11 +54,11 @@
         createPanelState: false,
         formName: 'addInstructionSet',
         form: {
-          taskId: this.$store.getters[this.$NS.TASK.GET_CURRENT_EDIT_TASK].taskId,
-          instructionSetKey: ''
+          taskKey: this.$store.getters[this.$NS.TASK.GET_CURRENT_EDIT_TASK].taskKey,
+          name: ''
         },
         rules: {
-          instructionSetKey: this.$define.RULES.COMMON_KEY
+          name: this.$define.RULES.COMMON_KEY
         }
       }
     }

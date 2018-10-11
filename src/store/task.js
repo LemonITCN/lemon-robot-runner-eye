@@ -115,12 +115,12 @@ export default {
         context.commit(NS.TASK.MUT_SET_CURRENT_INSTRUCTION_SET_LIST, null)
         axios.get(define.URL.TASK.INSTRUCTION.LIST, {
           params: {
-            taskId: context.getters[NS.TASK.GET_CURRENT_EDIT_TASK].taskId
+            taskKey: context.getters[NS.TASK.GET_CURRENT_EDIT_TASK].taskKey
           }
         })
           .then((res) => {
             context.commit(NS.TASK.MUT_SET_CURRENT_INSTRUCTION_SET_LIST, res.data.data)
-            context.commit(NS.TASK.MUT_SET_CURRENT_INSTRUCTION_SET_KEY, define.STRING.MAIN_INSTRUCTION)
+            context.commit(NS.TASK.MUT_SET_CURRENT_INSTRUCTION_SET_KEY, res.data.data[0].taskInstructionSetKey)
             if (callbacks && typeof callbacks.success === 'function') {
               callbacks.success()
             }

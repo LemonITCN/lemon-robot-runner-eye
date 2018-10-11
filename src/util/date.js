@@ -7,7 +7,7 @@ export default {
    * @returns {string} 本地时间字符串
    */
   unixTimeStampToLocalStr (time, format) {
-    let dateObj = new Date(time)
+    let dateObj = new Date(parseInt(time))
     let info = {
       'M+': dateObj.getMonth() + 1, //月份
       'd+': dateObj.getDate(), //日

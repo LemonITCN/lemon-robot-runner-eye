@@ -42,7 +42,7 @@
 <script>
   export default {
     name: 'TaskOperatePart',
-    props: ['taskId', 'taskName'],
+    props: ['taskKey', 'taskName'],
     methods: {
       renameTask () {
         this.$refs[this.formName].validate((valid) => {
@@ -75,7 +75,7 @@
         deletePanelState: false,
         formName: 'renameTask',
         form: {
-          taskId: this.taskId,
+          taskKey: this.taskKey,
           taskName: this.taskName
         },
         rules: {

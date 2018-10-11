@@ -22,7 +22,7 @@ export default {
     INSTRUCTION: {
       CREATE: '/task/instruction/create',
       DELETE: '/task/instruction/delete',
-      REKEY: '/task/instruction/rekey',
+      RENAME: '/task/instruction/rename',
       SAVE_SCRIPT: '/task/instruction/saveScript',
       GET: '/task/instruction/get',
       LIST: '/task/instruction/list'

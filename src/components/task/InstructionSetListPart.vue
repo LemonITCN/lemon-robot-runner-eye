@@ -2,14 +2,16 @@
   <div class="instruction-set-list-part"
        v-loading="$store.getters[$NS.TASK.GET_CURRENT_INSTRUCTION_SET_LIST] === null">
     <div class="instruction-set-item"
-         @click="$store.commit($NS.TASK.MUT_SET_CURRENT_INSTRUCTION_SET_KEY, instructionSetKey)"
-         :class="instructionSetKey === $store.getters[$NS.TASK.GET_CURRENT_INSTRUCTION_SET_KEY] ? 'instruction-set-item-selected' : ''"
-         :key="instructionSetKey"
-         v-for="instructionSetKey in $store.getters[$NS.TASK.GET_CURRENT_INSTRUCTION_SET_LIST]">
-      {{instructionSetKey}}
+         @click="$store.commit($NS.TASK.MUT_SET_CURRENT_INSTRUCTION_SET_KEY, instructionSet.taskInstructionSetKey)"
+         :class="instructionSet.taskInstructionSetKey === $store.getters[$NS.TASK.GET_CURRENT_INSTRUCTION_SET_KEY] ? 'instruction-set-item-selected' : ''"
+         :key="instructionSet.taskInstructionSetKey"
+         v-for="instructionSet in $store.getters[$NS.TASK.GET_CURRENT_INSTRUCTION_SET_LIST]">
+      {{instructionSet.name}}
       <div class="instruction-set-operation"
-           v-if="instructionSetKey === $store.getters[$NS.TASK.GET_CURRENT_INSTRUCTION_SET_KEY] && instructionSetKey !== $define.STRING.MAIN_INSTRUCTION">
-        <instruction-set-operate-part></instruction-set-operate-part>
+           v-if="instructionSet.taskInstructionSetKey === $store.getters[$NS.TASK.GET_CURRENT_INSTRUCTION_SET_KEY]">
+        <instruction-set-operate-part
+            :instructionSetKey="instructionSet.taskInstructionSetKey"
+            :instructionSetName="instructionSet.name"></instruction-set-operate-part>
       </div>
     </div>
     <instruction-set-add-part></instruction-set-add-part>

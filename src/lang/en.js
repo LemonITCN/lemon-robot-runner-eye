@@ -10,6 +10,7 @@ export default {
     successful: 'Successful',
     failed: 'Failed',
     task_id: 'Task id',
+    task_key: 'Task key',
     task_name: 'Task name',
     instruction_set_key: 'Instruction set key',
     instruction_set_name: 'Instruction set name',
@@ -178,19 +179,19 @@ export default {
     },
     instructionSetAddPart: {
       add: 'Add instruction set',
-      instruction_set_key: 'Instruction set key',
-      instruction_set_key_placeholder: 'Please input instruction set key',
+      instruction_set_name: 'Instruction set name',
+      instruction_set_name_placeholder: 'Please input instruction set name',
       tip_add_success: 'The instruction set was created successfully.'
     },
     instructionSetRefreshPart: {
       refresh_button_tip: 'Click this button to refresh the instruction set list'
     },
     instructionSetOperatePart: {
-      rekey: 'Modify the instruction set key',
+      rename: 'Modify the instruction set name',
       delete: 'Delete this instruction set',
-      instruction_set_key: 'Instruction set key',
-      instruction_set_key_placeholder: 'Please enter a new instruction set key',
-      rekey_success: 'Modify instruction set key success!',
+      instruction_set_name: 'Instruction set name',
+      instruction_set_name_placeholder: 'Please enter a new instruction set name',
+      rename_success: 'Modify instruction set name success!',
       delete_tip: 'Are you sure you want to delete this instruction set?',
       delete_success: 'The instruction set was deleted successfully!'
     },
