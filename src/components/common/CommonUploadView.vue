@@ -41,7 +41,12 @@
           this.$util.log.info(file)
           this.uploadFileName = this.$t(this.lang + 'tip_upload_file') + file.source.name
         })
-        this.uploader.on('uploadProgress', function (file, percentage) {
+        // 监听uploadBeforeSend事件，为其添加lrcs header
+        this.uploader.on('uploadBeforeSend', (object, data, headers) => {
+          headers['lrcs'] = this.$store.getters[this.$NS.LRC.GET_LRCS]
+          this.$util.log.info('header, %O', headers)
+        })
+        this.uploader.on('uploadProgress', (file, percentage) => {
           self.uploadFileName = self.$t(self.lang + 'tip_uploading') + file.source.name
           self.$util.log.info(percentage)
           self.uploadPercentage = Math.ceil(percentage * 100)
