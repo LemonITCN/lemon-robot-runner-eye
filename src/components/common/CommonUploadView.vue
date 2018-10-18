@@ -1,5 +1,5 @@
 <template>
-  <div class="common-upload-view">
+  <div class="common-upload-view" v-loading="dealProcessLoading" :element-loading-text="$t(lang + 'tip_deal_process')">
     <div class="operate-area" v-if="uploadPercentage === 0 || uploadPercentage === 100">
       <div class="choose-file-button choose-file-button-parameter-bin">
         {{$t('common.choose_file')}}
@@ -53,12 +53,16 @@
           if (percentage === 1) {
             // 上传完成
             self.initUploader()
+            self.dealProcessLoading = true
           }
         })
         this.uploader.on('uploadSuccess', (file, response) => {
           if (response.success) {
             this.uploadSuccess(file, response)
           }
+        })
+        this.uploader.on('uploadComplete', () => {
+          self.dealProcessLoading = false
         })
       }
     },
@@ -67,7 +71,8 @@
         lang: 'common.upload_view.',
         uploader: {},
         uploadPercentage: 0,
-        uploadFileName: ''
+        uploadFileName: '',
+        dealProcessLoading: false
       }
     }
   }

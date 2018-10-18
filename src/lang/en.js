@@ -33,6 +33,7 @@ export default {
       tip_choose_file: 'Please click the [Choose File] button to select a file to upload',
       tip_upload_file: 'Please click the [Upload] button to upload selected file : ',
       tip_uploading: 'Uploading the file : ',
+      tip_deal_process: 'The server is processing your uploaded data, please wait...'
     }
   },
   responseMsg: {

@@ -33,6 +33,7 @@ export default {
       tip_choose_file: '请单击[选择文件]按钮以选择要上载的文件',
       tip_upload_file: '请点击[上传文件]按钮来上传已选中的文件 : ',
       tip_uploading: '文件正在上传中 : ',
+      tip_deal_process: '服务器正在处理您上传的数据，请稍候...'
     }
   },
   rules: {
