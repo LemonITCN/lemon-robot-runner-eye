@@ -16,6 +16,10 @@
         <el-form-item :label="$t(lang + 'parameter_is_binary')">
           <el-switch v-model="parameter.isBinary"></el-switch>
         </el-form-item>
+        <el-form-item :label="$t(lang + 'parameter_regex')" prop="regex" class="dialog-field" v-show="!parameter.isBinary">
+          <el-input v-model="parameter.regex"
+                    :placeholder="$t(lang + 'parameter_regex_placeholder')"></el-input>
+        </el-form-item>
         <el-form-item :label="$t(lang + 'parameter_is_required')">
           <el-switch v-model="parameter.isRequired"></el-switch>
         </el-form-item>
@@ -33,7 +37,7 @@
 </template>
 
 <script>
-  import Parameter from '../../model/Parameter'
+  import ParameterCreate from '../../model/ParameterCreate'
 
   export default {
     name: 'ParameterAddPart',
@@ -47,10 +51,9 @@
               return
             }
             this.$store.getters[this.$NS.TASK.GET_CURRENT_EDIT_TASK].parameters.push(this.parameter)
-            this.$store.dispatch(this.$NS.TASK.ACT_SAVE_CURRENT_EDITING_TASK)
             this.createPanelState = false
             this.$util.tip.notification_success(this.$t(this.lang + 'tip_add_success'))
-            this.parameter = new Parameter()
+            this.parameter = new ParameterCreate(this.$store.getters[this.$NS.TASK.GET_CURRENT_EDIT_TASK].taskKey)
           }
         })
       }
@@ -58,7 +61,7 @@
     data () {
       return {
         lang: 'task.parameterAddPart.',
-        parameter: new Parameter(),
+        parameter: new ParameterCreate(this.$store.getters[this.$NS.TASK.GET_CURRENT_EDIT_TASK].taskKey),
         formName: 'addParameter',
         rules: {
           name: this.$define.RULES.COMMON_KEY

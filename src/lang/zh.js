@@ -148,6 +148,8 @@ export default {
       parameter_name: '参数名称',
       parameter_name_placeholder: '请您输入参数名称',
       parameter_is_binary: '是否为二进制数据',
+      parameter_regex: '正则表达式',
+      parameter_regex_placeholder: '请您输入该字段的正则表达式规则',
       parameter_is_required: '是否为必填项',
       parameter_remark: '参数描述',
       parameter_remark_placeholder: '请您输入对该参数作用的描述',
@@ -207,55 +209,6 @@ export default {
       user_upload: '用户自行上传',
       no_plugin: '系统中还没有安装任何插件'
     },
-    dataSetAddPart: {
-      add: '添加数据集',
-      data_set_key: '数据集关键字',
-      data_set_key_placeholder: '请您输入数据集关键字',
-      data_set_remark: '数据集描述',
-      data_set_remark_placeholder: '请您用简短的语句描述这个数据集',
-      tip_add_success: '数据集创建成功！'
-    },
-    dataSetOperatePart: {
-      reinfo: '修改数据集的基本信息',
-      delete: '删除这个数据集',
-      data_set_key: '数据集关键字',
-      data_set_key_placeholder: '请输入一个新的数据集关键字',
-      data_set_remark: '数据集描述',
-      data_set_remark_placeholder: '请您输入一个新的数据集描述信息',
-      reinfo_success: '数据集基本信息修改成功！',
-      delete_tip: '您确定要删除这个数据集吗？该操作不可逆',
-      delete_success: '数据集删除成功',
-      data_set_key_exists_tip: '您输入的新数据集名称已存在，请重新修改'
-    },
-    dataSetPropertyListPart: {
-      column_data_set_key: '属性关键字',
-      column_data_set_type: '属性类型',
-      column_data_set_remark: '数据集属性描述',
-      column_data_set_operate: '操作'
-    },
-    dataSetPropertyAddPart: {
-      add: '添加数据集属性',
-      data_set_property_key: '属性关键字',
-      data_set_property_key_placeholder: '请您输入数据集属性的关键字',
-      data_set_property_type: '属性类型',
-      data_set_property_remark: '属性描述',
-      data_set_property_remark_placeholder: '请您输入对该属性的描述',
-      tip_add_success: '数据集属性创建成功',
-      data_set_property_already_exists: '您输入的数据集属性关键字已存在'
-    },
-    dataSetPropertyOperatePart: {
-      modify: '修改数据集属性',
-      delete: '删除数据集属性',
-      data_set_property_key: '属性关键字',
-      data_set_property_key_placeholder: '请您输入一个新的数据集属性关键字',
-      data_set_property_type: '属性类型',
-      data_set_property_remark: '属性描述',
-      data_set_property_remark_placeholder: '请您输入数据集的属性描述信息',
-      tip_modify_success: '数据集属性信息修改成功',
-      tip_delete_success: '数据集属性删除成功',
-      delete_tip: '您确定要删除这个数据集属性吗？该操作不可逆',
-      data_set_property_already_exists: '您新设置的数据集属性关键字已经存在'
-    }
   },
   executor: {},
   plan: {},

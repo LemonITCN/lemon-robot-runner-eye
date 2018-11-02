@@ -134,25 +134,6 @@ export default {
           })
       }
     },
-    [NS.TASK.ACT_SAVE_CURRENT_EDITING_TASK] (context, info) {
-      let task = null
-      if (info && info.task) {
-        task = info.task
-      }
-      task = task === null ? context.getters[NS.TASK.GET_CURRENT_EDIT_TASK] : task
-      axios.post(define.URL.TASK.UPDATE, task)
-        .then(() => {
-          util.tip.message_success(i18n.t(lang + 'task_change_submit_success'))
-          if (info && typeof info.success === 'function') {
-            info.success()
-          }
-        })
-        .catch(() => {
-          if (info && typeof info.failed === 'function') {
-            info.failed()
-          }
-        })
-    },
     [NS.TASK.ACT_SAVE_INSTRUCTION_SET_SCRIPT] (content, info) {
       axios.post(define.URL.TASK.INSTRUCTION.SAVE_SCRIPT, info.task)
         .then(() => {

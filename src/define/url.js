@@ -14,10 +14,7 @@ export default {
   TASK: {
     CREATE: '/task/create',
     DELETE: '/task/delete',
-    UPDATE: '/task/update',
     RENAME: '/task/rename',
-    UPLOAD_PARAMETER_BIN: '/task/parameter-bin',
-    GET: '/task/get',
     LIST: '/task/list',
     INSTRUCTION: {
       CREATE: '/task/instruction/create',

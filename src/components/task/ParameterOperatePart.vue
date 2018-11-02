@@ -2,8 +2,6 @@
   <div class="parameter-operate-part" @click.stop>
     <div class="data-set-property-operate-button">
       <el-button size="mini" @click="modifyPanelState = true">{{$t('common.modify')}}</el-button>
-      <parameter-template-part class="parameter-template-part" :index="index"
-                               :buttonTitle="$t(lang + 'template')"></parameter-template-part>
       <el-button size="mini" @click="deletePanelState = true" type="danger">{{$t('common.delete')}}</el-button>
     </div>
     <!--修改数据集属性信息对话框-->
@@ -51,11 +49,9 @@
 <script>
   import ElButton from '../../../node_modules/element-ui/packages/button/src/button.vue'
   import Vue from 'vue'
-  import ParameterTemplatePart from './ParameterTemplatePart.vue'
 
   export default {
     components: {
-      ParameterTemplatePart,
       ElButton
     },
     name: 'ParameterOperatePart',

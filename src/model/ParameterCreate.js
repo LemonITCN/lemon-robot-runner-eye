@@ -1,22 +1,24 @@
-let Parameter = class Parameter {
+let ParameterCreate = class Parameter {
 
-  constructor () {
+  constructor (taskKey) {
     this.name = ''
     this.remark = ''
+    this.regex = ''
     this.isBinary = false
     this.isRequired = false
-    this.template = ''
+    this.taskKey = taskKey
   }
 
   toJSON () {
     return {
       name: this.name,
       remark: this.remark,
+      regex: this.regex,
       isBinary: this.isBinary,
       isRequired: this.isRequired,
-      template: this.template
+      taskKey: this.taskKey
     }
   }
 }
 
-export default Parameter
+export default ParameterCreate
