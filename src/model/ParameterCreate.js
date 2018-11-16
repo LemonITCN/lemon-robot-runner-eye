@@ -7,6 +7,7 @@ let ParameterCreate = class Parameter {
     this.isBinary = false
     this.isRequired = false
     this.taskKey = taskKey
+    this.paramIntroduce = ''
   }
 
   toJSON () {
@@ -16,7 +17,8 @@ let ParameterCreate = class Parameter {
       regex: this.regex,
       isBinary: this.isBinary,
       isRequired: this.isRequired,
-      taskKey: this.taskKey
+      taskKey: this.taskKey,
+      paramIntroduce: this.paramIntroduce
     }
   }
 }

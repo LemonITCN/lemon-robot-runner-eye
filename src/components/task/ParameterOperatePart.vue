@@ -10,19 +10,24 @@
         :title="$t(lang + 'modify')"
         :visible.sync="modifyPanelState"
         width="660px">
-      <el-form :ref="formName" :rules="rules" :model="parameter" label-width="140px">
+      <el-form :ref="formName" :rules="rules" :model="parameterUpdate" label-width="140px">
         <el-form-item :label="$t(lang + 'parameter_name')" prop="name" class="dialog-field">
-          <el-input v-model="parameter.name"
+          <el-input v-model="parameterUpdate.name"
                     :placeholder="$t(lang + 'parameter_name_placeholder')"></el-input>
         </el-form-item>
         <el-form-item :label="$t(lang + 'parameter_is_binary')">
-          <el-switch v-model="parameter.isBinary"></el-switch>
+          <el-switch v-model="parameterUpdate.isBinary"></el-switch>
+        </el-form-item>
+        <el-form-item :label="$t(lang + 'parameter_regex')" prop="regex" class="dialog-field"
+                      v-show="!parameterUpdate.isBinary">
+          <el-input v-model="parameterUpdate.regex"
+                    :placeholder="$t(lang + 'parameter_regex_placeholder')"></el-input>
         </el-form-item>
         <el-form-item :label="$t(lang + 'parameter_is_required')">
-          <el-switch v-model="parameter.isRequired"></el-switch>
+          <el-switch v-model="parameterUpdate.isRequired"></el-switch>
         </el-form-item>
-        <el-form-item :label="$t(lang + 'parameter_remark')" class="dialog-field">
-          <el-input type="textarea" v-model="parameter.remark" rows="6"></el-input>
+        <el-form-item :label="$t(lang + 'parameter_introduce')" class="dialog-field">
+          <el-input type="textarea" v-model="parameterUpdate.paramIntroduce" rows="6"></el-input>
         </el-form-item>
       </el-form>
       <span slot="footer" class="dialog-footer">
@@ -36,7 +41,7 @@
         :title="$t(lang + 'delete')"
         :visible.sync="deletePanelState"
         width="30%">
-      <span>{{$t(lang + 'delete_tip')}}【 {{$store.getters[$NS.TASK.GET_CURRENT_EDIT_TASK].parameters[index].name}} 】</span>
+      <span>{{$t(lang + 'delete_tip')}}【 {{$store.getters[$NS.TASK.GET_CURRENT_TASK_PARAMETER_DEF][index].name}} 】</span>
       <span slot="footer" class="dialog-footer">
         <el-button @click="deletePanelState = false">{{$t('common.cancel')}}</el-button>
         <el-button type="danger" @click="deleteParameter">{{$t('common.delete')}}</el-button>
@@ -48,7 +53,7 @@
 
 <script>
   import ElButton from '../../../node_modules/element-ui/packages/button/src/button.vue'
-  import Vue from 'vue'
+  import ParameterDelete from "../../model/ParameterDelete";
 
   export default {
     components: {
@@ -57,38 +62,45 @@
     name: 'ParameterOperatePart',
     props: ['index'],
     methods: {
-      handleOpen () {
-        this.parameter = Object.assign({}, this.$store.getters[this.$NS.TASK.GET_CURRENT_EDIT_TASK].parameters[this.index])
+      handleOpen() {
+        this.parameterUpdate = Object.assign({}, this.$store.getters[this.$NS.TASK.GET_CURRENT_TASK_PARAMETER_DEF][this.index])
       },
-      editParameter () {
+      editParameter() {
         this.$refs[this.formName].validate((valid) => {
           if (valid) {
-            let parameters = this.$store.getters[this.$NS.TASK.GET_CURRENT_EDIT_TASK].parameters
-            let containCount = this.$util.array.countWithFiledValue(parameters, 'name', this.parameter.name, [this.index])
+            let parameters = this.$store.getters[this.$NS.TASK.GET_CURRENT_TASK_PARAMETER_DEF]
+            let containCount = this.$util.array.countWithFiledValue(parameters, 'name', this.parameterUpdate.name, [this.index])
             if (containCount > 0) {
               this.$util.tip.notification_error(this.$t(this.lang + 'parameter_already_exists'))
               return
             }
-            if (this.$store.getters[this.$NS.TASK.GET_CURRENT_EDIT_TASK].parameters[this.index].isBinary !== this.parameter.isBinary) {
-              // 是否为二进制的开关状态被修改了
-              this.parameter.template = ''
-            }
-            Vue.set(parameters, this.index, this.parameter)
-            this.$store.dispatch(this.$NS.TASK.ACT_SAVE_CURRENT_EDITING_TASK)
-            this.modifyPanelState = false
+            let self = this
+            this.$store.dispatch(this.$NS.TASK.ACT_UPDATE_PARAMETER_DEF, {
+              parameter: this.parameterUpdate,
+              success() {
+                self.modifyPanelState = false
+              }
+            })
           }
         })
       },
-      deleteParameter () {
-        Vue.delete(this.$store.getters[this.$NS.TASK.GET_CURRENT_EDIT_TASK].parameters, this.index)
-        this.$store.dispatch(this.$NS.TASK.ACT_SAVE_CURRENT_EDITING_TASK)
-        this.deletePanelState = false
+      deleteParameter() {
+        let currentParam = this.$store.getters[this.$NS.TASK.GET_CURRENT_TASK_PARAMETER_DEF][this.index]
+        this.parameterDelete = new ParameterDelete(currentParam.taskParameterDefKey)
+        let self = this
+        this.$store.dispatch(this.$NS.TASK.ACT_DELETE_PARAMETER_DEF, {
+          parameterDelete: this.parameterDelete,
+          success() {
+            self.deletePanelState = false
+          }
+        })
       }
     },
-    data () {
+    data() {
       return {
         lang: 'task.parameterOperatePart.',
-        parameter: {},
+        parameterUpdate: {},
+        parameterDelete: {},
         formName: 'parameter',
         rules: {
           name: this.$define.RULES.COMMON_KEY

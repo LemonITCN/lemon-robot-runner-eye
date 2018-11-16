@@ -23,9 +23,9 @@
         <el-form-item :label="$t(lang + 'parameter_is_required')">
           <el-switch v-model="parameter.isRequired"></el-switch>
         </el-form-item>
-        <el-form-item :label="$t(lang + 'parameter_remark')" prop="desc" class="dialog-field">
-          <el-input type="textarea" v-model="parameter.remark" rows="6"
-                    :placeholder="$t(lang + 'parameter_remark_placeholder')"></el-input>
+        <el-form-item :label="$t(lang + 'parameter_introduce')" prop="desc" class="dialog-field">
+          <el-input type="textarea" v-model="parameter.paramIntroduce" rows="6"
+                    :placeholder="$t(lang + 'parameter_introduce_placeholder')"></el-input>
         </el-form-item>
       </el-form>
       <span slot="footer" class="dialog-footer">
@@ -50,10 +50,16 @@
               this.$util.tip.notification_error(this.$t(this.lang + 'parameter_already_exists'))
               return
             }
-            this.$store.getters[this.$NS.TASK.GET_CURRENT_EDIT_TASK].parameters.push(this.parameter)
-            this.createPanelState = false
-            this.$util.tip.notification_success(this.$t(this.lang + 'tip_add_success'))
-            this.parameter = new ParameterCreate(this.$store.getters[this.$NS.TASK.GET_CURRENT_EDIT_TASK].taskKey)
+            this.$util.log.info('Submit create parameter def: %O', this.parameter)
+            let self = this
+            this.$store.dispatch(this.$NS.TASK.ACT_CREATE_PARAMETER_DEF, {
+              parameter: this.parameter,
+              success () {
+                self.createPanelState = false
+                self.$util.tip.notification_success(self.$t(self.lang + 'tip_add_success'))
+                self.parameter = new ParameterCreate(self.$store.getters[self.$NS.TASK.GET_CURRENT_EDIT_TASK].taskKey)
+              }
+            })
           }
         })
       }

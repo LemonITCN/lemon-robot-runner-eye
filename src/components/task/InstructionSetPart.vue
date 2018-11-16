@@ -1,4 +1,4 @@
-<template>
+ACT_SAVE_INSTRUCTION_SET_SCRIPT<template>
   <div class="instruction-set-part" @keydown.ctrl="keyboardSave($event)">
     <instruction-set-list-part class="instruction-set-list"></instruction-set-list-part>
     <div class="editor-area" v-loading="script === null" :element-loading-text="$t(lang + 'loading_script')">

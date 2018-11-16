@@ -140,7 +140,7 @@ export default {
       column_name: '参数名称',
       column_is_binary: '是否为二进制',
       column_is_required: '是否为必填项',
-      column_remark: '参数描述',
+      column_introduce: '参数描述',
       column_operate: '操作'
     },
     parameterAddPart: {
@@ -151,8 +151,8 @@ export default {
       parameter_regex: '正则表达式',
       parameter_regex_placeholder: '请您输入该字段的正则表达式规则',
       parameter_is_required: '是否为必填项',
-      parameter_remark: '参数描述',
-      parameter_remark_placeholder: '请您输入对该参数作用的描述',
+      parameter_introduce: '参数描述',
+      parameter_introduce_placeholder: '请您输入对该参数作用的描述',
       tip_add_success: '参数定义创建成功',
       parameter_already_exists: '您输入的参数名称已存在'
     },
@@ -163,9 +163,11 @@ export default {
       parameter_name: '参数名称',
       parameter_name_placeholder: '请您输入参数名称',
       parameter_is_binary: '是否为二进制',
+      parameter_regex: '正则表达式',
+      parameter_regex_placeholder: '请您输入该字段的正则表达式规则',
       parameter_is_required: '是否为必填项',
-      parameter_remark: '参数描述',
-      parameter_remark_placeholder: '请您对这个参数进行简单的描述',
+      parameter_introduce: '参数描述',
+      parameter_introduce_placeholder: '请您对这个参数进行简单的描述',
       delete_tip: '您确定要删除这个参数定义吗?',
       parameter_already_exists: '您新填写的参数名称已存在，请更换。',
     },
