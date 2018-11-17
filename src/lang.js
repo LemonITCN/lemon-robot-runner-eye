@@ -9,7 +9,7 @@ Vue.use(VueI18n)
 
 // 多语言
 const i18n = new VueI18n({
-    locale: 'zh',
+    locale: 'en',
     messages: {
         'zh': lang_zh,
         'en': lang_en

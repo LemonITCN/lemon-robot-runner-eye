@@ -1,5 +1,13 @@
 <template>
   <div class="plugin-usage-part">
+    <el-alert
+        v-show="pluginMissingList.length > 0"
+        :title="$t(lang + 'missing_plugin')"
+        type="error"
+        :closable="false">
+      <el-button size="small" type="text" @click="manageMissingPlugin">{{$t(lang + 'missing_plugin_manage')}}
+      </el-button>
+    </el-alert>
     <el-table
         class="plugin-usage-list"
         stripe
@@ -70,42 +78,22 @@
         <el-button @click="pluginDetailPanelState = false">{{$t('common.iknow')}}</el-button>
       </span>
     </el-dialog>
+    <el-dialog :title="$t(lang + 'missing_plugin_manage_title')" :visible.sync="pluginMissingManagePanelState">
+      <plugin-usage-missing-part :missing-plugin-str-list="pluginMissingList" @parentRefreshState="refreshState"></plugin-usage-missing-part>
+    </el-dialog>
   </div>
 </template>
 
 <script>
   import PluginDetailPart from '../plugin/PluginDetailPart.vue'
   import TaskPluginUsageUpdate from "../../model/TaskPluginUsageUpdate";
+  import PluginUsageMissingPart from "./PluginUsageMissingPart";
 
   export default {
-    components: {PluginDetailPart},
+    components: {PluginUsageMissingPart, PluginDetailPart},
     name: 'PluginUsagePart',
     mounted() {
-      this.pluginUsageLoading = true
-      let self = this
-      this.$store.dispatch(this.$NS.PLUGIN.ACT_REFRESH_PLUGIN_LIST, {
-        success() {
-          self.$store.dispatch(self.$NS.TASK.ACT_REFRESH_CURRENT_TASK_PLUGIN_USAGE, {
-            success() {
-              // 刷新插件列表完毕，刷新插件使用情况完毕，开始进行插件使用情况的计算
-              let pluginList = self.$store.getters[self.$NS.PLUGIN.GET_PLUGIN_LIST]
-              let pluginUsageStrList = []
-              self.$util.log.info('********1%O',self.$store.getters[self.$NS.TASK.GET_CURRENT_TASK_PLUGIN_USAGE])
-              self.$store.getters[self.$NS.TASK.GET_CURRENT_TASK_PLUGIN_USAGE].forEach((item) => {
-                let usageStr = item.pluginStoreCode + '-' + item.pluginPackageName + '-' + item.pluginVersion
-                self.$util.log.info('********' + usageStr)
-                pluginUsageStrList.push(usageStr)
-              })
-              for (let i = 0; i < pluginList.length; i++) {
-                let plugini = pluginList[i]
-                let pluginiStr = plugini.store + '-' + plugini.config.packageName + '-' + plugini.config.version
-                self.enableState[i] = self.$util.array.containsInArray(pluginUsageStrList, pluginiStr)
-              }
-              self.pluginUsageLoading = false
-            }
-          })
-        }
-      })
+      this.refreshState()
     },
     methods: {
       onEnabledChange(state) {
@@ -132,13 +120,52 @@
           this.showDetailPlugin = row
           this.pluginDetailPanelState = true
         }
+      },
+      manageMissingPlugin() {
+        this.pluginMissingManagePanelState = true
+      },
+      refreshState() {
+        this.$util.log.info('刷新')
+        this.pluginUsageLoading = true
+        let self = this
+        this.$store.dispatch(this.$NS.PLUGIN.ACT_REFRESH_PLUGIN_LIST, {
+          success() {
+            self.$store.dispatch(self.$NS.TASK.ACT_REFRESH_CURRENT_TASK_PLUGIN_USAGE, {
+              success() {
+                // 刷新插件列表完毕，刷新插件使用情况完毕，开始进行插件使用情况的计算
+                let pluginList = self.$store.getters[self.$NS.PLUGIN.GET_PLUGIN_LIST]
+                let pluginUsageStrList = []
+                self.$store.getters[self.$NS.TASK.GET_CURRENT_TASK_PLUGIN_USAGE].forEach((item) => {
+                  let usageStr = item.pluginStoreCode + '|' + item.pluginPackageName + '|' + item.pluginVersion
+                  pluginUsageStrList.push(usageStr)
+                })
+                for (let i = 0; i < pluginList.length; i++) {
+                  let plugini = pluginList[i]
+                  let pluginiStr = plugini.store + '|' + plugini.config.packageName + '|' + plugini.config.version
+                  self.enableState[i] = self.$util.array.containsInArray(pluginUsageStrList, pluginiStr)
+                  // 已经开启的插件说明已经被安装，那么稍后usage数组中剩下的插件即为没安装的插件
+                  self.$util.array.removeFromArray(pluginUsageStrList, pluginiStr)
+                }
+                self.pluginUsageLoading = false
+                self.$util.log.info('Find missing plugins [%O] count: ' + pluginUsageStrList.length, pluginUsageStrList)
+                if (pluginUsageStrList.length === 0){
+                  self.$util.log.info('Missing plugins clear, auto close missing plugins manage panel!')
+                  self.pluginMissingManagePanelState = false
+                }
+                self.pluginMissingList = pluginUsageStrList
+              }
+            })
+          }
+        })
       }
     },
     data() {
       return {
         lang: 'task.pluginUsagePart.',
         enableState: [],
+        pluginMissingList: [],
         pluginDetailPanelState: false,
+        pluginMissingManagePanelState: false,
         showDetailPlugin: null,
         pluginUsageLoading: false
       }

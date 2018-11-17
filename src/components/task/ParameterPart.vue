@@ -2,6 +2,7 @@
   <div class="parameter-part">
     <el-table
         stripe
+        v-loading="showParameterListLoading"
         :data="$store.getters[$NS.TASK.GET_CURRENT_TASK_PARAMETER_DEF]">
       <el-table-column
           :label="$t(lang + 'column_name')"
@@ -58,11 +59,21 @@
     },
     name: 'ParameterPart',
     mounted() {
-      this.$store.dispatch(this.$NS.TASK.ACT_REFRESH_PARAMETER_DEF)
+      this.showParameterListLoading = true
+      let self = this
+      this.$store.dispatch(this.$NS.TASK.ACT_REFRESH_PARAMETER_DEF, {
+        success() {
+          self.showParameterListLoading = false
+        },
+        failed() {
+          self.showParameterListLoading = false
+        }
+      })
     },
     data() {
       return {
-        lang: 'task.parameterPart.'
+        lang: 'task.parameterPart.',
+        showParameterListLoading: false
       }
     }
   }

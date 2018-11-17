@@ -14,8 +14,6 @@ export default {
     task_name: 'Task name',
     instruction_set_key: 'Instruction set key',
     instruction_set_name: 'Instruction set name',
-    data_set_key: 'Data set key',
-    data_set_name: 'Data set name',
     please_input: 'Please input',
     iknow: 'I Know',
     cancel: 'Cancel',
@@ -83,9 +81,6 @@ export default {
   },
   define: {
     options: {
-      data_set_property_type_str: 'STRING',
-      data_set_property_type_num: 'NUMBER',
-      data_set_property_type_bin: 'BINARY',
     }
   },
   task: {
@@ -131,42 +126,42 @@ export default {
     taskEditPart: {
       mTitle: 'Task editor',
       mIntro: 'You can write your instruction set and data set through the task editor.',
-      parameter: 'ParameterCreate define',
+      parameter: 'Parameter define',
       instruction: 'Instruction set',
       plugin: 'Plugins usage',
       data: 'Data set'
     },
     parameterPart: {
-      column_name: 'ParameterCreate name',
+      column_name: 'Parameter name',
       column_is_binary: 'Is binary',
       column_is_required: 'Is required',
-      column_introduce: 'ParameterCreate remark',
+      column_introduce: 'Parameter introduce',
       column_operate: 'Operate'
     },
     parameterAddPart: {
       add: 'Add parameter define',
-      parameter_name: 'ParameterCreate name',
+      parameter_name: 'Parameter name',
       parameter_name_placeholder: 'Please enter a parameter name',
       parameter_is_binary: 'Is binary',
       parameter_regex: 'RegEx',
       parameter_regex_placeholder: 'Please enter the field RegEx str',
       parameter_is_required: 'Is required',
-      parameter_introduce: 'ParameterCreate introduce',
+      parameter_introduce: 'Parameter introduce',
       parameter_introduce_placeholder: 'Please enter the parameter introduce',
       tip_add_success: 'The parameter added successfully',
-      parameter_already_exists: 'ParameterCreate name already exists',
+      parameter_already_exists: 'Parameter name already exists',
     },
     parameterOperatePart: {
       modify: 'Modify parameter info',
       delete: 'Delete the parameter',
       template: 'Eidt template',
-      parameter_name: 'ParameterCreate name',
+      parameter_name: ' Parameter name',
       parameter_name_placeholder: 'Please enter a parameter name',
       parameter_is_binary: 'Is binary',
       parameter_is_required: 'Is required',
       parameter_regex: 'RegEx',
       parameter_regex_placeholder: 'Please enter the field RegEx str',
-      parameter_introduce: 'ParameterCreate introduce',
+      parameter_introduce: 'Parameter introduce',
       parameter_introduce_placeholder: 'Please enter the parameter introduce',
       delete_tip: 'Are you sure you want to delete this parameter?',
       parameter_already_exists: 'Your newly set parameter name already exists',
@@ -209,8 +204,22 @@ export default {
       detail_introduce: 'Plugin introduce: ',
       detail_store: 'Source store: ',
       user_upload: 'User upload',
-      no_plugin: 'No plugins have been installed in the system.'
+      no_plugin: 'No plugins have been installed in the system.',
+      missing_plugin: 'Some of the plug-ins that the current task depends on are not installed, which will cause the related instances to not be run.',
+      missing_plugin_manage: 'You can manage them by clicking here',
+      missing_plugin_manage_title: 'Missing plugin manage'
     },
+    pluginUsageMissingPart: {
+      user_upload: 'User upload',
+      plugin_store: 'Plugin store',
+      column_source: 'Plugin source',
+      column_package: 'Package name',
+      column_version: 'Plugin version',
+      column_operate: 'Operate',
+      operate_remove: 'Remove this dep',
+      operate_remove_tip: 'Are you sure you want to remove this dependency? This operation is irrevocable.',
+      operate_remove_success: 'Dependency deleted successfully!'
+    }
   },
   executor: {},
   plan: {},

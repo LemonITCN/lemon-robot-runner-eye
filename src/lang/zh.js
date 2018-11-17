@@ -14,8 +14,6 @@ export default {
     task_name: '任务名称',
     instruction_set_key: '指令集标识',
     instruction_set_name: '指令集名称',
-    data_set_key: '数据集标识',
-    data_set_name: '数据集名称',
     please_input: '请输入',
     iknow: '我知道了',
     cancel: '取消',
@@ -82,11 +80,7 @@ export default {
     }
   },
   define: {
-    options: {
-      data_set_property_type_str: '字符串类型',
-      data_set_property_type_num: '数值类型',
-      data_set_property_type_bin: '二进制类型',
-    }
+    options: {}
   },
   task: {
     taskMenuPart: {
@@ -209,8 +203,22 @@ export default {
       detail_introduce: '插件介绍: ',
       detail_store: '插件来源商店: ',
       user_upload: '用户自行上传',
-      no_plugin: '系统中还没有安装任何插件'
+      no_plugin: '系统中还没有安装任何插件',
+      missing_plugin: '当前任务所依赖的插件有一部分没有被安装，这将导致相关实例无法被运行。',
+      missing_plugin_manage: '您可以点击这里进行管理',
+      missing_plugin_manage_title: '缺失插件管理'
     },
+    pluginUsageMissingPart: {
+      user_upload: '用户自行上传',
+      plugin_store: '插件商店',
+      column_source: '插件来源',
+      column_package: '插件包名',
+      column_version: '插件版本',
+      column_operate: '操作',
+      operate_remove: '移除依赖关系',
+      operate_remove_tip: '您确定要移除这个依赖关系吗？此操作不可撤销。',
+      operate_remove_success: '依赖关系删除成功'
+    }
   },
   executor: {},
   plan: {},
