@@ -4,6 +4,7 @@
         class="plugin-usage-list"
         stripe
         @cell-click="showPluginDetail"
+        v-loading="pluginUsageLoading"
         :cell-style="{cursor: 'pointer'}"
         :empty-text="$t(lang + 'no_plugin')"
         :data="$store.getters[$NS.PLUGIN.GET_PLUGIN_LIST]">
@@ -53,7 +54,7 @@
           width="200" @click.stop>
         <template slot-scope="scope">
           <el-switch
-              v-model="enable_state[scope.$index]"
+              v-model="enableState[scope.$index]"
               @change="onEnabledChange(scope)"
               active-color="#13ce66">
           </el-switch>
@@ -74,48 +75,54 @@
 
 <script>
   import PluginDetailPart from '../plugin/PluginDetailPart.vue'
+  import TaskPluginUsageUpdate from "../../model/TaskPluginUsageUpdate";
 
   export default {
     components: {PluginDetailPart},
     name: 'PluginUsagePart',
     mounted() {
+      this.pluginUsageLoading = true
       let self = this
       this.$store.dispatch(this.$NS.PLUGIN.ACT_REFRESH_PLUGIN_LIST, {
         success() {
-          let pluginStrArr = []
-          let pluginArr = self.$store.getters[self.$NS.PLUGIN.GET_PLUGIN_LIST]
-          for (let i = 0; i < pluginArr.length; i++) {
-            pluginStrArr[i] = self.createPluginStr(pluginArr[i])
-          }
-          let enabledPluginStrs = self.$store.getters[self.$NS.TASK.GET_CURRENT_EDIT_TASK].pluginsUsage
-          enabledPluginStrs.forEach(pluginStr => {
-            let index = pluginStrArr.indexOf(pluginStr)
-            if (index >= 0) {
-              self.enable_state[index] = true
+          self.$store.dispatch(self.$NS.TASK.ACT_REFRESH_CURRENT_TASK_PLUGIN_USAGE, {
+            success() {
+              // 刷新插件列表完毕，刷新插件使用情况完毕，开始进行插件使用情况的计算
+              let pluginList = self.$store.getters[self.$NS.PLUGIN.GET_PLUGIN_LIST]
+              let pluginUsageStrList = []
+              self.$util.log.info('********1%O',self.$store.getters[self.$NS.TASK.GET_CURRENT_TASK_PLUGIN_USAGE])
+              self.$store.getters[self.$NS.TASK.GET_CURRENT_TASK_PLUGIN_USAGE].forEach((item) => {
+                let usageStr = item.pluginStoreCode + '-' + item.pluginPackageName + '-' + item.pluginVersion
+                self.$util.log.info('********' + usageStr)
+                pluginUsageStrList.push(usageStr)
+              })
+              for (let i = 0; i < pluginList.length; i++) {
+                let plugini = pluginList[i]
+                let pluginiStr = plugini.store + '-' + plugini.config.packageName + '-' + plugini.config.version
+                self.enableState[i] = self.$util.array.containsInArray(pluginUsageStrList, pluginiStr)
+              }
+              self.pluginUsageLoading = false
             }
           })
         }
       })
     },
     methods: {
-      createPluginStr(plugin) {
-        return plugin.config.packageName + '#' + plugin.config.version + '@' + plugin.store
-      },
       onEnabledChange(state) {
         let plugin = this.$store.getters[this.$NS.PLUGIN.GET_PLUGIN_LIST][state.$index]
-        let pluginStr = this.createPluginStr(plugin)
-        let enabledPluginStrs = this.$store.getters[this.$NS.TASK.GET_CURRENT_EDIT_TASK].pluginsUsage
-        let containThePlugin = this.$util.array.containsInArray(enabledPluginStrs, pluginStr)
-        if (!containThePlugin && this.enable_state[state.$index]) {
-          // 当前未启用，想启用
-          enabledPluginStrs.push(pluginStr)
-        }
-        if (containThePlugin && !this.enable_state[state.$index]) {
-          // 当前已启动，想取消
-          this.$util.array.removeFromArray(enabledPluginStrs, pluginStr)
-        }
-        this.$store.dispatch(this.$NS.TASK.ACT_SAVE_CURRENT_EDITING_TASK)
-        this.$util.log.info(pluginStr + ' - ' + this.enable_state[state.$index])
+        let pluginUsageUpdate = new TaskPluginUsageUpdate()
+        pluginUsageUpdate.taskKey = this.$store.getters[this.$NS.TASK.GET_CURRENT_EDIT_TASK].taskKey
+        pluginUsageUpdate.enabledState = this.enableState[state.$index]
+        pluginUsageUpdate.pluginPackageName = plugin.config.packageName
+        pluginUsageUpdate.pluginStoreCode = plugin.store
+        pluginUsageUpdate.pluginVersion = plugin.config.version
+        let self = this
+        this.$store.dispatch(this.$NS.TASK.ACT_UPDATE_CURRENT_TASK_PLUGIN_USAGE, {
+          pluginUsageUpdate: pluginUsageUpdate,
+          success() {
+            self.util.log.info('Plugin usage state [%O] change success!', pluginUsageUpdate)
+          }
+        })
       },
       /**
        * 展示插件详情
@@ -130,9 +137,10 @@
     data() {
       return {
         lang: 'task.pluginUsagePart.',
-        enable_state: [],
+        enableState: [],
         pluginDetailPanelState: false,
-        showDetailPlugin: null
+        showDetailPlugin: null,
+        pluginUsageLoading: false
       }
     }
   }

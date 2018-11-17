@@ -3,7 +3,6 @@ import axios from 'axios'
 import util from '@/util'
 import define from '@/define'
 import i18n from '@/lang'
-import Vue from 'vue'
 
 const lang = 'task.store.'
 
@@ -14,7 +13,8 @@ export default {
     currentEditTask: {},
     currentInstructionSetList: [],
     currentInstructionSetKey: null,
-    currentParameterDef: []
+    currentParameterDef: [],
+    currentTaskPluginUsage: [],
   },
   getters: {
     [NS.TASK.GET_TASK_LIST](state) {
@@ -37,6 +37,9 @@ export default {
     },
     [NS.TASK.GET_CURRENT_TASK_PARAMETER_DEF](state) {
       return state.currentParameterDef
+    },
+    [NS.TASK.GET_CURRENT_TASK_PLUGIN_USAGE](state) {
+      return state.currentTaskPluginUsage
     }
   },
   mutations: {
@@ -70,14 +73,6 @@ export default {
       state.currentEditTask = null
       state.currentDataSetKey = ''
     },
-    [NS.TASK.MUT_PUT_EDITING_TASK_DATA_SET](state, info) {
-      if (state.currentEditTask !== null) {
-        Vue.set(state.currentEditTask.dataSet, info.key, info.dataSet)
-      }
-    },
-    [NS.TASK.MUT_SET_CURRENT_DATA_SET_KEY](state, dataSetKey) {
-      state.currentDataSetKey = dataSetKey
-    }
   },
   actions: {
     [NS.TASK.ACT_REFRESH_TASK_LIST](context, callbacks) {
@@ -208,5 +203,39 @@ export default {
           }
         })
     },
+    [NS.TASK.ACT_UPDATE_CURRENT_TASK_PLUGIN_USAGE](context, info) {
+      axios.post(define.URL.TASK.PLUGIN_USAGE.UPDATE, info.pluginUsageUpdate)
+        .then(() => {
+          util.log.info('Update task plugin usage state [%O] success!', info.pluginUsageUpdate)
+          if (info && typeof info.success === 'function') {
+            info.success()
+          }
+        })
+        .catch(() => {
+          if (info && typeof info.failed === 'function') {
+            info.failed()
+          }
+        })
+    },
+    [NS.TASK.ACT_REFRESH_CURRENT_TASK_PLUGIN_USAGE](context, info) {
+      let taskKey = context.getters[NS.TASK.GET_CURRENT_EDIT_TASK].taskKey
+      util.log.info('Start refresh task plugin usage, task key is : ' + taskKey)
+      axios.get(define.URL.TASK.PLUGIN_USAGE.LIST, {
+        params: {
+          taskKey: taskKey
+        }
+      }).then((res) => {
+        util.log.info('List task plugin usage info success!')
+        context.state.currentTaskPluginUsage = res.data.data
+        if (info && typeof info.success === 'function') {
+          info.success()
+        }
+      }).catch(() => {
+        if (info && typeof info.failed === 'function') {
+          info.failed()
+        }
+      })
+    },
+
   }
 }
