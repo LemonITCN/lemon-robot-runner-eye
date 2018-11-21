@@ -129,7 +129,7 @@ export default {
       parameter: 'Parameter define',
       instruction: 'Instruction set',
       plugin: 'Plugins usage',
-      data: 'Data set'
+      instance: 'Task instance'
     },
     parameterPart: {
       column_name: 'Parameter name',

@@ -48,6 +48,10 @@
             title: 'plugin',
             target: '/task/plugin'
           },
+          {
+            title: 'instance',
+            target: '/task/instance'
+          },
         ]
       }
     }

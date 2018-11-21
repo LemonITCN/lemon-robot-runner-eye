@@ -128,7 +128,7 @@ export default {
       parameter: '参数定义',
       instruction: '指令集',
       plugin: '插件引用',
-      data: '数据集'
+      instance: '任务实例'
     },
     parameterPart: {
       column_name: '参数名称',
