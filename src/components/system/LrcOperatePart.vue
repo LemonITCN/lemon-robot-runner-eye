@@ -1,9 +1,9 @@
 <template>
   <div class="lrc-operate-part">
-    <el-button size="mini" type="primary" @click="viewLrckDialogState = true">{{$t(lang + 'view_lrck')}}</el-button>
+    <el-button size="mini" type="primary" @click="viewLrckDialogState = true">{{$t(lang + 'view_publicKey')}}</el-button>
     <el-button size="mini" type="danger" @click="confirmDelete">{{$t('common.delete')}}</el-button>
     <el-dialog
-        :title="$t(lang + 'view_lrck')"
+        :title="$t(lang + 'view_publicKey')"
         :visible.sync="viewLrckDialogState"
         width="500px">
       <span>{{this.$store.getters[this.$NS.LRC.GET_LRC_LIST][this.index].lrck}}</span>

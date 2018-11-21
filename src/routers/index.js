@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 import Task from './task'
-import Executor from './executor'
+import Executor from './dispatcher'
 import Plan from './plan'
 import Cloud from './cloud'
 import Plugin from './plugin'

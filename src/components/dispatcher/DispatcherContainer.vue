@@ -1,10 +1,10 @@
 <template>
-  <div class="executor-container">executor</div>
+  <div class="dispatcher-container">dispatcher</div>
 </template>
 
 <script>
   export default {
-    name: "executor-container"
+    name: "dispatcher-container"
   }
 </script>
 

@@ -17,7 +17,7 @@
       return {
         lang: 'operator.mainMenuPart.',
         menu: [
-          ['task', 'executor'],
+          ['task', 'dispatcher'],
           ['plan', 'cloud'],
           ['plugin', 'data'],
           ['logs', 'system']

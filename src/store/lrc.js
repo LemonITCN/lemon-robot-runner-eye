@@ -95,7 +95,7 @@ export default {
               axios.post(define.URL.LRC.HEARTBEAT, {})
                 .catch(() => {
                   util.log.error('Heartbeat failed! Reset LRC')
-                  context.dispatch(NS.LRC.ACT_CONN_RESET)  
+                  context.dispatch(NS.LRC.ACT_CONN_RESET)
                 })
             }, res.data.data.heartbeatLength * 1000)
             util.log.info('Start heartbeat module: ' + res.data.data.heartbeatLength)
@@ -128,6 +128,22 @@ export default {
         .then((res) => {
           context.commit(NS.LRC.MUT_SET_LRC_LIST, res.data.data)
         })
-    }
+    },
+    [NS.LRC.ACT_CREATE_LRC](context, info) {
+      util.log.info('Start create lrc info')
+      axios.put(define.URL.LRC.CREATE, info.form)
+        .then((res) => {
+          context.dispatch(NS.LRC.ACT_REFRESH_LRC_LIST)
+          util.log.info('Create lrc info success!')
+          if (info && typeof info.success === 'function') {
+            info.success(res.data)
+          }
+        })
+        .catch(() => {
+          if (info && typeof info.failed === 'function') {
+            info.failed()
+          }
+        })
+    },
   }
 }

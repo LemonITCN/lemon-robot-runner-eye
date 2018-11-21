@@ -13,15 +13,15 @@
         </template>
       </el-table-column>
       <el-table-column
-          :label="$t(lang + 'column_lrct')"
-          width="330">
+          :label="$t(lang + 'column_lrcKey')"
+          width="430">
         <template slot-scope="scope">
-          <span style="margin-left: 10px;">{{ scope.row.lrct}}</span>
+          <span style="margin-left: 10px;">{{ scope.row.lrcKey}}</span>
         </template>
       </el-table-column>
       <el-table-column
           :label="$t(lang + 'column_createTime')"
-          width="330">
+          width="230">
         <template slot-scope="scope">
           {{$util.date.unixTimeStampToLocalStr(scope.row.createTime,$t('common.dateStr'))}}
         </template>

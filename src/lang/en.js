@@ -59,7 +59,7 @@ export default {
     cloudPart: {},
     mainMenuPart: {
       task: 'Task editor',
-      executor: 'Executor',
+      dispatcher: 'Dispatcher Node',
       plan: 'Plan',
       cloud: 'Cloud manager',
       plugin: 'Plugin manager',
@@ -266,14 +266,14 @@ export default {
       lrc: 'LRC Manager'
     },
     lrcManagePart: {
-      column_lrct: 'LRCT',
+      column_lrcKey: 'LRC Key',
       column_createTime: 'Create time',
       column_type: 'Client type',
       column_operate: 'Operate',
       intro: 'LRC Introduce: ',
     },
     lrcOperatePart: {
-      view_lrck: 'View LRCK',
+      view_publicKey: 'View Public key',
       delete_confirm: 'Are you sure you want to delete this LRC connection configuration? Clients that use the LRC to establish a connection after deletion will be automatically disconnected! This operation is irreversible!'
     },
     lrcCreatePart: {

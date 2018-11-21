@@ -53,6 +53,15 @@
     methods: {
       addIpItem() {
         this.lrcCreate.ipWhiteList.push('')
+      },
+      createParameter() {
+        let self = this
+        this.$store.dispatch(this.$NS.LRC.ACT_CREATE_LRC, {
+          form: this.lrcCreate,
+          success() {
+            self.createLrcDialogState = false
+          }
+        })
       }
     },
     data() {
@@ -60,6 +69,7 @@
         lang: 'system.lrcCreatePart.',
         createLrcDialogState: false,
         lrcCreate: new LrcCreate(),
+        rules: {},
         formName: 'lrcCreate',
       }
     }

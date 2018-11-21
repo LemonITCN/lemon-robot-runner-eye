@@ -59,7 +59,7 @@ export default {
     cloudPart: {},
     mainMenuPart: {
       task: '任务编辑器',
-      executor: '执行器',
+      dispatcher: '调度节点',
       plan: '计划',
       cloud: '云端管理',
       plugin: '插件管理',
@@ -265,14 +265,14 @@ export default {
       lrc: 'LRC管理器'
     },
     lrcManagePart: {
-      column_lrct: 'LRCT',
+      column_lrcKey: 'LRC Key',
       column_createTime: '创建时间',
       column_type: '客户端类型',
       column_operate: '操作',
       intro: 'LRC简介: ',
     },
     lrcOperatePart: {
-      view_lrck: '查看LRCK',
+      view_publicKey: '查看公钥',
       delete_confirm: '您确认要删除这个LRC连接配置吗？删除后使用该LRC所建立连接的客户端将会自动被断开连接！该操作不可逆！'
     },
     lrcCreatePart: {
